@@ -13,6 +13,8 @@ const Stars = ({ value = 0 }) => {
     </div>
   );
 };
+const getDiscountPct = (mrp, price) =>
+  mrp && price && mrp > price ? Math.round(((mrp - price) / mrp) * 100) : 0;
 const formatPrice = (amount) => {
   if (typeof amount === "number") {
     try {
@@ -42,6 +44,8 @@ const Price = ({ amount }) => (
 );
 
 const Card = ({ item }) => {
+  const pct = getDiscountPct(item.mrp, item.price);
+
   return (
     <div className="group rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md">
       {/* image */}
@@ -70,9 +74,26 @@ const Card = ({ item }) => {
         <Link to={item.url} className="block text-base leading-6 text-slate-900 hover:underline">
           {item.title}
         </Link>
-    
-        <Price amount={formatPrice(item.price)} />
 
+        {/* ✅ Price row with discount */}
+        <div className="mt-2 flex flex-wrap items-center gap-2">
+          <div className="text-lg font-semibold text-slate-900">
+            {formatPrice(item.price)}
+          </div>
+
+          {item.mrp && item.mrp > item.price && (
+            <>
+              <div className="text-sm text-slate-500 line-through">
+                {formatPrice(item.mrp)}
+              </div>
+              {pct > 0 && (
+                <span className="rounded-full bg-[#EAF4F2] px-2.5 py-0.5 text-xs font-medium text-[#276D55] ring-1 ring-[#CDE7E1]">
+                  {pct}% OFF
+                </span>
+              )}
+            </>
+          )}
+        </div>
 
         <Link
           to={item.url}
@@ -84,6 +105,7 @@ const Card = ({ item }) => {
     </div>
   );
 };
+
 
 const Bestsellers = () => {
   const [items, setItems] = useState([]);

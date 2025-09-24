@@ -22,6 +22,8 @@ const StockBadge = ({ inStock }) => (
     {inStock ? "In stock" : "Out of stock"}
   </div>
 );
+const getDiscountPct = (mrp, price) =>
+  mrp && price && mrp > price ? Math.round(((mrp - price) / mrp) * 100) : 0;
 
 const formatPrice = (amount) => {
   if (typeof amount === "number") {
@@ -38,8 +40,10 @@ const formatPrice = (amount) => {
   if (typeof amount === "string") return amount; // already like "₹1150.0"
   return "—";
 };
+const Card = ({ item }) => {
+  const pct = getDiscountPct(item.mrp, item.price);
 
-const Card = ({ item }) => (
+  return (
   <div className="group rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md">
     <Link to={item.url} className="block overflow-hidden rounded-t-2xl">
       <div className="aspect-[4/3] w-full bg-slate-100">
@@ -66,8 +70,24 @@ const Card = ({ item }) => (
         {item.title}
       </Link>
 
-      <div className="mt-3 text-lg text-slate-800">{formatPrice(item.price)}</div>
+   <div className="mt-2 flex flex-wrap items-center gap-2">
+          <div className="text-lg font-semibold text-slate-900">
+            {formatPrice(item.price)}
+          </div>
 
+          {item.mrp && item.mrp > item.price && (
+            <>
+              <div className="text-sm text-slate-500 line-through">
+                {formatPrice(item.mrp)}
+              </div>
+              {pct > 0 && (
+                <span className="rounded-full bg-[#EAF4F2] px-2.5 py-0.5 text-xs font-medium text-[#276D55] ring-1 ring-[#CDE7E1]">
+                  {pct}% OFF
+                </span>
+              )}
+            </>
+          )}
+        </div>
       <Link
         to={item.url}
         className="mt-3 inline-flex w-full items-center justify-center rounded-full border-2 border-slate-300 px-4 py-2 text-sm text-slate-800 hover:bg-slate-50"
@@ -76,7 +96,8 @@ const Card = ({ item }) => (
       </Link>
     </div>
   </div>
-);
+  );
+};
 
 /* ---------------- Products Page with Pagination ---------------- */
 

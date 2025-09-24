@@ -4574,10 +4574,13 @@
   "inStock": true,
   "rating": 4.7,
   "reviews": 8,
-  "image": "/products/diy-kit-tree.webp",
+  "image": "/products/DIY Kit - Tree.jpg",
   "gallery": [
-    "/products/diy-kit-tree.webp",
-    "/products/diy-kit-tree-2.webp"
+    "/products/DIY Kit - Tree.jpg",
+    "/products/DIY Kit - Tree2.jpg",
+    "/products/DIY Kit - Tree3.jpg",
+    "/products/DIY Kit - Tree4.jpg"
+    
   ],
   "badges": ["DIY", "Creative", "Educational", "Wooden Toy"],
   "shortDescription": "A creative and eco-friendly wooden tree kit for children to paint and decorate, encouraging imagination, learning, and appreciation for nature.",
