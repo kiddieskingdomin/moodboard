@@ -18,6 +18,7 @@ import RefundPolicy from "./pages/RefundPolicy";
 import ShippingPolicy from "./pages/ShippingPolicies";
 import TermsOfService from "./pages/TermofServices";
 import SearchPage from "./pages/SearchPage";
+import CategoryPage from "./pages/CategoryPage";
 
 export default function App() {
   return (
@@ -34,6 +35,7 @@ export default function App() {
           <Route path="/products/:slug" element={<ProductDetail />} />
           <Route path="/blogs" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="/category/:categoryName" element={<CategoryPage/>} />
           <Route path="/refund-Policy" element={<RefundPolicy />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/shipping-policy" element={<ShippingPolicy />} />

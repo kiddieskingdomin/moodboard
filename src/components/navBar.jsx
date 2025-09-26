@@ -8,118 +8,37 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { usePopup } from "./PopupContext";
 
-const categories = [
-  {
-    label: "Shop All",
-    to: "/shop-all",
-  },
-  {
-    label: "About Us",
-    to: "/about-us",
-  },
-  {
-    label: "Blog",
-    to: "/Blogs",
-  },
-  {
-    label: "Contact Us",
-    to: "/contact-us",
-  },
-  // {
-  //   label: "Shop By Age",
-  //   to: "/age",
-  //   mega: [
-  //     {
-  //       title: "Babies (0–12m)",
-  //       items: [
-  //         { label: "Rattles", to: "/age/baby/rattles" },
-  //         { label: "Soft Toys", to: "/age/baby/soft-toys" },
-  //         { label: "Teethers", to: "/age/baby/teethers" },
-  //       ],
-  //     },
-  //     {
-  //       title: "Toddlers (1–3y)",
-  //       items: [
-  //         { label: "Ride‑ons", to: "/age/toddler/rideons" },
-  //         { label: "Stack & Sort", to: "/age/toddler/stack" },
-  //         { label: "Musical Toys", to: "/age/toddler/music" },
-  //       ],
-  //     },
-  //     {
-  //       title: "Kids (4–7y)",
-  //       items: [
-  //         { label: "STEM Kits", to: "/age/kids/stem" },
-  //         { label: "Crafts", to: "/age/kids/crafts" },
-  //         { label: "Puzzles", to: "/age/kids/puzzles" },
-  //       ],
-  //     },
-  //     {
-  //       title: "Big Kids (8y+)",
-  //       items: [
-  //         { label: "Robotics", to: "/age/bigkids/robotics" },
-  //         { label: "Board Games", to: "/age/bigkids/boardgames" },
-  //         { label: "Outdoor", to: "/age/bigkids/outdoor" },
-  //       ],
-  //     },
-  //   ],
-  // },
-  // {
-  //   label: "Pretend Play",
-  //   to: "/pretend-play",
-  //   list: [
-  //     { label: "Kitchens & Food", to: "/pretend-play/kitchen" },
-  //     { label: "Dollhouses & Dolls", to: "/pretend-play/dolls" },
-  //     { label: "Dress‑up", to: "/pretend-play/dress-up" },
-  //     { label: "Tool Sets", to: "/pretend-play/tools" },
-  //   ],
-  // },
-  // {
-  //   label: "Learning Toys",
-  //   to: "/learning",
-  //   list: [
-  //     { label: "Alphabet & Numbers", to: "/learning/alphabet" },
-  //     { label: "Building & Blocks", to: "/learning/blocks" },
-  //     { label: "Science & STEM", to: "/learning/stem" },
-  //     { label: "Montessori", to: "/learning/montessori" },
-  //   ],
-  // },
-  // {
-  //   label: "Trains & Vehicles",
-  //   to: "/vehicles",
-  //   list: [
-  //     { label: "Wooden Trains", to: "/vehicles/trains" },
-  //     { label: "Cars & Trucks", to: "/vehicles/cars" },
-  //     { label: "Construction", to: "/vehicles/construction" },
-  //     { label: "Remote Control", to: "/vehicles/rc" },
-  //   ],
-  // },
-  // {
-  //   label: "Gross motors & kids furniture",
-  //   to: "/furniture",
-  //   list: [
-  //     { label: "Study Tables", to: "/furniture/tables" },
-  //     { label: "Play Gyms", to: "/furniture/play-gyms" },
-  //     { label: "Slides & Swings", to: "/furniture/slides" },
-  //     { label: "Storage", to: "/furniture/storage" },
-  //   ],
-  // },
-  // {
-  //   label: "Other",
-  //   to: "/other",
-  //   list: [
-  //     { label: "Party & Gifts", to: "/other/party" },
-  //     { label: "Books", to: "/other/books" },
-  //     { label: "Backpacks", to: "/other/backpacks" },
-  //     { label: "Sale", to: "/other/sale" },
-  //   ],
-  // },
-];
-
 const TopNavBar = ({ cartCount = 0 }) => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const { setShowPopup } = usePopup();
+
+  // Fetch categories from data.json
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch('/data.json');
+        const data = await response.json();
+        
+        // Get unique categories from products
+        const uniqueCategories = [...new Set(data
+          .map(product => product.category)
+          .filter(category => category && category.trim() !== '')
+        )].sort();
+
+        setCategories(uniqueCategories);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 6);
@@ -135,6 +54,71 @@ const TopNavBar = ({ cartCount = 0 }) => {
 
   const handleQuickOpen = () => setShowPopup(true);
 
+  // Static navigation items
+  const navItems = [
+    {
+      label: "Shop All",
+      to: "/shop-all",
+    },
+    {
+      label: "About Us",
+      to: "/about-us",
+    },
+    {
+      label: "Blog",
+      to: "/Blogs",
+    },
+    {
+      label: "Contact Us",
+      to: "/contact-us",
+    },
+  ];
+
+  if (loading) {
+    return (
+      <>
+        <header className="fixed top-0 z-50 w-full bg-white">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <div className="grid h-16 grid-cols-3 items-center gap-3">
+              <div className="flex items-center">
+                <button className="md:hidden inline-flex items-center justify-center rounded-lg p-2 text-slate-700">
+                  <FiMenu className="text-xl" />
+                </button>
+                <div className="hidden md:flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 w-80">
+                  <FiSearch className="text-violet-800" />
+                  <div className="w-full bg-gray-200 h-4 rounded animate-pulse"></div>
+                </div>
+              </div>
+              <div className="justify-self-center">
+                <Link to="/">
+                  <img src="/kk_logo.webp" alt="Kiddies Kingdom" className="block h-10 w-auto md:h-14" />
+                </Link>
+              </div>
+              <div className="flex items-center justify-end">
+                <div className="hidden sm:inline-flex items-center gap-2 rounded-full border border-violet-200 px-4 py-2">
+                  <div className="w-20 bg-gray-200 h-4 rounded animate-pulse"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Loading categories */}
+          <nav className="border-t border-amber-100 bg-[#fff2ea]">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6">
+              <ul className="hidden h-12 items-center justify-center gap-6 md:flex">
+                {[...Array(5)].map((_, i) => (
+                  <li key={i} className="flex items-stretch">
+                    <div className="w-20 bg-gray-200 h-4 rounded animate-pulse"></div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </nav>
+        </header>
+        <div className="h-16 md:h-[112px]" />
+      </>
+    );
+  }
+
   return (
     <>
       <header
@@ -142,11 +126,9 @@ const TopNavBar = ({ cartCount = 0 }) => {
           }`}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          {/* ROW: grid keeps logo perfectly centered */}
           <div className="grid h-16 grid-cols-3 items-center gap-3">
             {/* LEFT: search (md+) or menu (mobile) */}
             <div className="flex items-center">
-              {/* Mobile menu */}
               <button
                 className="md:hidden inline-flex items-center justify-center rounded-lg p-2 text-slate-700 hover:bg-slate-100"
                 onClick={() => setOpen(true)}
@@ -155,7 +137,6 @@ const TopNavBar = ({ cartCount = 0 }) => {
                 <FiMenu className="text-xl" />
               </button>
 
-              {/* Desktop search */}
               <form
                 onSubmit={handleSearchSubmit}
                 className="hidden md:flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 w-80 focus-within:ring-2 focus-within:ring-violet-300"
@@ -171,7 +152,7 @@ const TopNavBar = ({ cartCount = 0 }) => {
               </form>
             </div>
 
-            {/* CENTER: logo — always centered */}
+            {/* CENTER: logo */}
             <div className="justify-self-center">
               <Link to="/" aria-label="Kiddies Kingdom home">
                 <img
@@ -182,7 +163,7 @@ const TopNavBar = ({ cartCount = 0 }) => {
               </Link>
             </div>
 
-            {/* RIGHT: quick shop btn (align end) */}
+            {/* RIGHT: quick shop btn */}
             <div className="flex items-center justify-end">
               <button
                 onClick={handleQuickOpen}
@@ -195,6 +176,7 @@ const TopNavBar = ({ cartCount = 0 }) => {
             </div>
           </div>
         </div>
+        
         {/* Category strip */}
         <nav
           aria-label="Categories"
@@ -211,63 +193,45 @@ const TopNavBar = ({ cartCount = 0 }) => {
                 </Link>
               </li>
 
-              {categories.map((cat) => (
-                <li key={cat.label} className="group relative flex items-stretch">
+              {/* CATEGORIES DROPDOWN */}
+              <li className="group relative flex items-stretch">
+                <button
+                  className="flex items-center gap-1 text-base font-medium text-[#d8a298]"
+                >
+                  Categories
+                  <FiChevronDown className="mt-px text-[18px]" />
+                </button>
+
+                {/* underline on active/hover */}
+                <span className="pointer-events-none absolute -bottom-[10px] h-[3px] w-0 bg-[#d8a298] transition-all duration-300 group-hover:w-10" />
+
+                {/* Mega dropdown for all categories */}
+                <div className="invisible absolute left-0 top-full z-40 w-64 translate-y-2 rounded-lg border border-amber-100 bg-amber-50 p-3 opacity-0 shadow-lg transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                  <ul className="space-y-1">
+                    {categories.map((category) => (
+                      <li key={category}>
+                        <Link
+                          to={`/category/${category.toLowerCase().replace(/\s+/g, '-')}`}
+                          className="block rounded-md px-3 py-2 text-sm text-violet-800 hover:bg-white hover:text-[#d8a298]"
+                        >
+                          {category}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
+
+              {/* Other static navigation items */}
+              {navItems.map((item) => (
+                <li key={item.label} className="flex items-stretch">
                   <Link
-                    to={cat.to}
-                    className="flex items-center gap-1 text-base font-medium text-[#d8a298]"
+                    to={item.to}
+                    className="flex items-center text-base font-medium text-[#d8a298]"
                   >
-                    {cat.label}
-                    {(cat.mega || cat.list) && (
-                      <FiChevronDown className="mt-px text-[18px]" />
-                    )}
+                    {item.label}
                   </Link>
-
-                  {/* underline on active/hover */}
                   <span className="pointer-events-none absolute -bottom-[10px] h-[3px] w-0 bg-[#d8a298] transition-all duration-300 group-hover:w-10" />
-
-                  {/* Mega menu */}
-                  {cat.mega && (
-                    <div className="invisible absolute left-0 top-full z-40 w-[780px] translate-y-2 rounded-lg border border-amber-100 bg-amber-50 p-5 opacity-0 shadow-lg transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                        {cat.mega.map((col) => (
-                          <div key={col.title}>
-                            <p className="mb-2 text-sm font-bold text-[#d8a298]">{col.title}</p>
-                            <ul className="space-y-1.5">
-                              {col.items.map((i) => (
-                                <li key={i.label}>
-                                  <Link
-                                    to={i.to}
-                                    className="text-sm text-violet-800 hover:text-[#d8a298]"
-                                  >
-                                    {i.label}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Simple dropdown */}
-                  {cat.list && (
-                    <div className="invisible absolute left-0 top-full z-40 w-64 translate-y-2 rounded-lg border border-amber-100 bg-amber-50 p-3 opacity-0 shadow-lg transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-                      <ul className="space-y-1">
-                        {cat.list.map((i) => (
-                          <li key={i.label}>
-                            <Link
-                              to={i.to}
-                              className="block rounded-md px-3 py-2 text-sm text-violet-800 hover:bg-white hover:text-[#d8a298]"
-                            >
-                              {i.label}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
                 </li>
               ))}
             </ul>
@@ -318,49 +282,38 @@ const TopNavBar = ({ cartCount = 0 }) => {
               Home
             </Link>
 
-            {categories.map((cat) => {
-              const hasChildren = (cat.mega && cat.mega.length > 0) || (cat.list && cat.list.length > 0);
-
-              // 1) SIMPLE LINK (no children) ➜ direct Link
-              if (!hasChildren) {
-                return (
+            {/* Categories dropdown for mobile */}
+            <details className="group">
+              <summary className="flex cursor-pointer list-none items-center justify-between rounded-md px-3 py-2 font-medium text-[#d8a298] hover:bg-violet-50">
+                Categories
+                <FiChevronDown className="transition-transform group-open:rotate-180" />
+              </summary>
+              <div className="pl-3">
+                {categories.map((category) => (
                   <Link
-                    key={cat.label}
-                    to={cat.to}
+                    key={category}
+                    to={`/category/${category.toLowerCase().replace(/\s+/g, '-')}`}
                     onClick={() => setOpen(false)}
-                    className="block rounded-md px-3 py-2 font-medium text-[#d8a298] hover:bg-violet-50"
+                    className="block rounded-md px-3 py-2 text-sm text-violet-800 hover:bg-amber-50"
                   >
-                    {cat.label}
+                    {category}
                   </Link>
-                );
-              }
+                ))}
+              </div>
+            </details>
 
-              // 2) DROPDOWN (has children) ➜ details/summary
-              const items = cat.mega ? cat.mega.flatMap((c) => c.items) : cat.list;
-
-              return (
-                <details key={cat.label} className="group">
-                  <summary className="flex cursor-pointer list-none items-center justify-between rounded-md px-3 py-2 font-medium text-[#d8a298] hover:bg-violet-50">
-                    {cat.label}
-                    <FiChevronDown className="transition-transform group-open:rotate-180" />
-                  </summary>
-                  <div className="pl-3">
-                    {items.map((i) => (
-                      <Link
-                        key={i.label}
-                        to={i.to}
-                        onClick={() => setOpen(false)}
-                        className="block rounded-md px-3 py-2 text-sm text-violet-800 hover:bg-amber-50"
-                      >
-                        {i.label}
-                      </Link>
-                    ))}
-                  </div>
-                </details>
-              );
-            })}
+            {/* Other static links */}
+            {navItems.map((item) => (
+              <Link
+                key={item.label}
+                to={item.to}
+                onClick={() => setOpen(false)}
+                className="block rounded-md px-3 py-2 font-medium text-[#d8a298] hover:bg-violet-50"
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
-
         </div>
       </aside>
 

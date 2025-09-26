@@ -260,11 +260,15 @@ export default function ProductDetail() {
     setSelImg(0);
   }, [product]);
 
-  const related = useMemo(() => {
-    if (!product) return [];
-    const relIds = new Set(product.related || []);
-    return data.filter((p) => relIds.has(p.id));
-  }, [data, product]);
+const related = useMemo(() => {
+  if (!product) return [];
+  
+  // Same category ke saare products filter karo (current product ko exclude karke)
+  return data.filter((p) => 
+    p.category === product.category && 
+    p.id !== product.id
+  );
+}, [data, product]);
 
   if (state === "loading") {
     return (
@@ -330,7 +334,7 @@ export default function ProductDetail() {
       ),
     },
     {
-      title: "Product Details", 
+      title: "Product Details",
       content: product.specifications?.length ? (
         <SpecsAccordion specs={product.specifications} />
       ) : (
@@ -425,28 +429,28 @@ export default function ProductDetail() {
               </div>
             </div>
             {/* new: info rows under stripe */}
-{(() => {
-  const infoItems = [
-    {
-      icon: FiBox,
-      title: product.inStock ? "In stock, order now" : "Currently unavailable",
-      subtitle: product.inStock ? "In stock, order now" : "We’ll restock soon",
-    },
-    {
-      icon: FiCreditCard,
-      title: "Secure payments",
-      subtitle: "Pay safely with Credit Card, PayPal, Apple Pay or Google Pay",
-    },
-    {
-      icon: FiShield,
-      title: "Safety & quality assured",
-      subtitle: product.certText || "CE-certified manufacturing",
-    },
-  ];
-  return <InfoRows items={infoItems} />;
-})()}
+            {(() => {
+              const infoItems = [
+                {
+                  icon: FiBox,
+                  title: product.inStock ? "In stock, order now" : "Currently unavailable",
+                  subtitle: product.inStock ? "In stock, order now" : "We’ll restock soon",
+                },
+                {
+                  icon: FiCreditCard,
+                  title: "Secure payments",
+                  subtitle: "Pay safely with Credit Card, PayPal, Apple Pay or Google Pay",
+                },
+                {
+                  icon: FiShield,
+                  title: "Safety & quality assured",
+                  subtitle: product.certText || "CE-certified manufacturing",
+                },
+              ];
+              return <InfoRows items={infoItems} />;
+            })()}
 
-                        {/* badges */}
+            {/* badges */}
             {product.badges?.length ? (
               <div className="mt-4 flex flex-wrap gap-2">
                 {product.badges.map((b) => (
