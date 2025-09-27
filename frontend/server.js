@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises'
 import express from 'express'
 import { Transform } from 'node:stream'
+import path from 'node:path'
 
 // Constants
 const isProduction = process.env.NODE_ENV === 'production'
@@ -9,9 +10,56 @@ const base = process.env.BASE || '/'
 const ABORT_DELAY = 10000
 
 // Cached production assets
-const templateHtml = isProduction
-  ? await fs.readFile('./dist/client/index.html', 'utf-8')
-  : ''
+let templateHtml = ''
+let manifest = null
+
+if (isProduction) {
+  templateHtml = await fs.readFile('./dist/client/index.html', 'utf-8')
+  manifest = JSON.parse(
+    await fs.readFile('./dist/client/.vite/manifest.json', 'utf-8')
+  )
+}
+
+// helpers to inject CSS/JS from manifest
+function renderPreloadLinks(entry) {
+  if (!manifest) return ''
+  const seen = new Set()
+  const links = []
+
+  function collectDeps(file) {
+    const chunk = manifest[file]
+    if (!chunk) return
+    if (chunk.file && !seen.has(chunk.file)) {
+      seen.add(chunk.file)
+      links.push(`<link rel="modulepreload" href="${base}${chunk.file}">`)
+    }
+    if (chunk.css) {
+      chunk.css.forEach(href => {
+        links.push(`<link rel="preload" as="style" href="${base}${href}">`)
+      })
+    }
+    if (chunk.imports) {
+      chunk.imports.forEach(imp => collectDeps(imp))
+    }
+  }
+
+  collectDeps(entry)
+  return links.join('\n')
+}
+
+function renderStyles(entry) {
+  if (!manifest) return ''
+  const cssFiles = new Set()
+  function collect(file) {
+    const chunk = manifest[file]
+    if (chunk?.css) chunk.css.forEach(href => cssFiles.add(href))
+    if (chunk?.imports) chunk.imports.forEach(i => collect(i))
+  }
+  collect(entry)
+  return [...cssFiles]
+    .map(href => `<link rel="stylesheet" href="${base}${href}">`)
+    .join('\n')
+}
 
 // Create http server
 const app = express()
@@ -39,12 +87,9 @@ app.use('*all', async (req, res) => {
   try {
     const url = req.originalUrl.replace(base, '')
 
-    /** @type {string} */
     let template
-    /** @type {import('./src/entry-server.js').render} */
     let render
     if (!isProduction) {
-      // Always read fresh template in development
       template = await fs.readFile('./index.html', 'utf-8')
       template = await vite.transformIndexHtml(url, template)
       render = (await vite.ssrLoadModule('/src/entry-server.jsx')).render
@@ -57,8 +102,7 @@ app.use('*all', async (req, res) => {
 
     const { pipe, abort } = render(url, {
       onShellError() {
-        res.status(500)
-        res.set({ 'Content-Type': 'text/html' })
+        res.status(500).set({ 'Content-Type': 'text/html' })
         res.send('<h1>Something went wrong</h1>')
       },
       onShellReady() {
@@ -74,7 +118,16 @@ app.use('*all', async (req, res) => {
 
         const [htmlStart, htmlEnd] = template.split(`<!--app-html-->`)
 
-        res.write(htmlStart)
+        // Inject preload links + styles before </head>
+        let headInjected = htmlStart
+        if (isProduction) {
+          const entryClient = 'src/entry-client.jsx' // adjust if diff
+          const inject =
+            renderPreloadLinks(entryClient) + '\n' + renderStyles(entryClient)
+          headInjected = htmlStart.replace('</head>', `${inject}\n</head>`)
+        }
+
+        res.write(headInjected)
 
         transformStream.on('finish', () => {
           res.end(htmlEnd)
