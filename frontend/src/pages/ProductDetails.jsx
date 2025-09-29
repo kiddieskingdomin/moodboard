@@ -20,16 +20,18 @@ import {
   FiInfo,
 } from "react-icons/fi";
 import ProductEnquiryForm from "./ProductEnquiryForm";
+import { addToCart } from "../api/cart";
+import CartDrawer from "../components/cartDrawer";
 
 /* ---------------- Helpers ---------------- */
 
 const formatINR = (n) =>
   typeof n === "number"
     ? n.toLocaleString("en-IN", {
-      style: "currency",
-      currency: "INR",
-      maximumFractionDigits: 0,
-    })
+        style: "currency",
+        currency: "INR",
+        maximumFractionDigits: 0,
+      })
     : n;
 
 const discountPct = (mrp, price) =>
@@ -50,20 +52,22 @@ const Stars = ({ value = 0 }) => {
   );
 };
 
-/* ---------------- Simple Accordion ---------------- */
-
 /* ---------------- Simple Accordion (pro-grade) ---------------- */
 function Accordion({ items = [], defaultOpen = 0, single = true }) {
-  const [open, setOpen] = useState(typeof defaultOpen === "number" ? defaultOpen : -1);
-  const isOpen = i => (single ? open === i : Array.isArray(open) && open.includes(i));
+  const [open, setOpen] = useState(
+    typeof defaultOpen === "number" ? defaultOpen : -1
+  );
+  const isOpen = (i) =>
+    single ? open === i : Array.isArray(open) && open.includes(i);
 
-  const toggle = i => {
-    if (single) setOpen(p => (p === i ? -1 : i));
-    else setOpen(p => {
-      const s = new Set(Array.isArray(p) ? p : []);
-      s.has(i) ? s.delete(i) : s.add(i);
-      return Array.from(s);
-    });
+  const toggle = (i) => {
+    if (single) setOpen((p) => (p === i ? -1 : i));
+    else
+      setOpen((p) => {
+        const s = new Set(Array.isArray(p) ? p : []);
+        s.has(i) ? s.delete(i) : s.add(i);
+        return Array.from(s);
+      });
   };
 
   return (
@@ -81,15 +85,17 @@ function Accordion({ items = [], defaultOpen = 0, single = true }) {
               <span className="text-lg font-semibold">{it.title}</span>
             </div>
             <FiChevronDown
-              className={`h-5 w-5 shrink-0 text-slate-500 transition-transform duration-200 ${isOpen(i) ? "rotate-180" : "rotate-0"
-                }`}
+              className={`h-5 w-5 shrink-0 text-slate-500 transition-transform duration-200 ${
+                isOpen(i) ? "rotate-180" : "rotate-0"
+              }`}
             />
           </button>
 
           {/* fully collapses: no leftover padding */}
           <div
-            className={`overflow-hidden transition-all duration-200 ease-out ${isOpen(i) ? "max-h-[1000px] px-4 pb-4" : "max-h-0 px-4 pb-0"
-              }`}
+            className={`overflow-hidden transition-all duration-200 ease-out ${
+              isOpen(i) ? "max-h-[1000px] px-4 pb-4" : "max-h-0 px-4 pb-0"
+            }`}
           >
             <div className="text-sm text-slate-700">{it.content}</div>
           </div>
@@ -98,7 +104,6 @@ function Accordion({ items = [], defaultOpen = 0, single = true }) {
     </div>
   );
 }
-
 
 /* ---------------- Spec list as mini-accordion ---------------- */
 
@@ -126,7 +131,7 @@ function SpecsAccordion({ specs = [] }) {
             <button
               type="button"
               aria-expanded={open}
-              onClick={() => setOpenIndex(p => (p === i ? -1 : i))}
+              onClick={() => setOpenIndex((p) => (p === i ? -1 : i))}
               className="flex w-full items-center justify-between gap-3 p-3 text-left outline-none focus-visible:ring-2 focus-visible:ring-violet-300"
             >
               <div className="flex items-center gap-2">
@@ -136,14 +141,16 @@ function SpecsAccordion({ specs = [] }) {
                 </dt>
               </div>
               <FiChevronDown
-                className={`h-5 w-5 shrink-0 text-slate-500 transition-transform ${open ? "rotate-180" : "rotate-0"
-                  }`}
+                className={`h-5 w-5 shrink-0 text-slate-500 transition-transform ${
+                  open ? "rotate-180" : "rotate-0"
+                }`}
               />
             </button>
 
             <div
-              className={`overflow-hidden transition-all duration-200 ease-out ${open ? "max-h-[600px] px-3 pb-3" : "max-h-0 px-3 pb-0"
-                }`}
+              className={`overflow-hidden transition-all duration-200 ease-out ${
+                open ? "max-h-[600px] px-3 pb-3" : "max-h-0 px-3 pb-0"
+              }`}
             >
               <dd className="text-sm leading-snug text-slate-800">{s.value}</dd>
             </div>
@@ -154,34 +161,53 @@ function SpecsAccordion({ specs = [] }) {
   );
 }
 
-
 /* ---------------- Related Slider ---------------- */
 
 const RelatedSlider = ({ items = [] }) => {
   const ref = React.useRef(null);
-  const scrollBy = (dx) => ref.current?.scrollBy({ left: dx, behavior: "smooth" });
+  const scrollBy = (dx) =>
+    ref.current?.scrollBy({ left: dx, behavior: "smooth" });
   if (!items.length) return null;
   return (
     <section className="mt-14">
       <div className="flex items-center justify-between">
         <h3 className="text-[20px] text-slate-900">Related products</h3>
         <div className="flex gap-2">
-          <button onClick={() => scrollBy(-320)} className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 text-slate-800">
+          <button
+            onClick={() => scrollBy(-320)}
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 text-slate-800"
+          >
             <FiChevronLeft />
           </button>
-          <button onClick={() => scrollBy(320)} className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 text-slate-800">
+          <button
+            onClick={() => scrollBy(320)}
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 text-slate-800"
+          >
             <FiChevronRight />
           </button>
         </div>
       </div>
-      <div ref={ref} className="mt-4 flex gap-4 overflow-x-auto pb-2 [&::-webkit-scrollbar]:hidden">
+      <div
+        ref={ref}
+        className="mt-4 flex gap-4 overflow-x-auto pb-2 [&::-webkit-scrollbar]:hidden"
+      >
         {items.map((p) => (
-          <Link key={p.id ?? p.url ?? p.title} to={p.url} className="min-w-[240px] max-w-[240px] rounded-2xl border border-slate-200 bg-white">
+          <Link
+            key={p.id ?? p.url ?? p.title}
+            to={p.url}
+            className="min-w-[240px] max-w-[240px] rounded-2xl border border-slate-200 bg-white"
+          >
             <div className="aspect-[4/3] overflow-hidden rounded-t-2xl bg-slate-100">
-              <img src={p.thumbnail || p.image || "/placeholder.png"} alt={p.title} className="h-full w-full object-cover" />
+              <img
+                src={p.thumbnail || p.image || "/placeholder.png"}
+                alt={p.title}
+                className="h-full w-full object-cover"
+              />
             </div>
             <div className="p-3">
-              <div className="line-clamp-2 text-sm text-slate-900">{p.title}</div>
+              <div className="line-clamp-2 text-sm text-slate-900">
+                {p.title}
+              </div>
               <div className="mt-2 text-slate-800">{formatINR(p.price)}</div>
             </div>
           </Link>
@@ -196,11 +222,18 @@ function InfoRows({ items = [] }) {
   return (
     <div className="mt-4 overflow-hidden rounded-2xl border border-slate-200">
       {items.map((it, i) => (
-        <div key={i} className="flex items-start justify-between gap-4 border-t p-4 first:border-t-0">
+        <div
+          key={i}
+          className="flex items-start justify-between gap-4 border-t p-4 first:border-t-0"
+        >
           <div className="flex items-start gap-3">
-            {it.icon ? <it.icon className="mt-1 h-6 w-6 text-slate-600" /> : null}
+            {it.icon ? (
+              <it.icon className="mt-1 h-6 w-6 text-slate-600" />
+            ) : null}
             <div>
-              <div className="text-base font-semibold text-slate-900">{it.title}</div>
+              <div className="text-base font-semibold text-slate-900">
+                {it.title}
+              </div>
               <div className="text-sm text-slate-600">{it.subtitle}</div>
             </div>
           </div>
@@ -217,7 +250,6 @@ function InfoRows({ items = [] }) {
   );
 }
 
-
 /* ---------------- Main Page ---------------- */
 
 export default function ProductDetail() {
@@ -226,6 +258,7 @@ export default function ProductDetail() {
   const [state, setState] = useState("loading");
   const [selImg, setSelImg] = useState(0);
   const [showEnquiryModal, setShowEnquiryModal] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const handleEnquiry = () => setShowEnquiryModal(true);
 
@@ -252,7 +285,10 @@ export default function ProductDetail() {
   }, []);
 
   const product = useMemo(
-    () => data.find((p) => p.slug === slug || norm(p.url || "").endsWith(norm(slug || ""))),
+    () =>
+      data.find(
+        (p) => p.slug === slug || norm(p.url || "").endsWith(norm(slug || ""))
+      ),
     [data, slug]
   );
 
@@ -260,15 +296,14 @@ export default function ProductDetail() {
     setSelImg(0);
   }, [product]);
 
-const related = useMemo(() => {
-  if (!product) return [];
-  
-  // Same category ke saare products filter karo (current product ko exclude karke)
-  return data.filter((p) => 
-    p.category === product.category && 
-    p.id !== product.id
-  );
-}, [data, product]);
+  const related = useMemo(() => {
+    if (!product) return [];
+
+    // Same category ke saare products filter karo (current product ko exclude karke)
+    return data.filter(
+      (p) => p.category === product.category && p.id !== product.id
+    );
+  }, [data, product]);
 
   if (state === "loading") {
     return (
@@ -281,7 +316,9 @@ const related = useMemo(() => {
   if (state === "error") {
     return (
       <main className="mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6">
-        <p className="rounded-xl bg-rose-50 p-4 text-rose-700 ring-1 ring-rose-200">Couldn’t load products. Please refresh and try again.</p>
+        <p className="rounded-xl bg-rose-50 p-4 text-rose-700 ring-1 ring-rose-200">
+          Couldn’t load products. Please refresh and try again.
+        </p>
       </main>
     );
   }
@@ -295,7 +332,9 @@ const related = useMemo(() => {
   }
 
   const placeholder = "/placeholder.png";
-  const imgsRaw = product.gallery?.length ? product.gallery : [product.thumbnail || product.image || placeholder];
+  const imgsRaw = product.gallery?.length
+    ? product.gallery
+    : [product.thumbnail || product.image || placeholder];
   const imgs = imgsRaw.filter(Boolean);
   const safeSel = Math.min(selImg, Math.max(0, imgs.length - 1));
   const pct = discountPct(product.mrp, product.price);
@@ -303,7 +342,9 @@ const related = useMemo(() => {
   const handleWhatsApp = () => {
     if (!product) return;
     const message = `Hi, I have an enquiry about the product: ${product.title}.`;
-    const whatsappURL = `https://wa.me/919877047723?text=${encodeURIComponent(message)}`;
+    const whatsappURL = `https://wa.me/919877047723?text=${encodeURIComponent(
+      message
+    )}`;
     window.open(whatsappURL, "_blank", "noopener,noreferrer");
   };
 
@@ -342,7 +383,14 @@ const related = useMemo(() => {
       ),
     },
   ];
-
+  const handleAddToCart = async () => {
+    try {
+      await addToCart(product.id, 1);
+      setDrawerOpen(true); // add hone ke baad drawer dikha do
+    } catch (e) {
+      console.error("Add to cart failed:", e);
+    }
+  };
   return (
     <main className="bg-[#FFFDFB]">
       <section className="mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6">
@@ -368,7 +416,9 @@ const related = useMemo(() => {
                   <button
                     key={(src || "img") + i}
                     onClick={() => setSelImg(i)}
-                    className={`overflow-hidden rounded-xl ring-1 ring-slate-200 ${i === safeSel ? "outline outline-2 outline-violet-400" : ""}`}
+                    className={`overflow-hidden rounded-xl ring-1 ring-slate-200 ${
+                      i === safeSel ? " outline-2 outline-violet-400" : ""
+                    }`}
                   >
                     <img src={src} alt="" className="h-16 w-16 object-cover" />
                   </button>
@@ -390,31 +440,51 @@ const related = useMemo(() => {
 
           {/* Right: details */}
           <div className="lg:minh-[70vh]">
-            <span className="inline-block rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800">{product.category}</span>
+            <span className="inline-block rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800">
+              {product.category}
+            </span>
 
-            <h1 className="text-[28px] leading-tight text-slate-900 md:text-[34px]">{product.title}</h1>
+            <h1 className="text-[28px] leading-tight text-slate-900 md:text-[34px]">
+              {product.title}
+            </h1>
 
             {/* rating + reviews + stock */}
             <div className="mt-2 flex flex-wrap items-center gap-3 text-sm">
               <span className="inline-flex items-center gap-2">
                 <Stars value={product.rating} />
-                <span className="text-slate-700">{Number(product.rating || 0).toFixed(1)}</span>
-                <span className="text-slate-500">({product.reviews} reviews)</span>
+                <span className="text-slate-700">
+                  {Number(product.rating || 0).toFixed(1)}
+                </span>
+                <span className="text-slate-500">
+                  ({product.reviews} reviews)
+                </span>
               </span>
-              <span className="mx-2 hidden sm:inline-block text-slate-300">|</span>
+              <span className="mx-2 hidden sm:inline-block text-slate-300">
+                |
+              </span>
               <span className="inline-flex items-center gap-2 text-slate-600">
-                <span className={`inline-block h-2.5 w-2.5 rounded-full ${product.inStock ? "bg-[#4F9F5B]" : "bg-slate-300"}`} />
+                <span
+                  className={`inline-block h-2.5 w-2.5 rounded-full ${
+                    product.inStock ? "bg-[#4F9F5B]" : "bg-slate-300"
+                  }`}
+                />
                 {product.inStock ? "In stock" : "Out of stock"}
               </span>
             </div>
 
             {/* price row */}
             <div className="mt-4 flex flex-wrap items-center gap-3">
-              <div className="text-2xl font-semibold text-slate-900">{formatINR(product.price)}</div>
+              <div className="text-2xl font-semibold text-slate-900">
+                {formatINR(product.price)}
+              </div>
               {product.mrp && product.mrp > product.price && (
                 <>
-                  <div className="text-lg text-slate-500 line-through">{formatINR(product.mrp)}</div>
-                  <span className="rounded-full bg-[#EAF4F2] px-3 py-1 text-sm text-[#276D55] ring-1 ring-[#CDE7E1]">{pct}% OFF</span>
+                  <div className="text-lg text-slate-500 line-through">
+                    {formatINR(product.mrp)}
+                  </div>
+                  <span className="rounded-full bg-[#EAF4F2] px-3 py-1 text-sm text-[#276D55] ring-1 ring-[#CDE7E1]">
+                    {pct}% OFF
+                  </span>
                 </>
               )}
             </div>
@@ -433,13 +503,18 @@ const related = useMemo(() => {
               const infoItems = [
                 {
                   icon: FiBox,
-                  title: product.inStock ? "In stock, order now" : "Currently unavailable",
-                  subtitle: product.inStock ? "In stock, order now" : "We’ll restock soon",
+                  title: product.inStock
+                    ? "In stock, order now"
+                    : "Currently unavailable",
+                  subtitle: product.inStock
+                    ? "In stock, order now"
+                    : "We’ll restock soon",
                 },
                 {
                   icon: FiCreditCard,
                   title: "Secure payments",
-                  subtitle: "Pay safely with Credit Card, PayPal, Apple Pay or Google Pay",
+                  subtitle:
+                    "Pay safely with Credit Card, PayPal, Apple Pay or Google Pay",
                 },
                 {
                   icon: FiShield,
@@ -469,7 +544,6 @@ const related = useMemo(() => {
               <Accordion items={accordionItems} defaultOpen={0} single />
             </div>
 
-
             {/* Buttons: Enquiry and WhatsApp */}
             <div className="mt-8 flex flex-wrap gap-5">
               <button
@@ -485,6 +559,13 @@ const related = useMemo(() => {
               >
                 WhatsApp us
               </button>
+              <button
+                onClick={handleAddToCart}
+                className="mt-4 rounded bg-[#ef927d] px-6 py-3 text-white"
+              >
+                Add to Cart
+              </button>
+              <CartDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
             </div>
           </div>
         </div>
@@ -493,7 +574,11 @@ const related = useMemo(() => {
         <RelatedSlider items={related} />
       </section>
 
-      <ProductEnquiryForm product={product} isOpen={showEnquiryModal} onClose={() => setShowEnquiryModal(false)} />
+      <ProductEnquiryForm
+        product={product}
+        isOpen={showEnquiryModal}
+        onClose={() => setShowEnquiryModal(false)}
+      />
     </main>
   );
 }
