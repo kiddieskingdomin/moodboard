@@ -63,10 +63,13 @@ app.use(sessionCookie)
 
 app.use('/api', routes)
 
-app.use((_req, res) => res.status(404).json({ error: 'not_found' }))
+// put these BEFORE the 404
 app.get('/', (_req, res) => {
-  res.send('Kiddies Kingdom API is alive 👑');
+  res.send('Kiddies Kingdom API is alive 👑')
 })
+
+app.get('/favicon.ico', (_req, res) => res.status(204).end())
+app.use((_req, res) => res.status(404).json({ error: 'not_found' }))
 
 
 ;(async function start() {
