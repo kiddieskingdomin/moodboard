@@ -31,7 +31,7 @@ const formatPrice = (amount) => {
   return "—";
 };
 const StockBadge = ({ inStock }) => (
-  <div className="flex items-center gap-2 text-sm text-slate-600">
+  <div className="flex items-center gap-2 text-[10px] md:text-sm text-slate-600">
     <span className={`inline-block h-2.5 w-2.5 rounded-full ${inStock ? "bg-[#4F9F5B]" : "bg-slate-300"}`} />
     {inStock ? "In stock" : "Out of stock"}
   </div>
@@ -65,7 +65,7 @@ const Card = ({ item }) => {
       <div className="space-y-3 rounded-b-2xl border-t border-slate-200 p-4">
         <div className="flex items-center justify-between">
           <StockBadge inStock={item.inStock} />
-          <div className="flex items-center gap-2 text-sm text-slate-600">
+          <div className="flex items-center gap-2 text-[10px] md:text-sm text-slate-600">
             <Stars value={item.rating} />
             <span className="text-slate-500">({item.reviews})</span>
           </div>
@@ -140,7 +140,7 @@ const Bestsellers = () => {
         {state === "error" && (
           <p className="mt-6 text-center text-sm text-rose-600">Couldn’t load products. Check <code>public/data.json</code>.</p>
         )}
-        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {items.slice(0, 8).map((item) => (
             <Card key={item.id} item={item} />
           ))}
