@@ -19,6 +19,8 @@ import ShippingPolicy from "./pages/ShippingPolicies";
 import TermsOfService from "./pages/TermofServices";
 import SearchPage from "./pages/SearchPage";
 import CategoryPage from "./pages/CategoryPage";
+import CheckoutPage from "./pages/CheckoutPage";
+import OrderSuccess from "./pages/OrderSuccessPAge";
 
 export default function App() {
   return (
@@ -42,6 +44,8 @@ export default function App() {
           <Route path="/t&c" element={<TermsOfService />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="*" element={<ComingSoon />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+<Route path="/order-success/:id" element={<OrderSuccess />} />
           {/* Add other routes here as needed */}
         </Routes>
         <Footer />

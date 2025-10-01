@@ -62,32 +62,28 @@ const ProductEnquiryForm = ({ product, isOpen, onClose }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    if (validateForm()) {
-      // Here you would typically send the data to your backend
-      console.log("Enquiry submitted:", {
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!validateForm()) return;
+
+  try {
+    const res = await fetch(`${import.meta.env.VITE_API_BASE}/api/product-enquiry`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
         ...formData,
         product: product.title,
         productId: product.id
-      });
-      
-      setSubmitted(true);
-      
-      // Reset form after successful submission (optional)
-      setTimeout(() => {
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          message: "",
-          color: product.colorOptions?.value?.[0] || "",
-          quantity: 1
-        });
-      }, 2000);
-    }
-  };
+      }),
+    });
+
+    if (!res.ok) throw new Error("Failed");
+    setSubmitted(true);
+  } catch (err) {
+    alert("Could not send enquiry. Please try again.");
+  }
+};
+
 
   if (!isOpen) return null;
 

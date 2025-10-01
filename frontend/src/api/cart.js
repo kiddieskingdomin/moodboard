@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:4000/api/cart", // <- apne backend ka URL
+  baseURL: `${import.meta.env.VITE_API_BASE}/api/cart`,
   withCredentials: true,
 });
 
@@ -11,27 +11,29 @@ export async function getCart() {
   return res.data;
 }
 
-export async function addToCart(productId, qty = 1) {
-  const res = await API.post("/add", { productId, qty });
+// 👇 colorName third arg (optional) – pass when a variant is selected
+export async function addToCart(productId, qty = 1, colorName = null) {
+  // backend expects `color`
+  const res = await API.post("/add", { productId, qty, color: colorName });
   return res.data;
 }
 
-export async function updateCart(productId, qty) {
-  const res = await API.post("/update", { productId, qty });
+// 👇 update needs color to target the right variant line
+export async function updateCart(productId, qty, colorName = null) {
+  // backend expects `color`
+  const res = await API.post("/update", { productId, qty, color: colorName });
   return res.data;
 }
 
-export async function removeFromCart(productId) {
-  const res = await API.delete(`/remove/${productId}`);
+// 👇 remove specific variant: we’ll send color as query param
+export async function removeFromCart(productId, colorName = null) {
+  const q = colorName ? `?color=${encodeURIComponent(colorName)}` : "";
+  const res = await API.delete(`/remove/${productId}${q}`);
   return res.data;
 }
 
-// 🔥 ye missing tha
+// 👇 use the backend endpoint; stop loop-murdering your own API
 export async function clearCart() {
-  // sari items hata do
-  const cart = await getCart();
-  for (const item of cart.items) {
-    await removeFromCart(item.productId);
-  }
-  return await getCart();
+  const res = await API.delete("/clear");
+  return res.data;
 }

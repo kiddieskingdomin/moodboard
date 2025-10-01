@@ -18,6 +18,9 @@ import {
   FiChevronDown,
   FiCreditCard,
   FiInfo,
+  FiPhone,
+  FiMessageSquare,
+  FiShoppingCart,
 } from "react-icons/fi";
 import ProductEnquiryForm from "./ProductEnquiryForm";
 import { addToCart } from "../api/cart";
@@ -259,11 +262,14 @@ export default function ProductDetail() {
   const [selImg, setSelImg] = useState(0);
   const [showEnquiryModal, setShowEnquiryModal] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [adding, setAdding] = useState(false);
+  const [selectedColor, setSelectedColor] = useState(null);
 
   const handleEnquiry = () => setShowEnquiryModal(true);
 
   const norm = (s = "") => s.replace(/\/+$/, "");
 
+  // Fetch data first
   useEffect(() => {
     let mounted = true;
     (async () => {
@@ -284,6 +290,7 @@ export default function ProductDetail() {
     };
   }, []);
 
+  // Find product from data
   const product = useMemo(
     () =>
       data.find(
@@ -292,18 +299,34 @@ export default function ProductDetail() {
     [data, slug]
   );
 
+  // Reset selected color and image when product changes
   useEffect(() => {
+    if (product?.colorVariants?.length) {
+      setSelectedColor(product.colorVariants[0].name);
+    } else {
+      setSelectedColor(null);
+    }
     setSelImg(0);
   }, [product]);
 
   const related = useMemo(() => {
     if (!product) return [];
-
-    // Same category ke saare products filter karo (current product ko exclude karke)
     return data.filter(
       (p) => p.category === product.category && p.id !== product.id
     );
   }, [data, product]);
+
+  // Gallery calculation - FIXED: Always return an array
+  const currentGallery = useMemo(() => {
+    if (!product) return [];
+    
+    if (product?.colorVariants?.length && selectedColor) {
+      const variantImages = product.colorVariants.find((c) => c.name === selectedColor)?.images;
+      return variantImages || product.gallery || [];
+    }
+    
+    return product?.gallery?.length ? product.gallery : [product?.image || "/placeholder.png"];
+  }, [product, selectedColor]);
 
   if (state === "loading") {
     return (
@@ -317,7 +340,7 @@ export default function ProductDetail() {
     return (
       <main className="mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6">
         <p className="rounded-xl bg-rose-50 p-4 text-rose-700 ring-1 ring-rose-200">
-          Couldn’t load products. Please refresh and try again.
+          Couldn't load products. Please refresh and try again.
         </p>
       </main>
     );
@@ -332,10 +355,7 @@ export default function ProductDetail() {
   }
 
   const placeholder = "/placeholder.png";
-  const imgsRaw = product.gallery?.length
-    ? product.gallery
-    : [product.thumbnail || product.image || placeholder];
-  const imgs = imgsRaw.filter(Boolean);
+  const imgs = currentGallery.filter(Boolean);
   const safeSel = Math.min(selImg, Math.max(0, imgs.length - 1));
   const pct = discountPct(product.mrp, product.price);
 
@@ -383,14 +403,21 @@ export default function ProductDetail() {
       ),
     },
   ];
+
   const handleAddToCart = async () => {
+    if (!product) return;
     try {
-      await addToCart(product.id, 1);
-      setDrawerOpen(true); // add hone ke baad drawer dikha do
+      setAdding(true);
+      await addToCart(product.id, 1, selectedColor);
+      window.dispatchEvent(new Event("cart:updated"));
+      setDrawerOpen(true);
     } catch (e) {
       console.error("Add to cart failed:", e);
+    } finally {
+      setAdding(false);
     }
   };
+
   return (
     <main className="bg-[#FFFDFB]">
       <section className="mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6">
@@ -489,6 +516,33 @@ export default function ProductDetail() {
               )}
             </div>
 
+            {/* Color Variants */}
+            {product.colorVariants?.length ? (
+              <div className="mt-4">
+                <h4 className="mb-2 text-sm font-medium text-slate-700">
+                  Available Colors
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {product.colorVariants.map((variant) => (
+                    <button
+                      key={variant.name}
+                      onClick={() => {
+                        setSelectedColor(variant.name);
+                        setSelImg(0);
+                      }}
+                      className={`px-3 py-1 rounded-lg border text-sm ${
+                        selectedColor === variant.name
+                          ? "border-pink-500 bg-pink-50"
+                          : "border-gray-300 hover:border-pink-300"
+                      }`}
+                    >
+                      {variant.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+
             {/* info stripe */}
             <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-slate-50 p-3 text-sm text-slate-700 ring-1 ring-slate-200">
               <div className="inline-flex items-center gap-2">
@@ -498,6 +552,7 @@ export default function ProductDetail() {
                 <FiShield /> {product.warranty || "Quality checked"}
               </div>
             </div>
+
             {/* new: info rows under stripe */}
             {(() => {
               const infoItems = [
@@ -508,7 +563,7 @@ export default function ProductDetail() {
                     : "Currently unavailable",
                   subtitle: product.inStock
                     ? "In stock, order now"
-                    : "We’ll restock soon",
+                    : "We'll restock soon",
                 },
                 {
                   icon: FiCreditCard,
@@ -545,27 +600,68 @@ export default function ProductDetail() {
             </div>
 
             {/* Buttons: Enquiry and WhatsApp */}
-            <div className="mt-8 flex flex-wrap gap-5">
-              <button
-                onClick={handleEnquiry}
-                className="inline-flex items-center justify-center rounded-xl bg-[#ef927d] px-8 py-4 text-lg font-semibold text-white transition-all duration-300 ease-in-out hover:scale-105 hover:bg-[#c6634d] focus:outline-none focus:ring-2 focus:ring-[#6B63C8] focus:ring-opacity-50"
-              >
-                Enquire about this product
-              </button>
+            {/* Actions: Enquiry, WhatsApp, Add to Cart */}
+            <div className="mt-8">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {/* Enquiry */}
+                <button
+                  onClick={handleEnquiry}
+                  className="group inline-flex items-center justify-center rounded-xl bg-[#ef927d] px-6 py-4 text-base font-semibold text-white ring-1 ring-[#e38a76] transition-colors hover:bg-[#d87964] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#ef927d]"
+                  aria-label="Enquire about this product"
+                >
+                  <FiMessageSquare className="mr-2 h-5 w-5 opacity-90" />
+                  Enquire
+                </button>
 
-              <button
-                onClick={handleWhatsApp}
-                className="inline-flex items-center justify-center rounded-xl border border-[#ef927d] px-8 py-4 text-lg font-semibold text-[#4CAF50] transition-all duration-300 ease-in-out hover:scale-105 hover:bg-[#ef927d] hover:text-[#ffff] focus:outline-none focus:ring-2 focus:ring-[#4CAF50] focus:ring-opacity-50"
-              >
-                WhatsApp us
-              </button>
-              <button
-                onClick={handleAddToCart}
-                className="mt-4 rounded bg-[#ef927d] px-6 py-3 text-white"
-              >
-                Add to Cart
-              </button>
-              <CartDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
+                {/* WhatsApp */}
+                <button
+                  onClick={handleWhatsApp}
+                  className="inline-flex items-center justify-center rounded-xl border border-[#ef927d] px-6 py-4 text-base font-semibold text-[#2f7d32] bg-white transition-colors hover:bg-[#fff4f1] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#ef927d]"
+                  aria-label="WhatsApp us"
+                  title="WhatsApp us"
+                >
+                  <FiPhone className="mr-2 h-5 w-5 opacity-90" />
+                  WhatsApp
+                </button>
+
+                {/* Add to Cart */}
+                <button
+                  onClick={handleAddToCart}
+                  disabled={adding || !product.inStock}
+                  className={`inline-flex items-center justify-center rounded-xl px-6 py-4 text-base font-semibold text-white transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
+                    ${
+                      product.inStock
+                        ? "bg-violet-600 hover:bg-violet-700 focus-visible:ring-violet-600"
+                        : "bg-slate-300 cursor-not-allowed"
+                    }`}
+                  aria-label="Add to cart"
+                >
+                  <FiShoppingCart className="mr-2 h-5 w-5" />
+                  {adding
+                    ? "Adding…"
+                    : product.inStock
+                    ? "Add to Cart"
+                    : "Out of stock"}
+                </button>
+              </div>
+
+              {/* Tiny reassurance row under buttons */}
+              <div className="mt-3 flex flex-wrap items-center gap-4 text-sm text-slate-600">
+                <span className="inline-flex items-center gap-2">
+                  <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
+                  Secure Checkout
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <span className="inline-block h-2 w-2 rounded-full bg-sky-500" />
+                  Easy Returns
+                </span>
+              </div>
+
+              {/* Cart Drawer mount */}
+              <CartDrawer
+                isOpen={drawerOpen}
+                onClose={() => setDrawerOpen(false)}
+              />
             </div>
           </div>
         </div>

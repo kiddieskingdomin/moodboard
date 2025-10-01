@@ -1,5 +1,5 @@
 [
-    {
+  {
     "id": 1,
     "slug": "grill-and-chill",
     "title": "Grill & Chill",
@@ -62,47 +62,66 @@
       65
     ]
   },
-{
-  "id": 2,
-  "slug": "tool-kit",
-  "title": "Fix It Up Tool Kit",
-  "brand": "Kiddies Kingdom",
-  "category": "Pretend Play",
-  "mrp": 2500,
-  "price": 2280,
-  "inStock": true,
-  "rating": 4.8,
-  "reviews": 12,
-  "image": "/products/toolkit.jpg",
-  "gallery": [
-    "/products/toolkit.jpg",
-    "/products/toolkit2.jpg"
-  ],
-  "badges": ["Educational", "Roleplay", "Wooden Toy", "Handcrafted"],
-  "shortDescription": "A colorful wooden toolbox with 31 pieces, perfect for young builders to explore their creativity.",
-  "highlights": [
-    "31 colorful pieces for endless building and fixing fun",
-    "Enhances hand-eye coordination and creativity",
-    "Made from high-quality, non-toxic wood",
-    "Perfect for pretend play and DIY projects",
-    "Includes a handy carry handle for easy portability",
-    "Ideal for toddlers aged 1+"
-  ],
-  "specifications": [
-    { "label": "Dimensions (Tool Box)", "value": "Length: 23.5 cm, Width: 14 cm, Height: 13 cm" },
-    { "label": "Weight", "value": "1 Kg 15 g" },
-    { "label": "Material", "value": "Wood, non-toxic paint" },
-    { "label": "Included Pieces", "value": "9 Wooden Plates with Holes, 3 Cubes, 1 Screwdriver, 1 Wrench, 11 Nuts and Bolts, 1 Tool Box" }
-  ],
-  "shipInfo": "Ready to ship; Production Lead Time: 15-18 Working Days",
-  "cod": true,
-  "warranty": "Handmade product; slight variations in colour, tone, shape, or size may occur. Not eligible for return or replacement.",
-  "url": "/products/tool-kit",
-  "related": [169, 168, 167]
-},
-
-
-   {
+  {
+    "id": 2,
+    "slug": "tool-kit",
+    "title": "Fix It Up Tool Kit",
+    "brand": "Kiddies Kingdom",
+    "category": "Pretend Play",
+    "mrp": 2500,
+    "price": 2280,
+    "inStock": true,
+    "rating": 4.8,
+    "reviews": 12,
+    "image": "/products/toolkit.jpg",
+    "gallery": [
+      "/products/toolkit.jpg",
+      "/products/toolkit2.jpg"
+    ],
+    "badges": [
+      "Educational",
+      "Roleplay",
+      "Wooden Toy",
+      "Handcrafted"
+    ],
+    "shortDescription": "A colorful wooden toolbox with 31 pieces, perfect for young builders to explore their creativity.",
+    "highlights": [
+      "31 colorful pieces for endless building and fixing fun",
+      "Enhances hand-eye coordination and creativity",
+      "Made from high-quality, non-toxic wood",
+      "Perfect for pretend play and DIY projects",
+      "Includes a handy carry handle for easy portability",
+      "Ideal for toddlers aged 1+"
+    ],
+    "specifications": [
+      {
+        "label": "Dimensions (Tool Box)",
+        "value": "Length: 23.5 cm, Width: 14 cm, Height: 13 cm"
+      },
+      {
+        "label": "Weight",
+        "value": "1 Kg 15 g"
+      },
+      {
+        "label": "Material",
+        "value": "Wood, non-toxic paint"
+      },
+      {
+        "label": "Included Pieces",
+        "value": "9 Wooden Plates with Holes, 3 Cubes, 1 Screwdriver, 1 Wrench, 11 Nuts and Bolts, 1 Tool Box"
+      }
+    ],
+    "shipInfo": "Ready to ship; Production Lead Time: 15-18 Working Days",
+    "cod": true,
+    "warranty": "Handmade product; slight variations in colour, tone, shape, or size may occur. Not eligible for return or replacement.",
+    "url": "/products/tool-kit",
+    "related": [
+      169,
+      168,
+      167
+    ]
+  },
+  {
     "id": 3,
     "slug": "tea-n-me",
     "title": "Tea ‘n’ me",
@@ -361,48 +380,68 @@
     ]
   },
   {
-  "id": 7,
-  "slug": "shop-n-roll",
-  "title": "Shop n Roll",
-  "brand": "Kiddies Kingdom",
-  "category": "Pretend Play",
-  "mrp": 1500,
-  "price": 1200,
-  "inStock": true,
-  "rating": 4.7,
-  "reviews": 10,
-  "image": "/products/shopnroll.webp",
-  "gallery": [
-    "/products/shopnroll.webp",
-    "/products/shopnroll2.webp",
-     "/products/shopnroll3.webp",
-    "/products/shopnroll4.webp"
-  ],
-  "badges": ["Educational", "Roleplay", "Wooden Toy", "Handcrafted"],
-  "shortDescription": "A stylish and sturdy wooden shopping trolley with easy-to-move wheels for endless pretend play.",
-  "highlights": [
-    "Stylish and sturdy wooden shopping trolley",
-    "Easy to assemble with smooth handles",
-    "Rubber easy-gliding wheels for smooth movement",
-    "Perfect for pretend play with toys, play food, stuffed animals, etc.",
-    "Encourages imaginative play and organizational skills",
-    "Ideal for toddlers and young children"
-  ],
-  "specifications": [
-    { "label": "Dimensions (Trolley)", "value": "Height: 53 cm, Width: 30 cm, Length: 42 cm" },
-    { "label": "Weight", "value": "2 kg 380 g" },
-    { "label": "Material", "value": "Wood" },
-    { "label": "Included Pieces", "value": "Upper Basket, Lower Tray, Smooth Handles, Rubber Easy Gliding Wheels" }
-  ],
-  "shipInfo": "Ready to ship; Assembly required; Production Lead Time: 15-18 Working Days",
-  "cod": true,
-  "warranty": "Handmade product; slight variations in colour, tone, shape, or size may occur. Not eligible for return or replacement.",
-  "url": "/products/shop-n-roll",
-  "related": [170, 169, 168]
-},
-
+    "id": 7,
+    "slug": "shop-n-roll",
+    "title": "Shop n Roll",
+    "brand": "Kiddies Kingdom",
+    "category": "Pretend Play",
+    "mrp": 1500,
+    "price": 1200,
+    "inStock": true,
+    "rating": 4.7,
+    "reviews": 10,
+    "image": "/products/shopnroll.webp",
+    "gallery": [
+      "/products/shopnroll.webp",
+      "/products/shopnroll2.webp",
+      "/products/shopnroll3.webp",
+      "/products/shopnroll4.webp"
+    ],
+    "badges": [
+      "Educational",
+      "Roleplay",
+      "Wooden Toy",
+      "Handcrafted"
+    ],
+    "shortDescription": "A stylish and sturdy wooden shopping trolley with easy-to-move wheels for endless pretend play.",
+    "highlights": [
+      "Stylish and sturdy wooden shopping trolley",
+      "Easy to assemble with smooth handles",
+      "Rubber easy-gliding wheels for smooth movement",
+      "Perfect for pretend play with toys, play food, stuffed animals, etc.",
+      "Encourages imaginative play and organizational skills",
+      "Ideal for toddlers and young children"
+    ],
+    "specifications": [
+      {
+        "label": "Dimensions (Trolley)",
+        "value": "Height: 53 cm, Width: 30 cm, Length: 42 cm"
+      },
+      {
+        "label": "Weight",
+        "value": "2 kg 380 g"
+      },
+      {
+        "label": "Material",
+        "value": "Wood"
+      },
+      {
+        "label": "Included Pieces",
+        "value": "Upper Basket, Lower Tray, Smooth Handles, Rubber Easy Gliding Wheels"
+      }
+    ],
+    "shipInfo": "Ready to ship; Assembly required; Production Lead Time: 15-18 Working Days",
+    "cod": true,
+    "warranty": "Handmade product; slight variations in colour, tone, shape, or size may occur. Not eligible for return or replacement.",
+    "url": "/products/shop-n-roll",
+    "related": [
+      170,
+      169,
+      168
+    ]
+  },
   {
-    "id":8 ,
+    "id": 8,
     "slug": "funny-money",
     "title": "Funny Money",
     "brand": "Kiddies Kingdom",
@@ -468,7 +507,7 @@
       82
     ]
   },
-   {
+  {
     "id": 9,
     "slug": "roasty-toasty-toaster",
     "title": "Roasty Toasty - Toaster",
@@ -848,61 +887,81 @@
     ]
   },
   {
-  "id": 15,
-  "slug": "jungle-safari",
-  "title": "Jungle Safari",
-  "brand": "Kiddies Kingdom",
-  "category": "Pretend Play",
-  "mrp": 5800,
-  "price": 4700,
-  "inStock": true,
-  "rating": 4.8,
-  "reviews": 15,
-  "image": "/products/Jungle Safari.JPG",
-  "gallery": [
-    "/products/Jungle Safari.JPG",
-    "/products/Jungle Safari2.PNG"
-  ],
-  "badges": ["Educational", "Roleplay", "Wooden Toy", "Interactive"],
-  "shortDescription": "Introduce your child to the charming world of forest life with our Wooden Jungle Safari Toy set, designed for endless creative and educational play.",
-  "highlights": [
-    "Captivates imagination with realistic safari animals and accessories",
-    "Encourages creativity and roleplay in a jungle safari setting",
-    "Includes elephant, lion, giraffe, and other jungle elements",
-    "EV jeep with battery for interactive play",
-    "Perfect for toddlers, suitable for birthdays and holidays",
-    "Made from high-quality, non-toxic wood"
-  ],
-  "specifications": [
-    { "label": "Dimensions (Base)", "value": "Length: 45 cm, Width: 36 cm" },
-    { "label": "Height (Middle long stick)", "value": "38 cm" },
-    { "label": "Weight", "value": "1800 grams" },
-    { "label": "Material", "value": "Wood" }
-  ],
-  "insideBox": [
-    "Base",
-    "6 Sticks",
-    "Elephant",
-    "Lion",
-    "Giraffe",
-    "Ladder",
-    "Safari man",
-    "Water tank",
-    "Food tank",
-    "Barrel",
-    "Tree",
-    "Leaves",
-    "EV jeep with battery",
-    "Hammock",
-    "Canopy"
-  ],
-  "shipInfo": "Ready to ship; No assembly required; Production Lead Time: 15-18 Working Days",
-  "cod": true,
-  "warranty": "Handmade product; slight variations in colour, tone, shape, or size may occur. Not eligible for return or replacement.",
-  "url": "/products/jungle-safari",
-  "related": [171, 170, 169]
-},
-
+    "id": 15,
+    "slug": "jungle-safari",
+    "title": "Jungle Safari",
+    "brand": "Kiddies Kingdom",
+    "category": "Pretend Play",
+    "mrp": 5800,
+    "price": 4700,
+    "inStock": true,
+    "rating": 4.8,
+    "reviews": 15,
+    "image": "/products/Jungle Safari.JPG",
+    "gallery": [
+      "/products/Jungle Safari.JPG",
+      "/products/Jungle Safari2.PNG"
+    ],
+    "badges": [
+      "Educational",
+      "Roleplay",
+      "Wooden Toy",
+      "Interactive"
+    ],
+    "shortDescription": "Introduce your child to the charming world of forest life with our Wooden Jungle Safari Toy set, designed for endless creative and educational play.",
+    "highlights": [
+      "Captivates imagination with realistic safari animals and accessories",
+      "Encourages creativity and roleplay in a jungle safari setting",
+      "Includes elephant, lion, giraffe, and other jungle elements",
+      "EV jeep with battery for interactive play",
+      "Perfect for toddlers, suitable for birthdays and holidays",
+      "Made from high-quality, non-toxic wood"
+    ],
+    "specifications": [
+      {
+        "label": "Dimensions (Base)",
+        "value": "Length: 45 cm, Width: 36 cm"
+      },
+      {
+        "label": "Height (Middle long stick)",
+        "value": "38 cm"
+      },
+      {
+        "label": "Weight",
+        "value": "1800 grams"
+      },
+      {
+        "label": "Material",
+        "value": "Wood"
+      }
+    ],
+    "insideBox": [
+      "Base",
+      "6 Sticks",
+      "Elephant",
+      "Lion",
+      "Giraffe",
+      "Ladder",
+      "Safari man",
+      "Water tank",
+      "Food tank",
+      "Barrel",
+      "Tree",
+      "Leaves",
+      "EV jeep with battery",
+      "Hammock",
+      "Canopy"
+    ],
+    "shipInfo": "Ready to ship; No assembly required; Production Lead Time: 15-18 Working Days",
+    "cod": true,
+    "warranty": "Handmade product; slight variations in colour, tone, shape, or size may occur. Not eligible for return or replacement.",
+    "url": "/products/jungle-safari",
+    "related": [
+      171,
+      170,
+      169
+    ]
+  },
   {
     "id": 16,
     "slug": "pizza-oven",
@@ -1117,12 +1176,10 @@
       173
     ]
   },
-
-
   {
     "id": 19,
     "slug": "red-tower",
-    "title": "Red Tower",
+    "title": "Pink Tower",
     "brand": "Kiddies Kingdom",
     "category": "Pretend Play",
     "mrp": 1500,
@@ -1130,10 +1187,13 @@
     "inStock": true,
     "rating": 4.8,
     "reviews": 0,
-    "image": "/products/redtower.webp",
+    "image": "/products/Pink Tower1.PNG",
     "gallery": [
-      "/products/redtower.webp",
-      "/products/redtower2.webp"
+      "/products/Pink Tower1.PNG",
+      "/products/Pink Tower2.PNG",
+      "/products/Pink Tower3.PNG",
+      "/products/Pink Tower4.PNG",
+      "/products/Pink Tower5.PNG"
     ],
     "badges": [
       "Montessori",
@@ -1141,7 +1201,7 @@
       "Educational",
       "Fine Motor Skills"
     ],
-    "shortDescription": "Handcrafted solid-wood Red Tower rod set with a tidy tower frame. Graduated sticks inspire open-ended building, fine motor skills, and creative play.",
+    "shortDescription": "Handcrafted solid-wood Pink Tower rod set with a tidy tower frame. Graduated sticks inspire open-ended building, fine motor skills, and creative play.",
     "highlights": [
       "High-quality solid wood with smooth, non-toxic pastel finish",
       "10 graduated square sticks plus tower frame for structured builds",
@@ -1268,7 +1328,7 @@
       176
     ]
   },
-   {
+  {
     "id": 21,
     "slug": "rod-peg-steps",
     "title": "Rod Peg Steps",
@@ -1417,7 +1477,7 @@
       177
     ]
   },
-   {
+  {
     "id": 23,
     "slug": "marshalls-fire-truck",
     "title": "Marshall's Fire Truck",
@@ -1602,7 +1662,7 @@
       112
     ]
   },
-   {
+  {
     "id": 26,
     "slug": "township",
     "title": "Township",
@@ -1656,7 +1716,7 @@
       134
     ]
   },
-   {
+  {
     "id": 27,
     "slug": "wooden-aeroplane",
     "title": "Aeroplane",
@@ -1718,7 +1778,7 @@
       146
     ]
   },
-   {
+  {
     "id": 28,
     "slug": "diy-kit-rocket",
     "title": "DIY Kit - Rocket",
@@ -1859,7 +1919,6 @@
     "gallery": [
       "/products/minimasterchef.png",
       "/products/minimasterchef2.png"
- 
     ],
     "badges": [
       "Play Kitchen",
@@ -1933,7 +1992,6 @@
     "image": "/products/wpkw.jpg",
     "gallery": [
       "/products/wpkw.jpg"
-    
     ],
     "badges": [
       "Play Kitchen",
@@ -2010,7 +2068,7 @@
       172
     ]
   },
-   {
+  {
     "id": 32,
     "slug": "play-kitchen",
     "title": "Play Kitchen",
@@ -2103,7 +2161,6 @@
     "image": "/products/woodlandkitchen.jpg",
     "gallery": [
       "/products/woodlandkitchen.jpg"
-     
     ],
     "badges": [
       "Play Kitchen",
@@ -2188,7 +2245,6 @@
     "gallery": [
       "/products/pretendkitchen.webp",
       "/products/pretendkitchen2.webp"
-      
     ],
     "badges": [
       "Play Kitchen",
@@ -2308,7 +2364,7 @@
       31
     ]
   },
-   {
+  {
     "id": 36,
     "slug": "essential-play-kitchen-set-3-piece-with-hood",
     "title": "Essential Play Kitchen Set, 3 Piece with Hood",
@@ -2319,10 +2375,35 @@
     "inStock": true,
     "rating": 4.8,
     "reviews": 0,
-    "image": "/products/essentialset.PNG",
+    "image": "/products/Essential Play Kitchen Set, 3 Piece with Hood - cotton bloom.jpg",
     "gallery": [
-      "/products/essentialset.PNG"
-      
+      "/products/Essential Play Kitchen Set, 3 Piece with Hood - cotton bloom.jpg"
+    ],
+    "colorVariants": [
+      {
+        "name": "Cotton Bloom",
+        "images": [
+          "/productcolor/Essential Play Kitchen Set, 3 Piece with Hood - cotton bloom.jpg"
+        ]
+      },
+      {
+        "name": "Dreamy Rose",
+        "images": [
+          "/productcolor/Essential Play Kitchen Set, 3 Piece with Hood - Dreamy Rose.jpg"
+        ]
+      },
+      {
+        "name": "Fairy Mint",
+        "images": [
+          "/productcolor/Essential Play Kitchen Set, 3 Piece with Hood - Fairy Mint.jpg"
+        ]
+      },
+      {
+        "name": "Power Blue",
+        "images": [
+          "/productcolor/Essential Play Kitchen Set, 3 Piece with Hood - powder blue.jpg"
+        ]
+      }
     ],
     "badges": [
       "Play Kitchen",
@@ -2409,6 +2490,32 @@
       "Roleplay",
       "Made-to-Order"
     ],
+        "colorVariants": [
+      {
+        "name": "Cotton Bloom",
+        "images": [
+          "/productcolor/Essential Play Kitchen-Cotton bloom (1).jpg"
+        ]
+      },
+      {
+        "name": "Dreamy Rose",
+        "images": [
+          "/productcolor/Essential Play Kitchen- Dreamy Rose.jpg"
+        ]
+      },
+      {
+        "name": "Fairy Mint",
+        "images": [
+          "/productcolor/Essential Play Kitchen- Fairy Mint.jpg"
+        ]
+      },
+      {
+        "name": "Power Blue",
+        "images": [
+          "/productcolor/Essential Play Kitchen- Powder blue.jpg"
+        ]
+      }
+    ],
     "shortDescription": "The Kiddies Kingdom Essential Play Kitchen is a durable MDF play kitchen with interactive features, designed to spark imagination and creative play for generations.",
     "highlights": [
       "Turning faucet handles and oven knobs for interactive play",
@@ -2417,6 +2524,15 @@
       "Solid and sturdy construction with non-toxic finishes",
       "Minimal assembly required"
     ],
+        "colorOptions": {
+      "label": "Colors",
+      "value": [
+        "Wedding White",
+        "Blue Heaven",
+        "Romantic Pink",
+        "Pista"
+      ]
+    },
     "specifications": [
       {
         "label": "Material",
@@ -2592,7 +2708,6 @@
     "gallery": [
       "/products/charming.jpg",
       "/products/charming2.jpg"
- 
     ],
     "badges": [
       "Dollhouse",
@@ -2814,8 +2929,7 @@
       135
     ]
   },
-  
-   {
+  {
     "id": 44,
     "slug": "the-shop-and-cafe",
     "title": "The Shop & Café",
@@ -2881,7 +2995,6 @@
       31
     ]
   },
-
   {
     "id": 45,
     "slug": "little-vendor-market-stall",
@@ -2999,7 +3112,7 @@
       127
     ]
   },
-{
+  {
     "id": 47,
     "slug": "tree-house-gym",
     "title": "Tree House Gym",
@@ -3123,8 +3236,7 @@
       103
     ]
   },
-  
- {
+  {
     "id": 49,
     "slug": "double-climber-with-slide",
     "title": "Double Climber With Slide",
@@ -3516,7 +3628,7 @@
       150
     ]
   },
-   {
+  {
     "id": 55,
     "slug": "book-display-stand",
     "title": "Book Display Stand",
@@ -3717,7 +3829,7 @@
       64
     ]
   },
-   {
+  {
     "id": 58,
     "slug": "mini-library-with-elevation",
     "title": "Mini Library with Elevation",
@@ -3848,7 +3960,7 @@
       127
     ]
   },
-   {
+  {
     "id": 60,
     "slug": "montessori-infant-cloud-shelf",
     "title": "Montessori Infant Cloud Shelf",
@@ -4113,7 +4225,6 @@
     "gallery": [
       "/products/lilifly.WEBP",
       "/products/lilifly2.WEBP"
-      
     ],
     "badges": [
       "Butterfly Design",
@@ -4191,7 +4302,6 @@
     "image": "/products/chairwithtable.WEBP",
     "gallery": [
       "/products/chairwithtable.WEBP"
-     
     ],
     "badges": [
       "MDF",
@@ -4277,13 +4387,44 @@
     "gallery": [
       "/products/batmanchair.WEBP",
       "/products/batmanchair2.WEBP"
-   
     ],
     "badges": [
       "Themed Design",
       "Kid-Friendly",
       "Durable Build",
       "Upright Posture"
+    ],
+        "colorVariants": [
+      {
+        "name": "Yellow",
+        "images": [
+          "/products/batmanchair.WEBP"
+        ]
+      },
+      {
+        "name": "Caramel Clay",
+        "images": [
+          "/productcolor/Batman M Chair – Caramel Clay.WEBP"
+        ]
+      },
+      {
+        "name": "Cotton Bloom",
+        "images": [
+          "/productcolor/Batman M Chair – Cotton Bloom.WEBP"
+        ]
+      },
+      {
+        "name": "Dreamer’s Blue",
+        "images": [
+          "/productcolor/Batman M Chair – Dreamer’s Blue.WEBP"
+        ]
+      },
+      {
+        "name": "Power Blue",
+        "images": [
+          "/productcolor/Batman M Chair – Powder Sky.WEBP"
+        ]
+      }
     ],
     "shortDescription": "A themed Batman chair in kid-friendly sizes M and L, crafted from MDF with pine legs and a glossy Duco finish to keep little crime-fighters comfy and upright.",
     "highlights": [
@@ -4340,7 +4481,7 @@
       159
     ]
   },
-   {
+  {
     "id": 67,
     "slug": "ratatouille-chair",
     "title": "Ratatouille Chair",
@@ -4416,7 +4557,7 @@
       40
     ]
   },
-   {
+  {
     "id": 68,
     "slug": "childrens-round-table",
     "title": "Children's Round Table",
@@ -4501,118 +4642,159 @@
     ]
   },
   {
-  "id": 69,
-  "slug": "pops-dollhouse",
-  "title": "Pop’s Dollhouse",
-  "brand": "Kiddies Kingdom",
-  "category": "Pretend Play",
-  "mrp": 6500,
-  "price": 5500,
-  "inStock": true,
-  "rating": 4.9,
-  "reviews": 18,
-  "image": "/products/popdoll.webp",
-  "gallery": [
-    "/products/popdoll.webp",
-    "/products/popdoll2.webp",
-    "/products/popdoll3.webp",
-    "/products/popdoll4.webp"
-  ],
-  "badges": ["Handmade", "Wooden Toy", "Roleplay", "Decorative"],
-  "shortDescription": "A beautifully crafted wooden dollhouse in pastel pink with floral accents, functional shutters, and child-safe finish, perfect for imaginative play.",
-  "highlights": [
-    "Compact yet spacious design for imaginative play",
-    "Made from premium, sustainably sourced wood",
-    "Includes 29 accessories for the main house",
-    "Expandable with 18 additional accessories",
-    "Functional shutters and pastel pink finish",
-    "Encourages creativity and roleplay",
-    "Perfect gift for children 3+ years"
-  ],
-  "specifications": [
-    { "label": "Dimensions (L x W x H)", "value": "46 x 40 x 36 cm" },
-    { "label": "Weight", "value": "1500 grams" },
-    { "label": "Material", "value": "Wood" },
-    { "label": "Colour", "value": "Pastel Pink" }
-  ],
-  "insideBox": [
-    "4 Wallpapers for the walls",
-    "Ladder",
-    "1 Bathtub and 1 Tap",
-    "1 Sink",
-    "1 Toilet",
-    "1 Washing Machine",
-    "2 Ducks",
-    "1 Towel Stand",
-    "1 Bed with 1 Mattress",
-    "1 Side Table",
-    "1 Sofa with Cushion Base",
-    "1 Centre Table",
-    "1 Lamp",
-    "1 Shelf",
-    "3 Mats",
-    "1 Dining Table",
-    "2 Bench Chairs Kitchen Sink",
-    "A Balcony with Crochet Swing",
-    "Fairy Light",
-    "Expansion Accessories: 3 Crochet Planters, 1 Bunk Bed with 2 Mattresses, 2 Crochet Pillows, 2 Crochet Cushions, 1 Guitar, 2 Paintings, 2 Crochet Rugs, 1 Fridge, 1 Dog House with Toy Dog"
-  ],
-  "shipInfo": "Made-to-order; production lead time 15-18 working days; Assembly required",
-  "cod": true,
-  "warranty": "Handmade products may have slight variations in colour, tone, shape, or size. Not considered defects and not eligible for return or replacement.",
-  "url": "/products/pops-dollhouse",
-  "related": [172, 171, 170]
-},
-{
-  "id": 70,
-  "slug": "diy-kit-tree",
-  "title": "DIY Kit - Tree",
-  "brand": "Kiddies Kingdom",
-  "category": "Pretend Play",
-  "mrp": 1200,
-  "price": 950,
-  "inStock": true,
-  "rating": 4.7,
-  "reviews": 8,
-  "image": "/products/DIY Kit - Tree.jpg",
-  "gallery": [
-    "/products/DIY Kit - Tree.jpg",
-    "/products/DIY Kit - Tree2.jpg",
-    "/products/DIY Kit - Tree3.jpg",
-    "/products/DIY Kit - Tree4.jpg"
-    
-  ],
-  "badges": ["DIY", "Creative", "Educational", "Wooden Toy"],
-  "shortDescription": "A creative and eco-friendly wooden tree kit for children to paint and decorate, encouraging imagination, learning, and appreciation for nature.",
-  "highlights": [
-    "Includes 4 wooden trees for painting",
-    "Comes with 5 color bottles, 1 paint brush, and 2 sponge brushes",
-    "Encourages creativity, imagination, and fine motor skills",
-    "Educational activity to learn about trees and the environment",
-    "Promotes eco-friendly behavior and hands-on learning"
-  ],
-  "specifications": [
-    { "label": "Height (Large Tree)", "value": "14 cm" },
-    { "label": "Diameter (Large Tree)", "value": "5 cm" },
-    { "label": "Weight", "value": "560 g" },
-    { "label": "Material", "value": "Wood" }
-  ],
-  "insideBox": [
-    "4 Wooden Trees",
-    "5 Color Bottles",
-    "1 Paint Brush",
-    "2 Sponge Brushes"
-  ],
-  "shipInfo": "Dispatch in 3-4 days; No assembly required",
-  "cod": true,
-  "warranty": "All products are handmade; slight variations in color, tone, shape, or size may occur. Not considered defects and not eligible for return or replacement.",
-  "url": "/products/diy-kit-tree",
-  "related": [173, 172, 171]
-},
+    "id": 69,
+    "slug": "pops-dollhouse",
+    "title": "Pop’s Dollhouse",
+    "brand": "Kiddies Kingdom",
+    "category": "Pretend Play",
+    "mrp": 6500,
+    "price": 5500,
+    "inStock": true,
+    "rating": 4.9,
+    "reviews": 18,
+    "image": "/products/popdoll.webp",
+    "gallery": [
+      "/products/popdoll.webp",
+      "/products/popdoll2.webp",
+      "/products/popdoll3.webp",
+      "/products/popdoll4.webp"
+    ],
+    "badges": [
+      "Handmade",
+      "Wooden Toy",
+      "Roleplay",
+      "Decorative"
+    ],
+    "shortDescription": "A beautifully crafted wooden dollhouse in pastel pink with floral accents, functional shutters, and child-safe finish, perfect for imaginative play.",
+    "highlights": [
+      "Compact yet spacious design for imaginative play",
+      "Made from premium, sustainably sourced wood",
+      "Includes 29 accessories for the main house",
+      "Expandable with 18 additional accessories",
+      "Functional shutters and pastel pink finish",
+      "Encourages creativity and roleplay",
+      "Perfect gift for children 3+ years"
+    ],
+    "specifications": [
+      {
+        "label": "Dimensions (L x W x H)",
+        "value": "46 x 40 x 36 cm"
+      },
+      {
+        "label": "Weight",
+        "value": "1500 grams"
+      },
+      {
+        "label": "Material",
+        "value": "Wood"
+      },
+      {
+        "label": "Colour",
+        "value": "Pastel Pink"
+      }
+    ],
+    "insideBox": [
+      "4 Wallpapers for the walls",
+      "Ladder",
+      "1 Bathtub and 1 Tap",
+      "1 Sink",
+      "1 Toilet",
+      "1 Washing Machine",
+      "2 Ducks",
+      "1 Towel Stand",
+      "1 Bed with 1 Mattress",
+      "1 Side Table",
+      "1 Sofa with Cushion Base",
+      "1 Centre Table",
+      "1 Lamp",
+      "1 Shelf",
+      "3 Mats",
+      "1 Dining Table",
+      "2 Bench Chairs Kitchen Sink",
+      "A Balcony with Crochet Swing",
+      "Fairy Light",
+      "Expansion Accessories: 3 Crochet Planters, 1 Bunk Bed with 2 Mattresses, 2 Crochet Pillows, 2 Crochet Cushions, 1 Guitar, 2 Paintings, 2 Crochet Rugs, 1 Fridge, 1 Dog House with Toy Dog"
+    ],
+    "shipInfo": "Made-to-order; production lead time 15-18 working days; Assembly required",
+    "cod": true,
+    "warranty": "Handmade products may have slight variations in colour, tone, shape, or size. Not considered defects and not eligible for return or replacement.",
+    "url": "/products/pops-dollhouse",
+    "related": [
+      172,
+      171,
+      170
+    ]
+  },
+  {
+    "id": 70,
+    "slug": "diy-kit-tree",
+    "title": "DIY Kit - Tree",
+    "brand": "Kiddies Kingdom",
+    "category": "Pretend Play",
+    "mrp": 1200,
+    "price": 950,
+    "inStock": true,
+    "rating": 4.7,
+    "reviews": 8,
+    "image": "/products/DIY Kit - Tree.jpg",
+    "gallery": [
+      "/products/DIY Kit - Tree.jpg",
+      "/products/DIY Kit - Tree2.jpg",
+      "/products/DIY Kit - Tree3.jpg",
+      "/products/DIY Kit - Tree4.jpg"
+    ],
+    "badges": [
+      "DIY",
+      "Creative",
+      "Educational",
+      "Wooden Toy"
+    ],
+    "shortDescription": "A creative and eco-friendly wooden tree kit for children to paint and decorate, encouraging imagination, learning, and appreciation for nature.",
+    "highlights": [
+      "Includes 4 wooden trees for painting",
+      "Comes with 5 color bottles, 1 paint brush, and 2 sponge brushes",
+      "Encourages creativity, imagination, and fine motor skills",
+      "Educational activity to learn about trees and the environment",
+      "Promotes eco-friendly behavior and hands-on learning"
+    ],
+    "specifications": [
+      {
+        "label": "Height (Large Tree)",
+        "value": "14 cm"
+      },
+      {
+        "label": "Diameter (Large Tree)",
+        "value": "5 cm"
+      },
+      {
+        "label": "Weight",
+        "value": "560 g"
+      },
+      {
+        "label": "Material",
+        "value": "Wood"
+      }
+    ],
+    "insideBox": [
+      "4 Wooden Trees",
+      "5 Color Bottles",
+      "1 Paint Brush",
+      "2 Sponge Brushes"
+    ],
+    "shipInfo": "Dispatch in 3-4 days; No assembly required",
+    "cod": true,
+    "warranty": "All products are handmade; slight variations in color, tone, shape, or size may occur. Not considered defects and not eligible for return or replacement.",
+    "url": "/products/diy-kit-tree",
+    "related": [
+      173,
+      172,
+      171
+    ]
+  },
 {
   "id": 71,
-  "slug": "car-organiser",
-  "title": "Car Organiser",
+  "slug": "toy-car-storage",
+  "title": "Toy Car Storage",
   "brand": "Kiddies Kingdom",
   "category": "Pretend Play",
   "mrp": 20000,
@@ -4620,110 +4802,170 @@
   "inStock": true,
   "rating": 4.8,
   "reviews": 10,
-  "image": "/products/car-organiser.webp",
+  "image": "/products/Toy car storage1.WEBP",
   "gallery": [
-    "/products/car-organiser.webp",
-    "/products/car-organiser-2.webp"
+    "/products/Toy car storage1.WEBP",
+    "/products/Toy car storage2.webp",
+    "/products/Toy car storage3.webp",
+    "/products/Toy car storage4.webp",
+    "/products/Toy car storage5.webp",
+    "/products/Toy car storage6.webp"
   ],
-  "badges": ["Storage", "Car Garage", "Wooden Toy", "Roleplay"],
-  "shortDescription": "Mega Garage wooden toy storage and play set with slots for 70 toy cars, toy roads for play, and optional personalization for your child’s name.",
+  "badges": [
+    "Toy Storage",
+    "Car Organizer",
+    "Wooden Shelf",
+    "Roleplay"
+  ],
+  "shortDescription": "Wooden toy car storage rack with multiple slots to neatly organize and display your child’s toy car collection while doubling up as a fun play station.",
   "highlights": [
-    "Holds up to 70 toy cars with slots for small and big cars",
-    "Includes toy roads for imaginative play and racing scenarios",
-    "Optional personalization to display your child's name",
-    "Crafted with high-quality, durable wood for long-lasting play",
-    "Encourages organization, creativity, and imaginative play"
+    "Stores up to 70 toy cars of different sizes",
+    "Open slots make it easy for kids to access and organize cars",
+    "Strong wooden build for durability and long-term use",
+    "Doubles as a play station for racing and imaginative play",
+    "Promotes tidiness, organization, and creativity"
   ],
   "specifications": [
-    { "label": "Small Slot Dimensions", "value": "2.5 x 3 x 2.5 inches" },
-    { "label": "Big Slot Dimensions", "value": "4.5 x 5 x 4 inches" },
-    { "label": "Overall Dimensions", "value": "25 x 14 x 31.5 inches" },
-    { "label": "Material", "value": "Wood" }
+    {
+      "label": "Small Slot Dimensions",
+      "value": "2.5 x 3 x 2.5 inches"
+    },
+    {
+      "label": "Big Slot Dimensions",
+      "value": "4.5 x 5 x 4 inches"
+    },
+    {
+      "label": "Overall Dimensions",
+      "value": "25 x 14 x 31.5 inches"
+    },
+    {
+      "label": "Material",
+      "value": "Wood"
+    }
   ],
   "shipInfo": "Made-to-order; production lead time 18-20 working days. For urgent delivery, contact customer care on WhatsApp or call 9877047723 / 9988209623.",
   "cod": true,
   "warranty": "All products are handmade, one piece at a time. Slight variations in colour, tone, shape, or size may occur. Not considered defects and not eligible for return or replacement.",
-  "url": "/products/car-organiser",
-  "related": [174, 173, 172]
+  "url": "/products/toy-car-storage",
+  "related": [
+    174,
+    173,
+    172
+  ]
 },
-{
-  "id": 72,
-  "slug": "monster-truck-garage-16-slots",
-  "title": "Monster Truck Garage - 16 Slots",
-  "brand": "Kiddies Kingdom",
-  "category": "Pretend Play",
-  "mrp": 9309,
-  "price": 9000,
-  "inStock": true,
-  "rating": 4.7,
-  "reviews": 8,
-  "image": "/products/monstertruck3.jpg",
-  "gallery": [
-    "/products/monstertruck3.jpg"
-   
-  ],
-  "badges": ["Storage", "Car Garage", "Wooden Toy", "Roleplay"],
-  "shortDescription": "Compact Monster Truck Garage with 16 slots, wall-mountable, vibrant design, and practical storage solution for toy cars.",
-  "highlights": [
-    "Holds up to 16 toy cars",
-    "Compact and wall-mountable design",
-    "Vibrant and playful colors to enhance the playroom",
-    "Durable wooden construction for long-lasting use",
-    "Encourages organization and imaginative play"
-  ],
-  "specifications": [
-    { "label": "Slot Dimensions", "value": "3.2 x 2 x 1.5 inches (L x W x D)" },
-    { "label": "Overall Dimensions", "value": "19 x 12 x 4 inches (L x H x D)" },
-    { "label": "Material", "value": "Wood" }
-  ],
-  "shipInfo": "Made-to-order; production lead time 18-20 working days. For urgent delivery, contact customer care on WhatsApp or call 9877047723 / 9988209623.",
-  "cod": true,
-  "warranty": "All products are handmade, one piece at a time. Slight variations in colour, tone, shape, or size may occur. Not considered defects and not eligible for return or replacement.",
-  "url": "/products/monster-truck-garage-16-slots",
-  "related": [175, 174, 173]
-},
-{
-  "id": 73,
-  "slug": "monster-truck-garage-30-slots",
-  "title": "Monster Truck Garage - 30 Slots",
-  "brand": "Kiddies Kingdom",
-  "category": "Pretend Play",
-  "mrp": 10000,
-  "price": 9700,
-  "inStock": true,
-  "rating": 4.8,
-  "reviews": 10,
-  "image": "/products/monstertruck.WEBP",
-  "gallery": [
-    "/products/monstertruck.WEBP",
-    "/products/monstertruck2.WEBP"
-  ],
-  "badges": ["Storage", "Car Garage", "Wooden Toy", "Roleplay"],
-  "shortDescription": "Wall-mountable Monster Truck Garage Organizer with 30 slots for toy cars, vibrant design, and durable construction for imaginative play.",
-  "highlights": [
-    "Holds up to 30 toy cars",
-    "Wall-mountable design saves space and adds flair",
-    "Vibrant colors make it an eye-catching focal point",
-    "Durable wooden construction ensures long-lasting use",
-    "Encourages organization and creative play"
-  ],
-  "specifications": [
-    { "label": "Slot Dimensions", "value": "3.2 x 2 x 1.5 inches (L x W x D)" },
-    { "label": "Overall Dimensions", "value": "22 x 4 x 14 inches (L x B x H)" },
-    { "label": "Material", "value": "Wood" }
-  ],
-  "shipInfo": "Made-to-order; production lead time 18-20 working days. For urgent delivery, contact customer care on WhatsApp or call 9877047723 / 9988209623.",
-  "cod": true,
-  "warranty": "All products are handmade, one piece at a time. Slight variations in colour, tone, shape, or size may occur. Not considered defects and not eligible for return or replacement.",
-  "url": "/products/monster-truck-garage-30-slots",
-  "related": [176, 175, 174]
-},
-{
+  {
+    "id": 72,
+    "slug": "monster-truck-garage-16-slots",
+    "title": "Monster Truck Garage - 16 Slots",
+    "brand": "Kiddies Kingdom",
+    "category": "Pretend Play",
+    "mrp": 9309,
+    "price": 9000,
+    "inStock": true,
+    "rating": 4.7,
+    "reviews": 8,
+    "image": "/products/monstertruck3.jpg",
+    "gallery": [
+      "/products/monstertruck3.jpg"
+    ],
+    "badges": [
+      "Storage",
+      "Car Garage",
+      "Wooden Toy",
+      "Roleplay"
+    ],
+    "shortDescription": "Compact Monster Truck Garage with 16 slots, wall-mountable, vibrant design, and practical storage solution for toy cars.",
+    "highlights": [
+      "Holds up to 16 toy cars",
+      "Compact and wall-mountable design",
+      "Vibrant and playful colors to enhance the playroom",
+      "Durable wooden construction for long-lasting use",
+      "Encourages organization and imaginative play"
+    ],
+    "specifications": [
+      {
+        "label": "Slot Dimensions",
+        "value": "3.2 x 2 x 1.5 inches (L x W x D)"
+      },
+      {
+        "label": "Overall Dimensions",
+        "value": "19 x 12 x 4 inches (L x H x D)"
+      },
+      {
+        "label": "Material",
+        "value": "Wood"
+      }
+    ],
+    "shipInfo": "Made-to-order; production lead time 18-20 working days. For urgent delivery, contact customer care on WhatsApp or call 9877047723 / 9988209623.",
+    "cod": true,
+    "warranty": "All products are handmade, one piece at a time. Slight variations in colour, tone, shape, or size may occur. Not considered defects and not eligible for return or replacement.",
+    "url": "/products/monster-truck-garage-16-slots",
+    "related": [
+      175,
+      174,
+      173
+    ]
+  },
+  {
+    "id": 73,
+    "slug": "monster-truck-garage-30-slots",
+    "title": "Monster Truck Garage - 30 Slots",
+    "brand": "Kiddies Kingdom",
+    "category": "Pretend Play",
+    "mrp": 10000,
+    "price": 9700,
+    "inStock": true,
+    "rating": 4.8,
+    "reviews": 10,
+    "image": "/products/monstertruck.WEBP",
+    "gallery": [
+      "/products/monstertruck.WEBP",
+      "/products/monstertruck2.WEBP"
+    ],
+    "badges": [
+      "Storage",
+      "Car Garage",
+      "Wooden Toy",
+      "Roleplay"
+    ],
+    "shortDescription": "Wall-mountable Monster Truck Garage Organizer with 30 slots for toy cars, vibrant design, and durable construction for imaginative play.",
+    "highlights": [
+      "Holds up to 30 toy cars",
+      "Wall-mountable design saves space and adds flair",
+      "Vibrant colors make it an eye-catching focal point",
+      "Durable wooden construction ensures long-lasting use",
+      "Encourages organization and creative play"
+    ],
+    "specifications": [
+      {
+        "label": "Slot Dimensions",
+        "value": "3.2 x 2 x 1.5 inches (L x W x D)"
+      },
+      {
+        "label": "Overall Dimensions",
+        "value": "22 x 4 x 14 inches (L x B x H)"
+      },
+      {
+        "label": "Material",
+        "value": "Wood"
+      }
+    ],
+    "shipInfo": "Made-to-order; production lead time 18-20 working days. For urgent delivery, contact customer care on WhatsApp or call 9877047723 / 9988209623.",
+    "cod": true,
+    "warranty": "All products are handmade, one piece at a time. Slight variations in colour, tone, shape, or size may occur. Not considered defects and not eligible for return or replacement.",
+    "url": "/products/monster-truck-garage-30-slots",
+    "related": [
+      176,
+      175,
+      174
+    ]
+  },
+  {
     "id": 74,
     "slug": "alphabet-shelf-letter-a",
     "title": "Alphabet Shelf Letter A",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 15499,
     "price": 11200,
     "inStock": true,
@@ -4790,7 +5032,7 @@
     "slug": "alphabet-shelf-letter-b",
     "title": "Alphabet Shelf Letter B",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 15499,
     "price": 11200,
     "inStock": true,
@@ -4857,7 +5099,7 @@
     "slug": "alphabet-shelf-letter-c",
     "title": "Alphabet Shelf Letter C",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 15499,
     "price": 11200,
     "inStock": true,
@@ -4924,7 +5166,7 @@
     "slug": "alphabet-shelf-letter-d",
     "title": "Alphabet Shelf Letter D",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 15499,
     "price": 11200,
     "inStock": true,
@@ -4991,7 +5233,7 @@
     "slug": "alphabet-shelf-letter-e",
     "title": "Alphabet Shelf Letter E",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 15499,
     "price": 11200,
     "inStock": true,
@@ -5058,7 +5300,7 @@
     "slug": "alphabet-shelf-letter-f",
     "title": "Alphabet Shelf Letter F",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 15499,
     "price": 11200,
     "inStock": true,
@@ -5125,7 +5367,7 @@
     "slug": "alphabet-shelf-letter-g",
     "title": "Alphabet Shelf Letter G",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 15499,
     "price": 11200,
     "inStock": true,
@@ -5192,7 +5434,7 @@
     "slug": "alphabet-shelf-letter-h",
     "title": "Alphabet Shelf Letter H",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 15499,
     "price": 11200,
     "inStock": true,
@@ -5259,7 +5501,7 @@
     "slug": "alphabet-shelf-letter-i",
     "title": "Alphabet Shelf Letter I",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 15499,
     "price": 11200,
     "inStock": true,
@@ -5326,7 +5568,7 @@
     "slug": "alphabet-shelf-letter-j",
     "title": "Alphabet Shelf Letter J",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 15499,
     "price": 11200,
     "inStock": true,
@@ -5393,7 +5635,7 @@
     "slug": "alphabet-shelf-letter-k",
     "title": "Alphabet Shelf Letter K",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 15499,
     "price": 11200,
     "inStock": true,
@@ -5460,7 +5702,7 @@
     "slug": "alphabet-shelf-letter-l",
     "title": "Alphabet Shelf Letter L",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 13499,
     "price": 11200,
     "inStock": true,
@@ -5527,7 +5769,7 @@
     "slug": "alphabet-shelf-letter-m",
     "title": "Alphabet Shelf Letter M",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 15499,
     "price": 11200,
     "inStock": true,
@@ -5594,7 +5836,7 @@
     "slug": "alphabet-shelf-letter-n",
     "title": "Alphabet Shelf Letter N",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 15499,
     "price": 11200,
     "inStock": true,
@@ -5661,7 +5903,7 @@
     "slug": "alphabet-shelf-letter-o",
     "title": "Alphabet Shelf Letter O",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 15499,
     "price": 11200,
     "inStock": true,
@@ -5728,7 +5970,7 @@
     "slug": "alphabet-shelf-letter-p",
     "title": "Alphabet Shelf Letter P",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 15499,
     "price": 11200,
     "inStock": true,
@@ -5795,7 +6037,7 @@
     "slug": "alphabet-shelf-letter-r",
     "title": "Alphabet Shelf Letter R",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 15499,
     "price": 11200,
     "inStock": true,
@@ -5862,7 +6104,7 @@
     "slug": "alphabet-shelf-letter-s",
     "title": "Alphabet Shelf Letter S",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 15499,
     "price": 11200,
     "inStock": true,
@@ -5918,7 +6160,7 @@
     "slug": "alphabet-shelf-letter-t",
     "title": "Alphabet Shelf Letter T",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 11499,
     "price": 11200,
     "inStock": true,
@@ -5985,7 +6227,7 @@
     "slug": "alphabet-shelf-letter-u",
     "title": "Alphabet Shelf Letter U",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 15499,
     "price": 11200,
     "inStock": true,
@@ -6052,7 +6294,7 @@
     "slug": "alphabet-shelf-letter-v",
     "title": "Alphabet Shelf Letter V",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 15499,
     "price": 11200,
     "inStock": true,
@@ -6119,7 +6361,7 @@
     "slug": "alphabet-shelf-letter-y",
     "title": "Alphabet Shelf Letter Y",
     "brand": "Kiddies Kingdom",
-    "category": "Alphabet",
+    "category": "Furniture",
     "mrp": 15499,
     "price": 11200,
     "inStock": true,
@@ -6181,12 +6423,4 @@
       24
     ]
   }
-  
-
-
-
-
-  
-  
-
 ]

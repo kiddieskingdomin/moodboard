@@ -17,21 +17,28 @@ export const PopupForm = ({ show, onClose }) => {
 
   const handleInputChange = (e) =>
     setFormData((s) => ({ ...s, [e.target.name]: e.target.value }));
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    // TODO: replace with your real API call
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE}/api/enquiry`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error("Failed");
       setSubmitted(true);
       setTimeout(() => {
         setSubmitted(false);
         onClose?.();
       }, 2000);
-    }, 1200);
+    } catch (err) {
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 p-4 backdrop-blur-sm">
@@ -40,13 +47,13 @@ export const PopupForm = ({ show, onClose }) => {
         <div className="h-2 w-full bg-[#F6C9C3]" />
 
         {/* Close */}
-   <button
-    onClick={onClose}
-    className="absolute right-5 top-5 rounded-full p-1 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600"
-    aria-label="Close"
-  >
-    ×
-  </button>
+        <button
+          onClick={onClose}
+          className="absolute right-5 top-5 rounded-full p-1 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600"
+          aria-label="Close"
+        >
+          ×
+        </button>
 
         <div className="p-6 md:p-8">
           {!submitted ? (
@@ -152,10 +159,8 @@ export const PopupForm = ({ show, onClose }) => {
                     >
                       <option value="">Choose interest</option>
                       <option value="pretend">Pretend Play</option>
-                      <option value="learning">Learning & STEM</option>
-                      <option value="vehicles">Trains & Vehicles</option>
-                      <option value="furniture">Gross motor & furniture</option>
-                      <option value="crafts">Crafts & Puzzles</option>
+                      <option value="learning">Furniture</option>
+                      <option value="vehicles">Jungle Gym</option>
                     </select>
                   </div>
                 </div>
