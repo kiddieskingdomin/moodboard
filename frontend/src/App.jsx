@@ -20,7 +20,7 @@ import TermsOfService from "./pages/TermofServices";
 import SearchPage from "./pages/SearchPage";
 import CategoryPage from "./pages/CategoryPage";
 import CheckoutPage from "./pages/CheckoutPage";
-import OrderSuccess from "./pages/OrderSuccessPAge";
+import OrderSuccess from "./pages/OrderSuccessPage";
 
 export default function App() {
   return (
