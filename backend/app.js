@@ -64,6 +64,10 @@ app.use(sessionCookie)
 app.use('/api', routes)
 
 app.use((_req, res) => res.status(404).json({ error: 'not_found' }))
+app.get('/', (_req, res) => {
+  res.send('Kiddies Kingdom API is alive 👑');
+})
+
 
 ;(async function start() {
   await connectMongo(MONGO_URI)
