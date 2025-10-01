@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import Cart from '../models/cart.js';
-import Order from '../models/Order.js';
+import Order from '../models/order.js';
 import { generateInvoicePDF } from '../services/invoice.js';
 import { sendOwnerEmail, sendOrderEmail } from '../services/mailer.js';
 
