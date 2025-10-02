@@ -13,24 +13,43 @@ export function ensureDir(dir) {
 }
 
 export async function generateInvoicePDF(order) {
-  const dir = path.join(process.cwd(), 'invoices');
-  ensureDir(dir);
-  const file = path.join(dir, `${order._id}.pdf`);
+  const outDir = path.join(process.cwd(), 'invoices');
+  ensureDir(outDir);
+  const file = path.join(outDir, `${order._id}.pdf`);
+
+  // ---- Fonts: use your NotoSans variable TTF ----
+  // Keep the font inside <project>/fonts/NotoSans-VariableFont_wdth,wght.ttf
+  // or set INVOICE_FONT_PATH to an absolute path.
+  const fontPath =
+    process.env.INVOICE_FONT_PATH ||
+    path.join(process.cwd(), 'fonts', 'NotoSans-VariableFont_wdth,wght.ttf');
 
   await new Promise((resolve, reject) => {
     const doc = new PDFDocument({ size: 'A4', margin: 36 });
+
+    // Register fonts (same file for both since pdfkit can’t pick variable axes)
+    try {
+      doc.registerFont('Body', fontPath);
+      doc.registerFont('Bold', fontPath); // variable font: simulate “bold” via size
+      doc.font('Body'); // default
+    } catch (e) {
+      // If font missing, fall back but also degrade ₹ rendering
+      console.error('Invoice font load failed, falling back:', e.message);
+      // Last resort: replace rupee sign below if needed
+    }
+
     const stream = fs.createWriteStream(file);
     doc.pipe(stream);
 
     // Header
     doc
-      .fillColor('#ef927d').fontSize(26).text('Kiddies Kingdom', { align: 'center' })
+      .fillColor('#ef927d').font('Bold').fontSize(26).text('Kiddies Kingdom', { align: 'center' })
       .moveDown(0.2)
-      .fillColor('#555').fontSize(12).text('Where imagination meets play!', { align: 'center' })
+      .font('Body').fillColor('#555').fontSize(12).text('Where imagination meets play!', { align: 'center' })
       .moveDown(1.2);
 
     // Meta
-    doc.fillColor('#000').fontSize(12);
+    doc.fillColor('#000').font('Body').fontSize(12);
     doc.text(`Invoice Date: ${new Date(order.createdAt).toLocaleString()}`);
     doc.text(`Order ID: ${order._id}`);
     doc.text(`Razorpay Order ID: ${order.razorpayOrderId || 'N/A'}`);
@@ -38,8 +57,8 @@ export async function generateInvoicePDF(order) {
     doc.moveDown();
 
     // Address block
-    doc.fontSize(16).fillColor('#000').text('Billing / Shipping Address', { underline: true });
-    doc.moveDown(0.3).fontSize(12);
+    doc.font('Bold').fontSize(16).fillColor('#000').text('Billing / Shipping Address', { underline: true });
+    doc.moveDown(0.3).font('Body').fontSize(12);
     const a = order.billing || order.shipping || {};
     doc.text(a.name || '');
     doc.text(a.email || '');
@@ -49,7 +68,7 @@ export async function generateInvoicePDF(order) {
     doc.moveDown();
 
     // Items
-    doc.fontSize(16).text('Order Items', { underline: true }).moveDown(0.3);
+    doc.font('Bold').fontSize(16).text('Order Items', { underline: true }).moveDown(0.3);
     doc.moveTo(36, doc.y).lineTo(559, doc.y).strokeColor('#999').stroke();
     doc.moveDown(0.6);
 
@@ -57,14 +76,11 @@ export async function generateInvoicePDF(order) {
       const itemPrice = it.pricePaiseSnap || 0;
       const quantity = it.qty || 1;
       const lineTotal = itemPrice * quantity;
-      
-      // Title + color if present
-      let lineTitle = it.titleSnap || 'Item';
-      if (it.colorSnap) {
-        lineTitle += ` (Color: ${it.colorSnap})`;
-      }
 
-      doc.fontSize(12).fillColor('#000')
+      let lineTitle = it.titleSnap || 'Item';
+      if (it.colorSnap) lineTitle += ` (Color: ${it.colorSnap})`;
+
+      doc.font('Body').fontSize(12).fillColor('#000')
         .text(lineTitle, { continued: true })
         .text('   ', { continued: true })
         .fillColor('#555')
@@ -76,8 +92,8 @@ export async function generateInvoicePDF(order) {
     // Personalisation line if present
     if (order.personalisation && order.personalisation.trim()) {
       doc.moveDown(0.3);
-      const charge = 5000; // fixed ₹50 in paise
-      doc.fontSize(12).fillColor('#000')
+      const charge = 5000; // ₹50
+      doc.font('Body').fontSize(12).fillColor('#000')
         .text(`Personalisation: “${order.personalisation.trim()}”`, { continued: true })
         .fillColor('#555')
         .text(`(+${inr(charge)})`, { align: 'right' });
@@ -88,12 +104,12 @@ export async function generateInvoicePDF(order) {
 
     // Total
     doc.moveDown(0.6);
-    doc.fontSize(14).fillColor('#000')
+    doc.font('Bold').fontSize(14).fillColor('#000')
       .text(`Total Amount: ${inr(order.amountPaise || 0)}`, { align: 'right' });
 
     // Footer
     doc.moveDown(2);
-    doc.fontSize(10).fillColor('#666')
+    doc.font('Body').fontSize(10).fillColor('#666')
       .text('Thank you for shopping with Kiddies Kingdom!', { align: 'center' })
       .text('For support, contact us at info@kiddieskingdom.co.in', { align: 'center' })
       .text('This invoice is computer generated and does not require a signature.', { align: 'center' });
