@@ -26,10 +26,8 @@ function computeSubtotalPaise(cart) {
 // same shipping rule as frontend:
 // subtotal > ₹999 => free, else ~₹50 if there are items
 function computeShippingPaise(subtotalPaise, hasItems) {
-  // 🚫 shipping temporarily disabled for testing
-  return 0;
+  return subtotalPaise > 99900 ? 0 : (hasItems ? 4999 : 0);
 }
-
 
 // normalize a cart line into an order line (explicitly keep color)
 function toOrderItem(i) {
