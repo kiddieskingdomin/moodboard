@@ -435,35 +435,64 @@ export default function ProductDetail() {
 
         <div className="mt-6 grid gap-10 lg:grid-cols-2">
           {/* Left: sticky images */}
-          <div className="self-start lg:sticky lg:top-20">
-            <div className="grid grid-cols-[70px_1fr] gap-4">
-              {/* thumbnails */}
-              <div className="flex flex-col gap-3">
-                {imgs.map((src, i) => (
-                  <button
-                    key={(src || "img") + i}
-                    onClick={() => setSelImg(i)}
-                    className={`overflow-hidden rounded-xl ring-1 ring-slate-200 ${
-                      i === safeSel ? " outline-2 outline-violet-400" : ""
-                    }`}
-                  >
-                    <img src={src} alt="" className="h-16 w-16 object-cover" />
-                  </button>
-                ))}
-              </div>
+{/* Left: sticky images */}
+<div className="self-start lg:sticky lg:top-20">
+  {/* Desktop/Large: left-side vertical thumbs + main */}
+  <div className="hidden lg:grid grid-cols-[70px_1fr] gap-4">
+    {/* thumbnails (desktop) */}
+    <div className="flex flex-col gap-3">
+      {imgs.map((src, i) => (
+        <button
+          key={(src || "img") + i}
+          onClick={() => setSelImg(i)}
+          className={`overflow-hidden rounded-xl ring-1 ring-slate-200 transition
+            ${i === safeSel ? "outline-2 outline-violet-400" : "hover:ring-violet-200"}`}
+        >
+          <img src={src} alt="" className="h-16 w-16 object-cover" />
+        </button>
+      ))}
+    </div>
 
-              {/* main image */}
-              <div className="overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
-                <div className="aspect-[4/3] sm:aspect-[4/3]">
-                  <img
-                    src={imgs[safeSel] || placeholder}
-                    alt={product.title || "Product image"}
-                    className="h-auto w-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+    {/* main image (desktop) */}
+    <div className="overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
+      <div className="aspect-[4/3]">
+        <img
+          src={imgs[safeSel] || placeholder}
+          alt={product.title || "Product image"}
+          className="h-auto w-full object-cover"
+        />
+      </div>
+    </div>
+  </div>
+
+  {/* Mobile/Tablet: main image first, thumbnails below in a horizontal row */}
+  <div className="lg:hidden">
+    <div className="overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
+      <div className="aspect-[4/3]">
+        <img
+          src={imgs[safeSel] || placeholder}
+          alt={product.title || "Product image"}
+          className="h-auto w-full object-cover"
+        />
+      </div>
+    </div>
+
+    {/* thumbnails (mobile) */}
+    <div className="mt-3 flex gap-2 overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden">
+      {imgs.map((src, i) => (
+        <button
+          key={(src || "img") + i}
+          onClick={() => setSelImg(i)}
+          className={`shrink-0 overflow-hidden rounded-xl ring-1 ring-slate-200 transition
+            ${i === safeSel ? " outline-2 outline-violet-400" : "hover:ring-violet-200"}`}
+        >
+          <img src={src} alt="" className="h-16 w-20 object-cover" />
+        </button>
+      ))}
+    </div>
+  </div>
+</div>
+
 
           {/* Right: details */}
           <div className="lg:minh-[70vh]">
@@ -517,31 +546,53 @@ export default function ProductDetail() {
             </div>
 
             {/* Color Variants */}
-            {product.colorVariants?.length ? (
-              <div className="mt-4">
-                <h4 className="mb-2 text-sm font-medium text-slate-700">
-                  Available Colors
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {product.colorVariants.map((variant) => (
-                    <button
-                      key={variant.name}
-                      onClick={() => {
-                        setSelectedColor(variant.name);
-                        setSelImg(0);
-                      }}
-                      className={`px-3 py-1 rounded-lg border text-sm ${
-                        selectedColor === variant.name
-                          ? "border-pink-500 bg-pink-50"
-                          : "border-gray-300 hover:border-pink-300"
-                      }`}
-                    >
-                      {variant.name}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            ) : null}
+{/* Color Variants */}
+{product.colorVariants?.length ? (
+  <div className="mt-5">
+    <h4 className="mb-2 text-sm font-medium text-slate-800">Choose Color</h4>
+
+    <div className="flex flex-wrap gap-3">
+      {product.colorVariants.map((variant) => {
+        const thumb = Array.isArray(variant.images) && variant.images[0]
+          ? variant.images[0]
+          : product.image || "/placeholder.png";
+        const selected = selectedColor === variant.name;
+
+        return (
+          <button
+            key={variant.name}
+            onClick={() => {
+              setSelectedColor(variant.name);
+              setSelImg(0);
+            }}
+            type="button"
+            className={`group w-[92px] rounded-xl p-1 text-center ring-1 transition
+              ${selected ? "ring-pink-400 bg-pink-50" : "ring-slate-200 hover:ring-pink-200"}`}
+            aria-pressed={selected}
+          >
+            <div className="aspect-square overflow-hidden rounded-lg bg-white">
+              <img
+                src={thumb}
+                alt={variant.name}
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div
+              className={`mt-1 line-clamp-1 text-[11px] ${
+                selected ? "text-pink-700 font-semibold" : "text-slate-700"
+              }`}
+              title={variant.name}
+            >
+              {variant.name}
+            </div>
+          </button>
+        );
+      })}
+    </div>
+  </div>
+) : null}
+
 
             {/* info stripe */}
             <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-slate-50 p-3 text-sm text-slate-700 ring-1 ring-slate-200">

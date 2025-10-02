@@ -72,7 +72,7 @@ const handleSubmit = async (e) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ...formData,
-        product: product.title,
+        product: product.title,                                                                                                                                                
         productId: product.id
       }),
     });

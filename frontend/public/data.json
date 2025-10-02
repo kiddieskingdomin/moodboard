@@ -6,7 +6,7 @@
     "brand": "Kiddies Kingdom",
     "category": "Pretend Play",
     "mrp": 2800,
-    "price": 2500,
+    "price": 1,
     "inStock": true,
     "rating": 4.8,
     "reviews": 27,
@@ -263,10 +263,10 @@
     "inStock": true,
     "rating": 4.8,
     "reviews": 0,
-    "image": "/products/shopnroll.webp",
+    "image": "/products/Shop 'N' Roll Grocery1.WEBP",
     "gallery": [
-      "/products/shopnroll.webp",
-      "/products/shopnroll2.webp"
+      "/products/Shop 'N' Roll Grocery1.WEBP",
+      "/products/Shop 'N' Roll Grocery2.JPG"
     ],
     "badges": [
       "Wooden Toy",
@@ -325,7 +325,7 @@
     "slug": "toasty-house",
     "title": "Toasty House",
     "brand": "Kiddies Kingdom",
-    "category": "jungle gym",
+    "category": "Pretend Play",
     "mrp": 1700,
     "price": 1500,
     "inStock": true,
@@ -393,8 +393,9 @@
     "image": "/products/shopnroll.webp",
     "gallery": [
       "/products/shopnroll.webp",
-      "/products/shopnroll2.webp",
+      "/products/Shop n roll2.jpg",
       "/products/shopnroll3.webp",
+      "/products/Shop n roll3.jpg",
       "/products/shopnroll4.webp"
     ],
     "badges": [
@@ -411,6 +412,27 @@
       "Perfect for pretend play with toys, play food, stuffed animals, etc.",
       "Encourages imaginative play and organizational skills",
       "Ideal for toddlers and young children"
+    ],
+    "colorVariants": [
+      {
+        "name": "Olive Green",
+        "images": [
+          "/products/shopnroll.webp",
+          "/products/Shop n roll2.jpg",
+          "/products/shopnroll3.webp",
+          "/products/Shop n roll3.jpg",
+          "/products/shopnroll4.webp"
+        ]
+      },
+      {
+        "name": "Pink",
+        "images": [
+          "/productcolor/pinkShop n roll5.jpg",
+          "/productcolor/pinkShop n roll6.jpg",
+          "/productcolor/pinkShop n roll7.jpg",
+          "/productcolor/pinkshopnroll2.webp"
+        ]
+      }
     ],
     "specifications": [
       {
@@ -1980,8 +2002,8 @@
   },
   {
     "id": 31,
-    "slug": "wooden-kids-play-kitchen-white",
-    "title": "Wooden Kids Play Kitchen - White",
+    "slug": "wooden-kids-play-kitchen",
+    "title": "Wooden Kids Play Kitchen",
     "brand": "Kiddies Kingdom",
     "category": "Pretend Play",
     "mrp": 19752,
@@ -1989,9 +2011,35 @@
     "inStock": true,
     "rating": 4.8,
     "reviews": 0,
-    "image": "/products/wpkw.jpg",
+    "image": "/products/woodenkitchen.webp",
     "gallery": [
-      "/products/wpkw.jpg"
+      "/products/woodenkitchen.webp",
+      "/products/woodenkitchen2.webp",
+      "/products/woodenkitchen3.webp",
+      "/products/woodenkitchen4.webp"
+    ],
+    "colorVariants": [
+      {
+        "name": "Dusty Rose",
+        "images": [
+          "/products/woodenkitchen.webp",
+          "/products/woodenkitchen2.webp",
+          "/products/woodenkitchen3.webp",
+          "/products/woodenkitchen4.webp"
+        ]
+      },
+      {
+        "name": "Stardust Grey",
+        "images": [
+          "/products/Wooden Kids Play Kitchen - stardust grey.WEBP"
+        ]
+      },
+      {
+        "name": "Cotton Bloom",
+        "images": [
+          "/products/Wooden Kids Play Kitchen - cotton bloom .WEBP"
+        ]
+      }
     ],
     "badges": [
       "Play Kitchen",
@@ -2158,9 +2206,50 @@
     "inStock": true,
     "rating": 4.8,
     "reviews": 0,
-    "image": "/products/woodlandkitchen.jpg",
+    "image": "/products/WoodLand Chef’s Play Kitchen - Cotton bloom1.WEBP",
     "gallery": [
-      "/products/woodlandkitchen.jpg"
+      "/products/WoodLand Chef’s Play Kitchen - Cotton bloom1.WEBP",
+      "/products/WoodLand Chef’s Play Kitchen - Cotton bloom2.WEBP",
+      "/products/WoodLand Chef’s Play Kitchen - Cotton bloom3.WEBP",
+      "/products/WoodLand Chef’s Play Kitchen - Cotton bloom4.WEBP",
+      "/products/WoodLand Chef’s Play Kitchen - Cotton bloom5.WEBP"
+    ],
+    "colorVariants": [
+      {
+        "name": "Cotton Bloom",
+        "images": [
+          "/products/WoodLand Chef’s Play Kitchen - Cotton bloom1.WEBP",
+          "/products/WoodLand Chef’s Play Kitchen - Cotton bloom2.WEBP",
+          "/products/WoodLand Chef’s Play Kitchen - Cotton bloom3.WEBP",
+          "/products/WoodLand Chef’s Play Kitchen - Cotton bloom4.WEBP",
+          "/products/WoodLand Chef’s Play Kitchen - Cotton bloom5.WEBP"
+        ]
+      },
+      {
+        "name": "Dreamy rose",
+        "images": [
+          "/productcolor/WoodLand Chef’s Play Kitchen - Dreamy rose1.WEBP",
+          "/productcolor/WoodLand Chef’s Play Kitchen - Dreamy rose2.WEBP"
+        ]
+      },
+      {
+        "name": "Sage",
+        "images": [
+          "/productcolor/WoodLand Chef’s Play Kitchen - Sage.WEBP"
+        ]
+      },
+      {
+        "name": "Blush blossom",
+        "images": [
+          "/productcolor/WoodLand Chef’s Play Kitchen - Blush blossom .WEBP"
+        ]
+      },
+      {
+        "name": "Caramel Clay",
+        "images": [
+          "/productcolor/WoodLand Chef’s Play Kitchen - Caramel Clay.WEBP"
+        ]
+      }
     ],
     "badges": [
       "Play Kitchen",
@@ -2232,8 +2321,8 @@
   },
   {
     "id": 34,
-    "slug": "wooden-toy-pretend-play-kitchen",
-    "title": "Wooden Toy Pretend Play Kitchen",
+    "slug": "wooden-toy-kitchen",
+    "title": "Wooden Toy Kitchen",
     "brand": "Kiddies Kingdom",
     "category": "Pretend Play",
     "mrp": 19752,
@@ -2241,10 +2330,12 @@
     "inStock": true,
     "rating": 4.8,
     "reviews": 0,
-    "image": "/products/pretendkitchen.webp",
+    "image": "/products/toykitchen.webp",
     "gallery": [
-      "/products/pretendkitchen.webp",
-      "/products/pretendkitchen2.webp"
+      "/products/toykitchen.webp",
+      "/products/toykitchen2.webp",
+      "/products/toykitchen3.webp",
+      "/products/toykitchen4.webp"
     ],
     "badges": [
       "Play Kitchen",
@@ -2259,6 +2350,28 @@
       "Perfect for hours of pretend play",
       "Sturdy MDF construction in Rose Pink and Olive Green",
       "Perfect gift for young chefs"
+    ],
+    "colorVariants": [
+      {
+        "name": "Rose Pink",
+        "images": [
+          "/products/toykitchen.webp",
+          "/products/toykitchen2.webp",
+          "/products/toykitchen3.webp",
+          "/products/toykitchen4.webp"
+        ]
+      },
+      {
+        "name": "Olive Green",
+        "images": [
+          "/productcolor/Wooden Toy Pretend Play Kitchen olive green.webp",
+          "/productcolor/Wooden Toy Pretend Play Kitchen olive green 3.webp",
+          "/productcolor/Wooden Toy Pretend Play Kitchen olive green2.webp",
+          "/productcolor/Wooden Toy Pretend Play Kitchen olive green4.webp",
+          "/productcolor/Wooden Toy Pretend Play Kitchen olive green5.webp",
+          "/productcolor/Wooden Toy Pretend Play Kitchen olive green7.webp"
+        ]
+      }
     ],
     "specifications": [
       {
@@ -2313,11 +2426,37 @@
     "inStock": true,
     "rating": 4.9,
     "reviews": 38,
-    "image": "/products/thekitchen.webp",
+    "image": "/productcolor/The kitchen - Enchanted blush 1.WEBP",
     "gallery": [
-      "/products/thekitchen.webp",
-      "/products/thekitchen2.webp",
-      "/products/thekitchen3.webp"
+      "/productcolor/The kitchen - Enchanted blush 1.WEBP",
+      "/productcolor/The kitchen - Enchanted blush 2_.webp",
+      "/productcolor/The kitchen - Enchanted blush 3.webp",
+      "/productcolor/The kitchen - Enchanted blush 4.webp"
+    ],
+    "colorVariants": [
+      {
+        "name": "Enchanted Blush",
+        "images": [
+          "/productcolor/The kitchen - Enchanted blush 1.WEBP",
+          "/productcolor/The kitchen - Enchanted blush 2_.webp",
+          "/productcolor/The kitchen - Enchanted blush 3.webp",
+          "/productcolor/The kitchen - Enchanted blush 4.webp"
+        ]
+      },
+      {
+        "name": "Startdust Grey",
+        "images": [
+          "/productcolor/The kitchen - stardust grey1.webp",
+          "/productcolor/The kitchen - Stardust grey2.WEBP",
+          "/productcolor/The kitchen - stardust grey 3.webp"
+        ]
+      },
+      {
+        "name": "Jungle Jam",
+        "images": [
+          "/productcolor/The kitchen - Jungle jam.webp"
+        ]
+      }
     ],
     "badges": [
       "Made-to-Order",
@@ -2490,7 +2629,7 @@
       "Roleplay",
       "Made-to-Order"
     ],
-        "colorVariants": [
+    "colorVariants": [
       {
         "name": "Cotton Bloom",
         "images": [
@@ -2524,7 +2663,7 @@
       "Solid and sturdy construction with non-toxic finishes",
       "Minimal assembly required"
     ],
-        "colorOptions": {
+    "colorOptions": {
       "label": "Colors",
       "value": [
         "Wedding White",
@@ -3437,8 +3576,7 @@
     "gallery": [
       "/products/pencilholder.webp",
       "/products/pencilholder2.webp",
-      "/products/pencilholder3.webp",
-      "/products/pencilholder4.webp"
+      "/products/pencilholder3.webp"
     ],
     "badges": [
       "Fun Design",
@@ -3503,6 +3641,26 @@
       "/products/sharpner2.webp",
       "/products/sharpner3.webp",
       "/products/sharpner4.webp"
+    ],
+    "colorVariants": [
+      {
+        "name": "Baby Pink",
+        "image": [
+          "/products/sharpner.webp",
+          "/products/sharpner2.webp",
+          "/products/sharpner3.webp",
+          "/products/sharpner4.webp"
+        ]
+      },
+      {
+        "name": "Sky Blue",
+        "image": [
+          "/products/sharpner.webp",
+          "/products/sharpner2.webp",
+          "/products/sharpner3.webp",
+          "/products/sharpner4.webp"
+        ]
+      }
     ],
     "badges": [
       "Creative Design",
@@ -3710,6 +3868,33 @@
       "/products/bookcase3.webp",
       "/products/bookcase4.webp"
     ],
+    "colorVariants": [
+      {
+        "name": "Fairy Sage",
+        "images": [
+          "/products/bookcase.webp",
+          "/products/bookcase2.webp",
+          "/products/bookcase3.webp",
+          "/products/bookcase4.webp"
+        ]
+      },
+      {
+        "name": "Dreamy Rose",
+        "images": [
+          "/productcolor/Kids Bookcase - Dreamy Rose.JPG",
+          "/productcolor/Kids Bookcase - Dreamy Rose(1).JPG",
+          "/productcolor/Kids Bookcase - Dreamy Rose(2).JPG"
+        ]
+      },
+      {
+        "name": "Stardust Grey",
+        "images": [
+          "/productcolor/Kids Bookcase - Stardust Grey 1.JPG",
+          "/productcolor/Kids Bookcase - Stardust grey2.JPG",
+          "/productcolor/Kids Bookcase - Stardust Grey3.JPG"
+        ]
+      }
+    ],
     "badges": [
       "3-Tier Storage",
       "Rounded Edges",
@@ -3846,6 +4031,118 @@
       "/products/library2.webp",
       "/products/library3.webp",
       "/products/library4.webp"
+    ],
+    "colorVariants": [
+      {
+        "name": "Powder Sky",
+        "images": [
+          "/productcolor/Mini library with elevation - Powder Sky.webp",
+          "/products/library.webp",
+          "/products/library2.webp",
+          "/products/library3.webp",
+          "/products/library4.webp"
+        ]
+      },
+      {
+        "name": "Cotton Bloom",
+        "images": [
+          "/productcolor/Mini library with elevation - Cotton Bloom.webp",
+          "/products/library.webp",
+          "/products/library2.webp",
+          "/products/library3.webp",
+          "/products/library4.webp"
+        ]
+      },
+      {
+        "name": "Dreamy Rose",
+        "images": [
+          "/productcolor/Mini library with elevation - Dreamy Rose.webp",
+          "/products/library.webp",
+          "/products/library2.webp",
+          "/products/library3.webp",
+          "/products/library4.webp"
+        ]
+      },
+      {
+        "name": "Fairy Mint",
+        "images": [
+          "/productcolor/Mini library with elevation - Fairy Mint.webp",
+          "/products/library.webp",
+          "/products/library2.webp",
+          "/products/library3.webp",
+          "/products/library4.webp"
+        ]
+      },
+      {
+        "name": "Stardust Grey",
+        "images": [
+          "/productcolor/Mini library with elevation - Stardust Grey.webp",
+          "/products/library.webp",
+          "/products/library2.webp",
+          "/products/library3.webp",
+          "/products/library4.webp"
+        ]
+      },
+      {
+        "name": "Rainbow Dreams",
+        "images": [
+          "/productcolor/Mini library with elevation - Rainbow Dreams.webp",
+          "/products/library.webp",
+          "/products/library2.webp",
+          "/products/library3.webp",
+          "/products/library4.webp"
+        ]
+      },
+      {
+        "name": "Mystic Aqua",
+        "images": [
+          "/productcolor/Mini library with elevation - Mystic Aqua.webp",
+          "/products/library.webp",
+          "/products/library2.webp",
+          "/products/library3.webp",
+          "/products/library4.webp"
+        ]
+      },
+      {
+        "name": "Blush Blossom",
+        "images": [
+          "/productcolor/Mini library with elevation - Blush Blossom.webp",
+          "/products/library.webp",
+          "/products/library2.webp",
+          "/products/library3.webp",
+          "/products/library4.webp"
+        ]
+      },
+      {
+        "name": "Lilac Bloom",
+        "images": [
+          "/productcolor/Mini library with elevation - Lilac Bloom.webp",
+          "/products/library.webp",
+          "/products/library2.webp",
+          "/products/library3.webp",
+          "/products/library4.webp"
+        ]
+      },
+      {
+        "name": "Purple Puff",
+        "images": [
+          "/productcolor/Mini library with elevation - Purple Puff.webp",
+          "/products/library.webp",
+          "/products/library2.webp",
+          "/products/library3.webp",
+          "/products/library4.webp"
+        ]
+      },
+      {
+        "name": "Magic Marigold",
+        "images": [
+          "/productcolor/Mini library with elevation - Magic Marigold.webp",
+          "/products/library.webp",
+          "/products/library2.webp",
+          "/products/library3.webp",
+          "/products/library4.webp"
+        ]
+      }
     ],
     "badges": [
       "Kid-Friendly Height",
@@ -4226,6 +4523,50 @@
       "/products/lilifly.WEBP",
       "/products/lilifly2.WEBP"
     ],
+    "colorVariants": [
+      {
+        "name": "Dreamer’s Blue",
+        "images": [
+          "/productcolor/Lili Fly G Butterfly Chair – Dreamer’s Blue.webp"
+        ]
+      },
+      {
+        "name": "Dreamy Rose",
+        "images": [
+          "/productcolor/Lili Fly G Butterfly Chair – Dreamy Rose.webp"
+        ]
+      },
+      {
+        "name": "Powder Sky",
+        "images": [
+          "/productcolor/Lili Fly G Butterfly Chair – Powder Sky.webp"
+        ]
+      },
+      {
+        "name": "white",
+        "images": [
+          "/productcolor/Lili Fly G Butterfly Chair – white.webp"
+        ]
+      },
+      {
+        "name": "Fairy Mint",
+        "images": [
+          "/productcolor/Lili Fly G Butterfly Chair – Fairy Mint.webp"
+        ]
+      },
+      {
+        "name": "Magical Marigold",
+        "images": [
+          "/productcolor/Lili Fly G Butterfly Chair – Magical Marigold.webp"
+        ]
+      },
+      {
+        "name": "Stardust Grey",
+        "images": [
+          "/productcolor/Lili Fly G Butterfly Chair – Stardust Grey.webp"
+        ]
+      }
+    ],
     "badges": [
       "Butterfly Design",
       "Child-Friendly",
@@ -4301,7 +4642,24 @@
     "reviews": 12,
     "image": "/products/chairwithtable.WEBP",
     "gallery": [
-      "/products/chairwithtable.WEBP"
+      "/products/chairwithtable.WEBP",
+      "/productcolor/Kiddies Kingdom Butterfly Chair – cotton bloom(1).webp"
+    ],
+    "colorVariants": [
+      {
+        "name": "Cotton Bloom",
+        "images": [
+          "/products/chairwithtable.WEBP",
+          "/productcolor/Kiddies Kingdom Butterfly Chair – cotton bloom(1).webp"
+        ]
+      },
+      {
+        "name": "Dusty Rose",
+        "images": [
+          "/productcolor/Kiddies Kingdom Butterfly Chair – Dusty Rose_.webp",
+          "/productcolor/Kiddies Kingdom Butterfly Chair – Dusty Rose 2.webp"
+        ]
+      }
     ],
     "badges": [
       "MDF",
@@ -4394,7 +4752,7 @@
       "Durable Build",
       "Upright Posture"
     ],
-        "colorVariants": [
+    "colorVariants": [
       {
         "name": "Yellow",
         "images": [
@@ -4496,6 +4854,44 @@
     "gallery": [
       "/products/chair.webp"
     ],
+    "colorVariants": [
+      {
+        "name": "Magic Marigold",
+        "images": [
+          "/productcolor/Ratatouille Chair - magic marigold.webp"
+        ]
+      },
+      {
+        "name": "Cotton Bloom",
+        "images": [
+          "/productcolor/Ratatouille Chair-cotton bloom.webp"
+        ]
+      },
+      {
+        "name": "Caramel Clay",
+        "images": [
+          "/productcolor/Ratatouille Chair-Caramel clay.webp"
+        ]
+      },
+      {
+        "name": "Dreamer’s Blue",
+        "images": [
+          "/productcolor/Ratatouille Chair-Dreamer’s blue.webp"
+        ]
+      },
+      {
+        "name": "Fairy Mint",
+        "images": [
+          "/productcolor/Ratatouille Chair-Fairy Mint.webp"
+        ]
+      },
+      {
+        "name": "Power Sky",
+        "images": [
+          "/productcolor/Ratatouille Chair-powder sky.webp"
+        ]
+      }
+    ],
     "badges": [
       "Made-to-Order",
       "Handcrafted",
@@ -4572,6 +4968,56 @@
     "gallery": [
       "/products/roundtable.WEBP",
       "/products/roundtable2.WEBP"
+    ],
+    "colorVariants": [
+      {
+        "name": "Dreamer’s Blue",
+        "images": [
+          "/productcolor/Children’s Round Table - Dreamer’s Blue.webp"
+        ]
+      },
+      {
+        "name": "Dreamy Rose",
+        "images": [
+          "/productcolor/Children’s Round Table - Dreamy Rose_.webp"
+        ]
+      },
+      {
+        "name": "Cotton Bloom",
+        "images": [
+          "/productcolor/Children’s Round Table - Cotton Bloom_.webp"
+        ]
+      },
+      {
+        "name": "Blush Pink",
+        "images": [
+          "/productcolor/Children’s Round Table - Blush Pink.webp"
+        ]
+      },
+      {
+        "name": "Lilac Mist",
+        "images": [
+          "/productcolor/Children’s Round Table - lilac mist.webp"
+        ]
+      },
+      {
+        "name": "Magic Mist",
+        "images": [
+          "/productcolor/Children’s Round Table - Magic Mint.webp"
+        ]
+      },
+      {
+        "name": "Stardust Grey",
+        "images": [
+          "/productcolor/Children’s Round Table - Stardust Grey_.webp"
+        ]
+      },
+      {
+        "name": "Power Sky",
+        "images": [
+          "/productcolor/Children’s Round Table - Powder Sky.webp"
+        ]
+      }
     ],
     "badges": [
       "Round Table",
@@ -4791,68 +5237,68 @@
       171
     ]
   },
-{
-  "id": 71,
-  "slug": "toy-car-storage",
-  "title": "Toy Car Storage",
-  "brand": "Kiddies Kingdom",
-  "category": "Pretend Play",
-  "mrp": 20000,
-  "price": 20000,
-  "inStock": true,
-  "rating": 4.8,
-  "reviews": 10,
-  "image": "/products/Toy car storage1.WEBP",
-  "gallery": [
-    "/products/Toy car storage1.WEBP",
-    "/products/Toy car storage2.webp",
-    "/products/Toy car storage3.webp",
-    "/products/Toy car storage4.webp",
-    "/products/Toy car storage5.webp",
-    "/products/Toy car storage6.webp"
-  ],
-  "badges": [
-    "Toy Storage",
-    "Car Organizer",
-    "Wooden Shelf",
-    "Roleplay"
-  ],
-  "shortDescription": "Wooden toy car storage rack with multiple slots to neatly organize and display your child’s toy car collection while doubling up as a fun play station.",
-  "highlights": [
-    "Stores up to 70 toy cars of different sizes",
-    "Open slots make it easy for kids to access and organize cars",
-    "Strong wooden build for durability and long-term use",
-    "Doubles as a play station for racing and imaginative play",
-    "Promotes tidiness, organization, and creativity"
-  ],
-  "specifications": [
-    {
-      "label": "Small Slot Dimensions",
-      "value": "2.5 x 3 x 2.5 inches"
-    },
-    {
-      "label": "Big Slot Dimensions",
-      "value": "4.5 x 5 x 4 inches"
-    },
-    {
-      "label": "Overall Dimensions",
-      "value": "25 x 14 x 31.5 inches"
-    },
-    {
-      "label": "Material",
-      "value": "Wood"
-    }
-  ],
-  "shipInfo": "Made-to-order; production lead time 18-20 working days. For urgent delivery, contact customer care on WhatsApp or call 9877047723 / 9988209623.",
-  "cod": true,
-  "warranty": "All products are handmade, one piece at a time. Slight variations in colour, tone, shape, or size may occur. Not considered defects and not eligible for return or replacement.",
-  "url": "/products/toy-car-storage",
-  "related": [
-    174,
-    173,
-    172
-  ]
-},
+  {
+    "id": 71,
+    "slug": "toy-car-storage",
+    "title": "Toy Car Storage",
+    "brand": "Kiddies Kingdom",
+    "category": "Pretend Play",
+    "mrp": 20000,
+    "price": 20000,
+    "inStock": true,
+    "rating": 4.8,
+    "reviews": 10,
+    "image": "/products/Toy car storage1.WEBP",
+    "gallery": [
+      "/products/Toy car storage1.WEBP",
+      "/products/Toy car storage2.webp",
+      "/products/Toy car storage3.webp",
+      "/products/Toy car storage4.webp",
+      "/products/Toy car storage5.webp",
+      "/products/Toy car storage6.webp"
+    ],
+    "badges": [
+      "Toy Storage",
+      "Car Organizer",
+      "Wooden Shelf",
+      "Roleplay"
+    ],
+    "shortDescription": "Wooden toy car storage rack with multiple slots to neatly organize and display your child’s toy car collection while doubling up as a fun play station.",
+    "highlights": [
+      "Stores up to 70 toy cars of different sizes",
+      "Open slots make it easy for kids to access and organize cars",
+      "Strong wooden build for durability and long-term use",
+      "Doubles as a play station for racing and imaginative play",
+      "Promotes tidiness, organization, and creativity"
+    ],
+    "specifications": [
+      {
+        "label": "Small Slot Dimensions",
+        "value": "2.5 x 3 x 2.5 inches"
+      },
+      {
+        "label": "Big Slot Dimensions",
+        "value": "4.5 x 5 x 4 inches"
+      },
+      {
+        "label": "Overall Dimensions",
+        "value": "25 x 14 x 31.5 inches"
+      },
+      {
+        "label": "Material",
+        "value": "Wood"
+      }
+    ],
+    "shipInfo": "Made-to-order; production lead time 18-20 working days. For urgent delivery, contact customer care on WhatsApp or call 9877047723 / 9988209623.",
+    "cod": true,
+    "warranty": "All products are handmade, one piece at a time. Slight variations in colour, tone, shape, or size may occur. Not considered defects and not eligible for return or replacement.",
+    "url": "/products/toy-car-storage",
+    "related": [
+      174,
+      173,
+      172
+    ]
+  },
   {
     "id": 72,
     "slug": "monster-truck-garage-16-slots",
@@ -4975,6 +5421,38 @@
     "gallery": [
       "/products/A.webp"
     ],
+    "colorVariants": [
+      {
+        "name": "Lavender",
+        "images": [
+          "/products/A.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/a1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/a2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/a3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/a4.webp"
+        ]
+      }
+    ],
     "badges": [
       "Made-to-Order",
       "Personalized Decor",
@@ -5041,6 +5519,38 @@
     "image": "/products/B.webp",
     "gallery": [
       "/products/B.webp"
+    ],
+    "colorVariants": [
+      {
+        "name": "Lavender",
+        "images": [
+          "/products/B.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/b1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/b2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/b3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/b4.webp"
+        ]
+      }
     ],
     "badges": [
       "Made-to-Order",
@@ -5114,6 +5624,38 @@
       "Personalized Decor",
       "Stylish Storage"
     ],
+    "colorVariants": [
+      {
+        "name": "Lavender",
+        "images": [
+          "/products/C.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/c1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/c2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/c3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/c4.webp"
+        ]
+      }
+    ],
     "shortDescription": "A creative alphabet-shaped bookshelf in the letter C, perfect for organizing books and décor while adding personality to any room.",
     "highlights": [
       "Unique alphabet-shaped bookshelf for books, toys, and décor",
@@ -5175,6 +5717,38 @@
     "image": "/products/D.webp",
     "gallery": [
       "/products/D.webp"
+    ],
+    "colorVariants": [
+      {
+        "name": "Lavender",
+        "images": [
+          "/products/D.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/d1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/d2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/d3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/d4.webp"
+        ]
+      }
     ],
     "badges": [
       "Made-to-Order",
@@ -5243,6 +5817,38 @@
     "gallery": [
       "/products/E.webp"
     ],
+    "colorVariants": [
+      {
+        "name": "Lavender",
+        "images": [
+          "/products/E.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/e1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/e2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/e3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/e4.webp"
+        ]
+      }
+    ],
     "badges": [
       "Made-to-Order",
       "Personalized Decor",
@@ -5309,6 +5915,38 @@
     "image": "/products/F.webp",
     "gallery": [
       "/products/F.webp"
+    ],
+    "colorVariants": [
+      {
+        "name": "Lavender",
+        "images": [
+          "/products/F.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/f1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/f2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/f3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/f4.webp"
+        ]
+      }
     ],
     "badges": [
       "Made-to-Order",
@@ -5377,6 +6015,38 @@
     "gallery": [
       "/products/G.webp"
     ],
+    "colorVariants": [
+      {
+        "name": "Lavender",
+        "images": [
+          "/products/G.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/g1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/g2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/g3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/g4.webp"
+        ]
+      }
+    ],
     "badges": [
       "Made-to-Order",
       "Personalized Decor",
@@ -5443,6 +6113,38 @@
     "image": "/products/H.webp",
     "gallery": [
       "/products/H.webp"
+    ],
+    "colorVariants": [
+      {
+        "name": "Lavender",
+        "images": [
+          "/products/H.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/h1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/h2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/h3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/h4.webp"
+        ]
+      }
     ],
     "badges": [
       "Made-to-Order",
@@ -5511,6 +6213,38 @@
     "gallery": [
       "/products/I.webp"
     ],
+    "colorVariants": [
+      {
+        "name": "Lavender",
+        "images": [
+          "/products/I.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/i1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/i2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/i3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/i4.webp"
+        ]
+      }
+    ],
     "badges": [
       "Made-to-Order",
       "Personalized Decor",
@@ -5577,6 +6311,38 @@
     "image": "/products/J.webp",
     "gallery": [
       "/products/J.webp"
+    ],
+    "colorVariants": [
+      {
+        "name": "Lavender",
+        "images": [
+          "/products/J.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/j1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/j2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/j3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/j4.webp"
+        ]
+      }
     ],
     "badges": [
       "Made-to-Order",
@@ -5645,6 +6411,38 @@
     "gallery": [
       "/products/K.webp"
     ],
+    "colorVariants": [
+      {
+        "name": "Lavender",
+        "images": [
+          "/products/K.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/k1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/k2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/k3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/k4.webp"
+        ]
+      }
+    ],
     "badges": [
       "Made-to-Order",
       "Personalized Decor",
@@ -5711,6 +6509,38 @@
     "image": "/products/L.webp",
     "gallery": [
       "/products/L.webp"
+    ],
+    "colorVariants": [
+      {
+        "name": "Lavender",
+        "images": [
+          "/products/L.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/l1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/l2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/l3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/l4.webp"
+        ]
+      }
     ],
     "badges": [
       "Made-to-Order",
@@ -5779,6 +6609,38 @@
     "gallery": [
       "/products/M.webp"
     ],
+    "colorVariants": [
+      {
+        "name": "Lavender",
+        "images": [
+          "/products/M.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/m1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/m2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/m3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/m4.webp"
+        ]
+      }
+    ],
     "badges": [
       "Made-to-Order",
       "Personalized Decor",
@@ -5845,6 +6707,38 @@
     "image": "/products/N.webp",
     "gallery": [
       "/products/N.webp"
+    ],
+    "colorVariants": [
+      {
+        "name": "Light Blue",
+        "images": [
+          "/products/N.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/n1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/n2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/n3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/n4.webp"
+        ]
+      }
     ],
     "badges": [
       "Made-to-Order",
@@ -5913,6 +6807,38 @@
     "gallery": [
       "/products/O.webp"
     ],
+    "colorVariants": [
+      {
+        "name": "Lavender",
+        "images": [
+          "/products/O.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/o1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/o2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/o3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/o4.webp"
+        ]
+      }
+    ],
     "badges": [
       "Made-to-Order",
       "Personalized Decor",
@@ -5979,6 +6905,38 @@
     "image": "/products/P.webp",
     "gallery": [
       "/products/P.webp"
+    ],
+    "colorVariants": [
+      {
+        "name": "Lavender",
+        "images": [
+          "/products/P.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/p1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/p2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/p3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/p4.webp"
+        ]
+      }
     ],
     "badges": [
       "Made-to-Order",
@@ -6047,6 +7005,38 @@
     "gallery": [
       "/products/R.webp"
     ],
+    "colorVariants": [
+      {
+        "name": "Lavender",
+        "images": [
+          "/products/R.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/r1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/r2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/r3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/r4.webp"
+        ]
+      }
+    ],
     "badges": [
       "Made-to-Order",
       "Personalized Decor",
@@ -6114,6 +7104,38 @@
     "gallery": [
       "/products/S.webp"
     ],
+    "colorVariants": [
+      {
+        "name": "Lavender",
+        "images": [
+          "/products/S.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/s1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/s2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/s3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/s4.webp"
+        ]
+      }
+    ],
     "badges": [
       "Made-to-Order",
       "Personalized Decor",
@@ -6169,6 +7191,38 @@
     "image": "/products/T.webp",
     "gallery": [
       "/products/T.webp"
+    ],
+    "colorVariants": [
+      {
+        "name": "Lavender",
+        "images": [
+          "/products/T.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/t1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/t2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/t3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/t4.webp"
+        ]
+      }
     ],
     "badges": [
       "Made-to-Order",
@@ -6237,6 +7291,38 @@
     "gallery": [
       "/products/U.webp"
     ],
+    "colorVariants": [
+      {
+        "name": "Lavender",
+        "images": [
+          "/products/U.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/u1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/u2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/u3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/u4.webp"
+        ]
+      }
+    ],
     "badges": [
       "Made-to-Order",
       "Personalized Decor",
@@ -6304,6 +7390,38 @@
     "gallery": [
       "/products/V.webp"
     ],
+    "colorVariants": [
+      {
+        "name": "Lavender",
+        "images": [
+          "/products/V.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/v1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/v2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/v3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/v4.webp"
+        ]
+      }
+    ],
     "badges": [
       "Made-to-Order",
       "Personalized Decor",
@@ -6370,6 +7488,38 @@
     "image": "/products/Y.webp",
     "gallery": [
       "/products/Y.webp"
+    ],
+    "colorVariants": [
+      {
+        "name": "Light Blue",
+        "images": [
+          "/products/Y.webp"
+        ]
+      },
+      {
+        "name": "Aqua Blue",
+        "images": [
+          "/alphabetsColor/y1.webp"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "images": [
+          "/alphabetsColor/y2.webp"
+        ]
+      },
+      {
+        "name": "Red",
+        "images": [
+          "/alphabetsColor/y3.webp"
+        ]
+      },
+      {
+        "name": "Princess Pink",
+        "images": [
+          "/alphabetsColor/y4.webp"
+        ]
+      }
     ],
     "badges": [
       "Made-to-Order",

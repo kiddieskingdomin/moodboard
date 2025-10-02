@@ -37,7 +37,7 @@ export default function App() {
           <Route path="/products/:slug" element={<ProductDetail />} />
           <Route path="/blogs" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
-          <Route path="/category/:categoryName" element={<CategoryPage/>} />
+          <Route path="/category/:categoryName" element={<CategoryPage />} />
           <Route path="/refund-Policy" element={<RefundPolicy />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/shipping-policy" element={<ShippingPolicy />} />
@@ -45,7 +45,7 @@ export default function App() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="*" element={<ComingSoon />} />
           <Route path="/checkout" element={<CheckoutPage />} />
-<Route path="/order-success/:id" element={<OrderSuccess />} />
+          <Route path="/order-success/:id" element={<OrderSuccess />} />
           {/* Add other routes here as needed */}
         </Routes>
         <Footer />

@@ -77,7 +77,9 @@ export default function CheckoutPage() {
   );
 
   // shipping rule
-  const shippingPaise = subtotalPaise > 99900 ? 0 : (items.length ? 4999 : 0); // ₹50 delivery if order < ₹999
+  // shipping rule (🚫 disabled for testing)
+  const shippingPaise = 0;
+  // ₹50 delivery if order < ₹999
   const taxPaise = 0; // GST, if ever
   const personalizationPaise =
     form.personalisation?.trim() ? 5000 : 0; // add ₹50 only if text filled
