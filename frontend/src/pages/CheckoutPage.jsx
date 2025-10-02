@@ -39,7 +39,8 @@ export default function CheckoutPage() {
   });
 
   const [cart, setCart] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); // for checkout
+  const [verifying, setVerifying] = useState(false); // ✅ for payment verify
   const [booting, setBooting] = useState(true);
   const [error, setError] = useState("");
 
@@ -67,6 +68,7 @@ export default function CheckoutPage() {
   const items = cart?.items || [];
 
   // totals
+  // totals
   const subtotalPaise = useMemo(
     () =>
       items.reduce(
@@ -76,10 +78,9 @@ export default function CheckoutPage() {
     [items]
   );
 
-  // shipping rule
-  // shipping rule (🚫 disabled for testing)
-  const shippingPaise = 0;
-  // ₹50 delivery if order < ₹999
+  // ✅ shipping rule wapas add kiya
+  const shippingPaise = subtotalPaise > 99900 ? 0 : (items.length ? 4999 : 0);
+
   const taxPaise = 0; // GST, if ever
   const personalizationPaise =
     form.personalisation?.trim() ? 5000 : 0; // add ₹50 only if text filled
@@ -95,12 +96,15 @@ export default function CheckoutPage() {
   const validate = () => {
     if (!items.length) return "Your cart is empty.";
     if (!form.name?.trim()) return "Please enter your full name.";
-    if (!/^\S+@\S+\.\S+$/.test(form.email)) return "Please enter a valid email.";
-    if (!/^[6-9]\d{9}$/.test(form.phone)) return "Please enter a valid 10-digit phone.";
+    if (!/^\S+@\S+\.\S+$/.test(form.email))
+      return "Please enter a valid email.";
+    if (!/^[6-9]\d{9}$/.test(form.phone))
+      return "Please enter a valid 10-digit phone.";
     if (!form.line1?.trim()) return "Please enter your address line 1.";
     if (!form.city?.trim()) return "Please enter your city.";
     if (!form.state?.trim()) return "Please enter your state.";
-    if (!/^\d{6}$/.test(form.pincode)) return "Please enter a valid 6-digit pincode.";
+    if (!/^\d{6}$/.test(form.pincode))
+      return "Please enter a valid 6-digit pincode.";
     return "";
   };
 
@@ -130,7 +134,6 @@ export default function CheckoutPage() {
             state: form.state,
             pincode: form.pincode,
           },
-          // backend accepts both `personalisation` and `personalization`
           personalization: form.personalisation?.trim() || "",
           clientTotals: {
             subtotalPaise,
@@ -168,18 +171,23 @@ export default function CheckoutPage() {
         },
         theme: { color: "#ef927d" },
         handler: async function (response) {
-          // Step C: verify payment
-          await axios.post(
-            `${API_BASE}/api/checkout/verify`,
-            { ...response, email: form.email },
-            { withCredentials: true }
-          );
-          navigate(`/order-success/${orderId}`);
-        },
-        modal: {
-          ondismiss: function () {
-            // user closed the popup
-          },
+          // ✅ loader during verification
+          setVerifying(true);
+          try {
+            await axios.post(
+              `${API_BASE}/api/checkout/verify`,
+              { ...response, email: form.email },
+              { withCredentials: true }
+            );
+            navigate(`/order-success/${orderId}`);
+          } catch (err) {
+            console.error("Verification failed", err);
+            setError(
+              "Payment verification failed. Please contact support."
+            );
+          } finally {
+            setVerifying(false);
+          }
         },
       };
 
@@ -188,12 +196,25 @@ export default function CheckoutPage() {
     } catch (err) {
       console.error("Checkout failed", err);
       setError(
-        err?.response?.data?.error || "Failed to start checkout. Please try again."
+        err?.response?.data?.error ||
+        "Failed to start checkout. Please try again."
       );
     } finally {
       setLoading(false);
     }
   };
+
+  // ✅ Loader screen during verification
+  if (verifying) {
+    return (
+      <div className="fixed inset-0 flex flex-col items-center justify-center bg-white/90 z-50">
+        <div className="animate-spin rounded-full h-16 w-16 border-4 border-[#ef927d] border-t-transparent"></div>
+        <p className="mt-4 text-lg font-medium text-slate-700">
+          Verifying payment...
+        </p>
+      </div>
+    );
+  }
 
   if (booting) {
     return (
@@ -302,14 +323,14 @@ export default function CheckoutPage() {
                       <div className="truncate text-sm text-slate-800">
                         {it.titleSnap || "Product"}
                       </div>
-
-                      {/* 👇 show variant color if present */}
                       {it.colorSnap ? (
                         <div className="text-xs text-slate-600">
-                          Color: <span className="font-medium text-slate-700">{it.colorSnap}</span>
+                          Color:{" "}
+                          <span className="font-medium text-slate-700">
+                            {it.colorSnap}
+                          </span>
                         </div>
                       ) : null}
-
                       <div className="text-xs text-slate-600">
                         {formatINR(price)} × {it.qty}
                       </div>
@@ -330,15 +351,12 @@ export default function CheckoutPage() {
               <span className="text-slate-600">Subtotal</span>
               <span className="text-slate-900">{formatINR(subtotalPaise)}</span>
             </div>
-
             <div className="flex justify-between">
               <span className="text-slate-600">Shipping</span>
               <span className="text-slate-900">
                 {items.length ? formatINR(shippingPaise) : "—"}
               </span>
             </div>
-
-            {/* show personalization charge if applied */}
             {form.personalisation?.trim() ? (
               <div className="flex justify-between">
                 <span className="text-slate-600">
