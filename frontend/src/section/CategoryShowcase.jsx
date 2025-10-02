@@ -2,24 +2,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+// छोटा helper function slug बनाने के लिए
+const slugify = (text) =>
+  text.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]+/g, "");
+
 const items = [
   {
     title: "Furniture",
-    to: "/shop-all",
-    img: "category/furniture.png",     // put images in /public
-    bg: "#F5E8EF",              // pastel pink
+    img: "category/furniture.png", // put images in /public
+    bg: "#F5E8EF", // pastel pink
   },
   {
-    title: "Pretend Play",
-    to: "/shop-all",
+    title: "Jungle Gym",
     img: "category/jungle gym.png",
-    bg: "#F7EDCC",              // pastel sand
+    bg: "#F7EDCC", // pastel sand
   },
   {
     title: "Pretend Play",
-    to: "/shop-all",
     img: "category/pretend n play.png",
-    bg: "#EAF1F8",              // pastel blue
+    bg: "#EAF1F8", // pastel blue
   },
 ];
 
@@ -30,19 +31,21 @@ const CategoriesShowcase = () => {
         {/* Heading */}
         <div className="text-center">
           <h2 className="text-[28px] leading-tight text-[#f2ae7f] md:text-[34px] font-extrabold">
-            Inspire Creativity, <span className="text-[#d8a298]">Spark Innovation</span>
+            Inspire Creativity,{" "}
+            <span className="text-[#d8a298]">Spark Innovation</span>
           </h2>
           <p className="mt-2 text-sm md:text-base text-slate-600 font-bold">
-            Encourage innovation and artistic expression with our range of creative play essentials
+            Encourage innovation and artistic expression with our range of
+            creative play essentials
           </p>
         </div>
 
         {/* Cards */}
-        <div className="mt-2 grid gap-5 sm:grid-cols- lg:grid-cols-3">
+        <div className="mt-2 grid gap-5 sm:grid-cols-1 md:grid-cols-3">
           {items.map((it) => (
             <Link
               key={it.title}
-              to={it.to}
+              to={`/category/${slugify(it.title)}`}
               className="group block font-bold"
               aria-label={it.title}
             >
@@ -53,7 +56,7 @@ const CategoriesShowcase = () => {
                 <img
                   src={it.img}
                   alt={it.title}
-                  className="mx-auto h-56 w-full  object-cover md:h-64 rounded-3xl"
+                  className="mx-auto h-56 w-full object-cover md:h-64 rounded-3xl"
                   loading="lazy"
                 />
               </div>
