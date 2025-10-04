@@ -7,31 +7,35 @@ import {
   FiX,
   FiShoppingCart,
 } from "react-icons/fi";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { usePopup } from "./PopupContext";
-import CartDrawer from "./cartDrawer";        
-import { getCart } from "../api/cart";        // 👈 count fetch
+import CartDrawer from "./cartDrawer";
+import { getCart } from "../api/cart";
 
 const TopNavBar = ({ cartCount: cartCountProp }) => {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);        // mobile menu
-  const [cartOpen, setCartOpen] = useState(false); // 👈 drawer state
+  const [open, setOpen] = useState(false);          // mobile menu
+  const [cartOpen, setCartOpen] = useState(false);  // cart drawer
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
- const [count, setCount] = useState(() => {
-  try {
-    const raw = localStorage.getItem("cart");
-    if (raw) {
-      const parsed = JSON.parse(raw);
-      return parsed.items?.reduce((n, it) => n + (it.qty || 0), 0) || 0;
-    }
-  } catch (e) {
-    // ignore
-  }
-  return cartCountProp || 0;
-}); // 👈 badge count
+
+  const [count, setCount] = useState(() => {
+    try {
+      const raw = localStorage.getItem("cart");
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        return parsed.items?.reduce((n, it) => n + (it.qty || 0), 0) || 0;
+      }
+    } catch (_) {}
+    return cartCountProp || 0;
+  });
+
   const navigate = useNavigate();
+  const location = useLocation();
   const { setShowPopup } = usePopup();
+
+  // read current ?q= from URL to keep inputs in sync
+  const currentQ = new URLSearchParams(location.search).get("q") || "";
 
   // Fetch categories
   useEffect(() => {
@@ -41,7 +45,9 @@ const TopNavBar = ({ cartCount: cartCountProp }) => {
         const data = await res.json();
         const unique = [
           ...new Set(
-            (Array.isArray(data) ? data : []).map(p => p.category).filter(Boolean)
+            (Array.isArray(data) ? data : [])
+              .map((p) => p.category)
+              .filter(Boolean)
           ),
         ].sort();
         setCategories(unique);
@@ -61,30 +67,40 @@ const TopNavBar = ({ cartCount: cartCountProp }) => {
   }, []);
 
   // Initial cart count + live updates on custom event
-useEffect(() => {
-  const fetchCount = async () => {
-    try {
-      const cart = await getCart();
-      setCount(cart?.items?.reduce((n, it) => n + (it.qty || 0), 0) || 0);
-    } catch (e) {}
-  };
-  fetchCount();
+  useEffect(() => {
+    const fetchCount = async () => {
+      try {
+        const cart = await getCart();
+        setCount(cart?.items?.reduce((n, it) => n + (it.qty || 0), 0) || 0);
+      } catch (e) {}
+    };
+    fetchCount();
 
-  const onCartUpdated = () => fetchCount();
-  window.addEventListener("cart:updated", onCartUpdated);
-  return () => window.removeEventListener("cart:updated", onCartUpdated);
-}, []);
-
+    const onCartUpdated = () => fetchCount();
+    window.addEventListener("cart:updated", onCartUpdated);
+    return () => window.removeEventListener("cart:updated", onCartUpdated);
+  }, []);
 
   // If parent passes a new prop, sync it
   useEffect(() => {
     if (typeof cartCountProp === "number") setCount(cartCountProp);
   }, [cartCountProp]);
 
-  const handleSearchSubmit = (e) => {
+  // unified search submit. Can optionally close the mobile menu.
+  const handleSearchSubmit = (e, { closeMenu } = {}) => {
     e.preventDefault();
     const q = new FormData(e.currentTarget).get("q");
-    if (q) navigate(`/search?q=${encodeURIComponent(q)}`);
+    if (q && typeof q === "string") {
+      navigate(`/search?q=${encodeURIComponent(q)}`);
+      // close the mobile sheet and hide keyboard if needed
+      if (closeMenu) {
+        setOpen(false);
+        // hide soft keyboard on mobile
+        try {
+          document.activeElement?.blur?.();
+        } catch {}
+      }
+    }
   };
 
   const handleQuickOpen = () => setShowPopup(true);
@@ -113,7 +129,11 @@ useEffect(() => {
               </div>
               <div className="justify-self-center">
                 <Link to="/">
-                  <img src="/kk_logo.webp" alt="Kiddies Kingdom" className="block h-10 w-auto md:h-14" />
+                  <img
+                    src="/kk_logo.webp"
+                    alt="Kiddies Kingdom"
+                    className="block h-10 w-auto md:h-14"
+                  />
                 </Link>
               </div>
               <div className="flex items-center justify-end">
@@ -142,7 +162,11 @@ useEffect(() => {
 
   return (
     <>
-      <header className={`fixed top-0 z-50 w-full transition-all ${scrolled ? "bg-white backdrop-blur" : "bg-white"}`}>
+      <header
+        className={`fixed top-0 z-50 w-full transition-all ${
+          scrolled ? "bg-white backdrop-blur" : "bg-white"
+        }`}
+      >
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="grid h-16 grid-cols-3 items-center gap-3">
             {/* LEFT */}
@@ -151,12 +175,13 @@ useEffect(() => {
                 className="md:hidden inline-flex items-center justify-center rounded-lg p-2 text-slate-700 hover:bg-slate-100"
                 onClick={() => setOpen(true)}
                 aria-label="Open menu"
+                aria-expanded={open ? "true" : "false"}
               >
                 <FiMenu className="text-xl" />
               </button>
 
               <form
-                onSubmit={handleSearchSubmit}
+                onSubmit={(e) => handleSearchSubmit(e)}
                 className="hidden md:flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 w-80 focus-within:ring-2 focus-within:ring-violet-300"
                 role="search"
               >
@@ -165,6 +190,7 @@ useEffect(() => {
                   name="q"
                   type="search"
                   placeholder="Search our store"
+                  defaultValue={currentQ}
                   className="w-full bg-transparent text-sm placeholder-slate-400 focus:outline-none"
                 />
               </form>
@@ -173,7 +199,11 @@ useEffect(() => {
             {/* CENTER */}
             <div className="justify-self-center">
               <Link to="/" aria-label="Kiddies Kingdom home">
-                <img src="/kk_logo.webp" alt="Kiddies Kingdom" className="block h-10 w-auto md:h-14" />
+                <img
+                  src="/kk_logo.webp"
+                  alt="Kiddies Kingdom"
+                  className="block h-10 w-auto md:h-14"
+                />
               </Link>
             </div>
 
@@ -206,11 +236,19 @@ useEffect(() => {
         </div>
 
         {/* Category strip */}
-        <nav aria-label="Categories" className="border-t border-amber-100 bg-[#fff2ea]">
+        <nav
+          aria-label="Categories"
+          className="border-t border-amber-100 bg-[#fff2ea]"
+        >
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <ul className="hidden h-12 items-center justify-center gap-6 md:flex">
               <li className="flex items-stretch">
-                <Link to="/" className="flex items-center text-base font-medium text-[#d8a298]">Home</Link>
+                <Link
+                  to="/"
+                  className="flex items-center text-base font-medium text-[#d8a298]"
+                >
+                  Home
+                </Link>
               </li>
 
               <li className="group relative flex items-stretch">
@@ -223,7 +261,9 @@ useEffect(() => {
                     {categories.map((category) => (
                       <li key={category}>
                         <Link
-                          to={`/category/${category.toLowerCase().replace(/\s+/g, "-")}`}
+                          to={`/category/${category
+                            .toLowerCase()
+                            .replace(/\s+/g, "-")}`}
                           className="block rounded-md px-3 py-2 text-sm text-violet-800 hover:bg-white hover:text-[#d8a298] capitalize"
                         >
                           {category}
@@ -236,7 +276,10 @@ useEffect(() => {
 
               {navItems.map((item) => (
                 <li key={item.label} className="flex items-stretch">
-                  <Link to={item.to} className="flex items-center text-base font-medium text-[#d8a298]">
+                  <Link
+                    to={item.to}
+                    className="flex items-center text-base font-medium text-[#d8a298]"
+                  >
                     {item.label}
                   </Link>
                 </li>
@@ -246,13 +289,14 @@ useEffect(() => {
         </nav>
       </header>
 
-      {/* Mobile drawer */}
+      {/* Mobile drawer backdrop */}
       <div
         className={`fixed inset-0 z-40 bg-slate-900/30 backdrop-blur-sm transition-opacity md:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={() => setOpen(false)}
       />
+      {/* Mobile drawer */}
       <aside
         className={`fixed left-0 top-0 z-50 h-full w-[85%] max-w-sm transform bg-white shadow-xl transition-transform md:hidden ${
           open ? "translate-x-0" : "-translate-x-full"
@@ -272,18 +316,27 @@ useEffect(() => {
         </div>
 
         <div className="px-4 py-3">
-          <form onSubmit={handleSearchSubmit} className="mb-3 flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2">
+          <form
+            onSubmit={(e) => handleSearchSubmit(e, { closeMenu: true })}
+            className="mb-3 flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2"
+            role="search"
+          >
             <FiSearch className="text-violet-800" />
             <input
               name="q"
               type="search"
               placeholder="Search our store"
+              defaultValue={currentQ}
               className="w-full bg-transparent text-sm placeholder-slate-400 focus:outline-none"
             />
           </form>
 
           <nav className="space-y-1">
-            <Link to="/" onClick={() => setOpen(false)} className="block rounded-md px-3 py-2 font-medium text-[#d8a298] hover:bg-violet-50">
+            <Link
+              to="/"
+              onClick={() => setOpen(false)}
+              className="block rounded-md px-3 py-2 font-medium text-[#d8a298] hover:bg-violet-50"
+            >
               Home
             </Link>
 
@@ -296,7 +349,9 @@ useEffect(() => {
                 {categories.map((category) => (
                   <Link
                     key={category}
-                    to={`/category/${category.toLowerCase().replace(/\s+/g, "-")}`}
+                    to={`/category/${category
+                      .toLowerCase()
+                      .replace(/\s+/g, "-")}`}
                     onClick={() => setOpen(false)}
                     className="block rounded-md px-3 py-2 text-sm text-violet-800 hover:bg-amber-50"
                   >
@@ -323,7 +378,7 @@ useEffect(() => {
       {/* spacer */}
       <div className="h-16 md:h-[112px]" />
 
-      {/* 👇 Cart Drawer mounted here. Icon opens it. */}
+      {/* Cart Drawer */}
       <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
     </>
   );

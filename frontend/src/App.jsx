@@ -17,10 +17,11 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import RefundPolicy from "./pages/RefundPolicy";
 import ShippingPolicy from "./pages/ShippingPolicies";
 import TermsOfService from "./pages/TermofServices";
-import SearchPage from "./pages/SearchPage";
+// import SearchPage from "./pages/SearchPage";
 import CategoryPage from "./pages/CategoryPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import OrderSuccess from "./pages/OrderSuccessPage";
+import Search from "./pages/Search";
 
 export default function App() {
   return (
@@ -42,7 +43,7 @@ export default function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/shipping-policy" element={<ShippingPolicy />} />
           <Route path="/t&c" element={<TermsOfService />} />
-          <Route path="/search" element={<SearchPage />} />
+            <Route path="/search" element={<Search />} />
           <Route path="*" element={<ComingSoon />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/order-success/:id" element={<OrderSuccess />} />

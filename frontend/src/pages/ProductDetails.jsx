@@ -31,10 +31,10 @@ import CartDrawer from "../components/cartDrawer";
 const formatINR = (n) =>
   typeof n === "number"
     ? n.toLocaleString("en-IN", {
-        style: "currency",
-        currency: "INR",
-        maximumFractionDigits: 0,
-      })
+      style: "currency",
+      currency: "INR",
+      maximumFractionDigits: 0,
+    })
     : n;
 
 const discountPct = (mrp, price) =>
@@ -88,17 +88,15 @@ function Accordion({ items = [], defaultOpen = 0, single = true }) {
               <span className="text-lg font-semibold">{it.title}</span>
             </div>
             <FiChevronDown
-              className={`h-5 w-5 shrink-0 text-slate-500 transition-transform duration-200 ${
-                isOpen(i) ? "rotate-180" : "rotate-0"
-              }`}
+              className={`h-5 w-5 shrink-0 text-slate-500 transition-transform duration-200 ${isOpen(i) ? "rotate-180" : "rotate-0"
+                }`}
             />
           </button>
 
           {/* fully collapses: no leftover padding */}
           <div
-            className={`overflow-hidden transition-all duration-200 ease-out ${
-              isOpen(i) ? "max-h-[1000px] px-4 pb-4" : "max-h-0 px-4 pb-0"
-            }`}
+            className={`overflow-hidden transition-all duration-200 ease-out ${isOpen(i) ? "max-h-[1000px] px-4 pb-4" : "max-h-0 px-4 pb-0"
+              }`}
           >
             <div className="text-sm text-slate-700">{it.content}</div>
           </div>
@@ -144,16 +142,14 @@ function SpecsAccordion({ specs = [] }) {
                 </dt>
               </div>
               <FiChevronDown
-                className={`h-5 w-5 shrink-0 text-slate-500 transition-transform ${
-                  open ? "rotate-180" : "rotate-0"
-                }`}
+                className={`h-5 w-5 shrink-0 text-slate-500 transition-transform ${open ? "rotate-180" : "rotate-0"
+                  }`}
               />
             </button>
 
             <div
-              className={`overflow-hidden transition-all duration-200 ease-out ${
-                open ? "max-h-[600px] px-3 pb-3" : "max-h-0 px-3 pb-0"
-              }`}
+              className={`overflow-hidden transition-all duration-200 ease-out ${open ? "max-h-[600px] px-3 pb-3" : "max-h-0 px-3 pb-0"
+                }`}
             >
               <dd className="text-sm leading-snug text-slate-800">{s.value}</dd>
             </div>
@@ -264,6 +260,7 @@ export default function ProductDetail() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [adding, setAdding] = useState(false);
   const [selectedColor, setSelectedColor] = useState(null);
+  
 
   const handleEnquiry = () => setShowEnquiryModal(true);
 
@@ -319,14 +316,25 @@ export default function ProductDetail() {
   // Gallery calculation - FIXED: Always return an array
   const currentGallery = useMemo(() => {
     if (!product) return [];
-    
+
     if (product?.colorVariants?.length && selectedColor) {
       const variantImages = product.colorVariants.find((c) => c.name === selectedColor)?.images;
       return variantImages || product.gallery || [];
     }
-    
+
     return product?.gallery?.length ? product.gallery : [product?.image || "/placeholder.png"];
   }, [product, selectedColor]);
+  // ----- Variant-aware price source -----
+  const selectedVariant = useMemo(() => {
+    if (!product?.colorVariants?.length || !selectedColor) return null;
+    return product.colorVariants.find(v => v?.name === selectedColor) || null;
+  }, [product, selectedColor]);
+
+
+  const currentPrice = selectedVariant?.price ?? product?.price ?? 0;
+  const currentMrp = selectedVariant?.mrp ?? product?.mrp ?? 0;
+  const pct = discountPct(currentMrp, currentPrice);
+
 
   if (state === "loading") {
     return (
@@ -357,7 +365,7 @@ export default function ProductDetail() {
   const placeholder = "/placeholder.png";
   const imgs = currentGallery.filter(Boolean);
   const safeSel = Math.min(selImg, Math.max(0, imgs.length - 1));
-  const pct = discountPct(product.mrp, product.price);
+  // const pct = discountPct(product.mrp, product.price);
 
   const handleWhatsApp = () => {
     if (!product) return;
@@ -404,19 +412,38 @@ export default function ProductDetail() {
     },
   ];
 
-  const handleAddToCart = async () => {
-    if (!product) return;
-    try {
-      setAdding(true);
-      await addToCart(product.id, 1, selectedColor);
-      window.dispatchEvent(new Event("cart:updated"));
-      setDrawerOpen(true);
-    } catch (e) {
-      console.error("Add to cart failed:", e);
-    } finally {
-      setAdding(false);
-    }
-  };
+const keyForLine = (pid, color) => `${pid}|${color || ""}`;
+
+const handleAddToCart = async () => {
+  if (!product) return;
+  try {
+    setAdding(true);
+
+    // 1) server ko simple payload
+    await addToCart(product.id, 1, selectedColor);
+
+    // 2) client snapshot broadcast (variant-aware)
+    const detail = {
+      key: keyForLine(product.id, selectedColor),
+      productId: product.id,
+      color: selectedColor || null,
+      price: Number(currentPrice) || 0,
+      mrp: Number(currentMrp) || 0,
+      title: product.title,
+      image: (currentGallery?.[0]) || product.image || "/placeholder.png",
+    };
+    window.dispatchEvent(new CustomEvent("cart:snapshot", { detail }));
+
+    // 3) usual refresh open drawer
+    window.dispatchEvent(new Event("cart:updated"));
+    setDrawerOpen(true);
+  } catch (e) {
+    console.error("Add to cart failed:", e);
+  } finally {
+    setAdding(false);
+  }
+};
+
 
   return (
     <main className="bg-[#FFFDFB]">
@@ -435,63 +462,63 @@ export default function ProductDetail() {
 
         <div className="mt-6 grid gap-10 lg:grid-cols-2">
           {/* Left: sticky images */}
-{/* Left: sticky images */}
-<div className="self-start lg:sticky lg:top-20">
-  {/* Desktop/Large: left-side vertical thumbs + main */}
-  <div className="hidden lg:grid grid-cols-[70px_1fr] gap-4">
-    {/* thumbnails (desktop) */}
-    <div className="flex flex-col gap-3">
-      {imgs.map((src, i) => (
-        <button
-          key={(src || "img") + i}
-          onClick={() => setSelImg(i)}
-          className={`overflow-hidden rounded-xl ring-1 ring-slate-200 transition
+          {/* Left: sticky images */}
+          <div className="self-start lg:sticky lg:top-20">
+            {/* Desktop/Large: left-side vertical thumbs + main */}
+            <div className="hidden lg:grid grid-cols-[70px_1fr] gap-4">
+              {/* thumbnails (desktop) */}
+              <div className="flex flex-col gap-3">
+                {imgs.map((src, i) => (
+                  <button
+                    key={(src || "img") + i}
+                    onClick={() => setSelImg(i)}
+                    className={`overflow-hidden rounded-xl ring-1 ring-slate-200 transition
             ${i === safeSel ? "outline-2 outline-violet-400" : "hover:ring-violet-200"}`}
-        >
-          <img src={src} alt="" className="h-16 w-16 object-cover" />
-        </button>
-      ))}
-    </div>
+                  >
+                    <img src={src} alt="" className="h-16 w-16 object-cover" />
+                  </button>
+                ))}
+              </div>
 
-    {/* main image (desktop) */}
-    <div className="overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
-      <div className="aspect-[4/3]">
-        <img
-          src={imgs[safeSel] || placeholder}
-          alt={product.title || "Product image"}
-          className="h-auto w-full object-cover"
-        />
-      </div>
-    </div>
-  </div>
+              {/* main image (desktop) */}
+              <div className="overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
+                <div className="aspect-[4/3]">
+                  <img
+                    src={imgs[safeSel] || placeholder}
+                    alt={product.title || "Product image"}
+                    className="h-auto w-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
 
-  {/* Mobile/Tablet: main image first, thumbnails below in a horizontal row */}
-  <div className="lg:hidden">
-    <div className="overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
-      <div className="aspect-[4/3]">
-        <img
-          src={imgs[safeSel] || placeholder}
-          alt={product.title || "Product image"}
-          className="h-auto w-full object-cover"
-        />
-      </div>
-    </div>
+            {/* Mobile/Tablet: main image first, thumbnails below in a horizontal row */}
+            <div className="lg:hidden">
+              <div className="overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
+                <div className="aspect-[4/3]">
+                  <img
+                    src={imgs[safeSel] || placeholder}
+                    alt={product.title || "Product image"}
+                    className="h-auto w-full object-cover"
+                  />
+                </div>
+              </div>
 
-    {/* thumbnails (mobile) */}
-    <div className="mt-3 flex gap-2 overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden">
-      {imgs.map((src, i) => (
-        <button
-          key={(src || "img") + i}
-          onClick={() => setSelImg(i)}
-          className={`shrink-0 overflow-hidden rounded-xl ring-1 ring-slate-200 transition
+              {/* thumbnails (mobile) */}
+              <div className="mt-3 flex gap-2 overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden">
+                {imgs.map((src, i) => (
+                  <button
+                    key={(src || "img") + i}
+                    onClick={() => setSelImg(i)}
+                    className={`shrink-0 overflow-hidden rounded-xl ring-1 ring-slate-200 transition
             ${i === safeSel ? " outline-2 outline-violet-400" : "hover:ring-violet-200"}`}
-        >
-          <img src={src} alt="" className="h-16 w-20 object-cover" />
-        </button>
-      ))}
-    </div>
-  </div>
-</div>
+                  >
+                    <img src={src} alt="" className="h-16 w-20 object-cover" />
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
 
 
           {/* Right: details */}
@@ -520,9 +547,8 @@ export default function ProductDetail() {
               </span>
               <span className="inline-flex items-center gap-2 text-slate-600">
                 <span
-                  className={`inline-block h-2.5 w-2.5 rounded-full ${
-                    product.inStock ? "bg-[#4F9F5B]" : "bg-slate-300"
-                  }`}
+                  className={`inline-block h-2.5 w-2.5 rounded-full ${product.inStock ? "bg-[#4F9F5B]" : "bg-slate-300"
+                    }`}
                 />
                 {product.inStock ? "In stock" : "Out of stock"}
               </span>
@@ -531,67 +557,70 @@ export default function ProductDetail() {
             {/* price row */}
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <div className="text-2xl font-semibold text-slate-900">
-                {formatINR(product.price)}
+                {currentPrice ? formatINR(currentPrice) : (
+                  <span className="inline-flex h-6 w-24 animate-pulse rounded bg-slate-200" />
+                )}
               </div>
-              {product.mrp && product.mrp > product.price && (
+              {currentMrp && currentMrp > currentPrice ? (
                 <>
                   <div className="text-lg text-slate-500 line-through">
-                    {formatINR(product.mrp)}
+                    {formatINR(currentMrp)}
                   </div>
                   <span className="rounded-full bg-[#EAF4F2] px-3 py-1 text-sm text-[#276D55] ring-1 ring-[#CDE7E1]">
                     {pct}% OFF
                   </span>
                 </>
-              )}
+              ) : null}
             </div>
+
+
 
             {/* Color Variants */}
-{/* Color Variants */}
-{product.colorVariants?.length ? (
-  <div className="mt-5">
-    <h4 className="mb-2 text-sm font-medium text-slate-800">Choose Color</h4>
+            {/* Color Variants */}
+            {product.colorVariants?.length ? (
+              <div className="mt-5">
+                <h4 className="mb-2 text-sm font-medium text-slate-800">Choose Color</h4>
 
-    <div className="flex flex-wrap gap-3">
-      {product.colorVariants.map((variant) => {
-        const thumb = Array.isArray(variant.images) && variant.images[0]
-          ? variant.images[0]
-          : product.image || "/placeholder.png";
-        const selected = selectedColor === variant.name;
+                <div className="flex flex-wrap gap-3">
+                  {product.colorVariants.map((variant) => {
+                    const thumb = Array.isArray(variant.images) && variant.images[0]
+                      ? variant.images[0]
+                      : product.image || "/placeholder.png";
+                    const selected = selectedColor === variant.name;
 
-        return (
-          <button
-            key={variant.name}
-            onClick={() => {
-              setSelectedColor(variant.name);
-              setSelImg(0);
-            }}
-            type="button"
-            className={`group w-[92px] rounded-xl p-1 text-center ring-1 transition
+                    return (
+                      <button
+                        key={variant.name}
+                        onClick={() => {
+                          setSelectedColor(variant.name);
+                          setSelImg(0);
+                        }}
+                        type="button"
+                        className={`group w-[92px] rounded-xl p-1 text-center ring-1 transition
               ${selected ? "ring-pink-400 bg-pink-50" : "ring-slate-200 hover:ring-pink-200"}`}
-            aria-pressed={selected}
-          >
-            <div className="aspect-square overflow-hidden rounded-lg bg-white">
-              <img
-                src={thumb}
-                alt={variant.name}
-                className="h-full w-full object-cover"
-                loading="lazy"
-              />
-            </div>
-            <div
-              className={`mt-1 line-clamp-1 text-[11px] ${
-                selected ? "text-pink-700 font-semibold" : "text-slate-700"
-              }`}
-              title={variant.name}
-            >
-              {variant.name}
-            </div>
-          </button>
-        );
-      })}
-    </div>
-  </div>
-) : null}
+                        aria-pressed={selected}
+                      >
+                        <div className="aspect-square overflow-hidden rounded-lg bg-white">
+                          <img
+                            src={thumb}
+                            alt={variant.name}
+                            className="h-full w-full object-cover"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div
+                          className={`mt-1 line-clamp-1 text-[11px] ${selected ? "text-pink-700 font-semibold" : "text-slate-700"
+                            }`}
+                          title={variant.name}
+                        >
+                          {variant.name}
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : null}
 
 
             {/* info stripe */}
@@ -680,10 +709,9 @@ export default function ProductDetail() {
                   onClick={handleAddToCart}
                   disabled={adding || !product.inStock}
                   className={`inline-flex items-center justify-center rounded-xl px-6 py-4 text-base font-semibold text-white transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
-                    ${
-                      product.inStock
-                        ? "bg-violet-600 hover:bg-violet-700 focus-visible:ring-violet-600"
-                        : "bg-slate-300 cursor-not-allowed"
+                    ${product.inStock
+                      ? "bg-violet-600 hover:bg-violet-700 focus-visible:ring-violet-600"
+                      : "bg-slate-300 cursor-not-allowed"
                     }`}
                   aria-label="Add to cart"
                 >
@@ -691,8 +719,8 @@ export default function ProductDetail() {
                   {adding
                     ? "Adding…"
                     : product.inStock
-                    ? "Add to Cart"
-                    : "Out of stock"}
+                      ? "Add to Cart"
+                      : "Out of stock"}
                 </button>
               </div>
 

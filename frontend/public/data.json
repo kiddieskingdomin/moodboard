@@ -789,11 +789,14 @@
     "inStock": true,
     "rating": 4.5,
     "reviews": 8,
-    "image": "/products/firetruck.webp",
+    "image": "/products/Marshall_s Fire Station.jpg",
     "gallery": [
-      "/products/firetruck.webp",
-      "/products/firetruck2.webp",
-      "/products/firetruck3.webp"
+      "/products/Marshall_s Fire Station.jpg",
+      "/products/Marshall_s Fire Station(1).JPG",
+      "/products/Marshall_s Fire Station2.jpg",
+      "/products/Marshall_s Fire Station3.jpg",
+      "/products/Marshall_s Fire Station4.jpg",
+      "/products/Marshall_s Fire Station5.jpg"
     ],
     "badges": [
       "Roleplay",
@@ -834,7 +837,7 @@
     "shipInfo": "Made-to-order; production lead time 10-15 working days",
     "cod": true,
     "warranty": "All our products are handmade, one piece at a time. Slight variations in colour, tone, shape, or size may occur. Not considered defects and not eligible for return or replacement.",
-    "url": "/products/marshalls-fire-truck",
+    "url": "/products/marshalls-fire-station",
     "related": [
       144,
       143,
@@ -1064,7 +1067,8 @@
     "reviews": 42,
     "image": "/products/ownbrew.webp",
     "gallery": [
-      "/products/ownbrew.webp",
+      "/products/ownbrew.PNG",
+      "/products/ownbrew.JPG",
       "/products/ownbrew2.webp",
       "/products/ownbrew3.webp",
       "/products/ownbrew4.webp"
@@ -1129,6 +1133,29 @@
     "gallery": [
       "/products/blocks.JPG",
       "/products/blocks2.PNG"
+    ],
+    "colorVariants": [
+      {
+        "name": "Mini Pack - 24 Blocks",
+        "mrp": 1200,
+        "price": 1100,
+        "images": [
+          "/products/Builder - Mini pack_.png",
+          "/products/Builder - mini pack 2.jpg",
+          "/products/Builder - mini pack 3.jpg",
+          "/products/Builder - mini pack 4.jpg"
+        ]
+      },
+      {
+        "name": "Large Pack - 45 Blocks",
+        "mrp": 2150,
+        "price": 1800,
+        "images": [
+          "/products/Builder - large pack.png",
+          "/products/Builder - large pack 2.png",
+          "/products/Builder - large pack 3.png"
+        ]
+      }
     ],
     "badges": [
       "Montessori",
@@ -1284,10 +1311,15 @@
     "inStock": true,
     "rating": 4.8,
     "reviews": 0,
-    "image": "/products/spindlebox1.jpg",
+    "image": "/products/Spindle Box.jpg",
     "gallery": [
-      "/products/spindlebox1.jpg",
-      "/products/spindlebox2.jpg"
+      "/products/Spindle Box.jpg",
+      "/products/Spindle Box2.jpg",
+      "/products/Spindle Box3.jpg",
+      "/products/Spindle Box4.jpg",
+      "/products/Spindle Box5.jpg",
+      "/products/Spindle Box6.jpg",
+      "/products/Spindle box7.jpg"
     ],
     "badges": [
       "Montessori",
@@ -1363,8 +1395,11 @@
     "reviews": 0,
     "image": "/products/rodstep1.PNG",
     "gallery": [
-      "/products/rodstep1.PNG",
-      "/products/rodstep2.PNG"
+      "/products/Rod peg Steps1.PNG",
+      "/products/Rod peg Steps2.PNG",
+      "/products/Rod peg Steps3.PNG",
+      "/products/Rod peg Steps4.PNG",
+      "/products/Rod peg Steps5.PNG"
     ],
     "badges": [
       "Montessori",
@@ -1442,6 +1477,32 @@
     "gallery": [
       "/products/montstone.PNG",
       "/products/montstone2.PNG"
+    ],
+    "colorVariants": [
+      {
+        "name": "Wooden Natural",
+        "price": 1250,
+        "mrp": 1350,
+        "images": [
+          "/productcolor/Montessori Balance Wooden Stones 1.PNG",
+          "/productcolor/Montessori Balance Wooden Stones 2.PNG",
+          "/productcolor/Montessori Balance Wooden Stones 3.PNG",
+          "/productcolor/Montessori Balance Wooden Stones 4.PNG"
+        ]
+      },
+      {
+        "name": "Colorfull Wooden",
+        "price": 1599,
+        "mrp": 1799,
+        "images": [
+          "/productcolor/Montessori Balance Wooden Colorful Stones Stacking Game – Set of 10 1.PNG",
+          "/productcolor/Montessori Balance Wooden Colorful Stones Stacking Game – Set of 10 2.PNG",
+          "/productcolor/Montessori Balance Wooden Colorful Stones Stacking Game – Set of 10 3.PNG",
+          "/productcolor/Montessori Balance Wooden Colorful Stones Stacking Game – Set of 10 4.PNG",
+          "/productcolor/Montessori Balance Wooden Colorful Stones Stacking Game – Set of 10 5.PNG",
+          "/productcolor/Montessori Balance Wooden Colorful Stones Stacking Game – Set of 10 6.PNG"
+        ]
+      }
     ],
     "badges": [
       "Montessori",
@@ -1573,12 +1634,18 @@
     "inStock": true,
     "rating": 4.7,
     "reviews": 41,
-    "image": "/products/drivein.webp",
+    "image": "/productcolor/Drive In - Car Parking Garage Toy.jpg",
     "gallery": [
-      "/products/drivein.webp",
-      "/products/drivein2.webp",
-      "/products/drivein3.webp",
-      "/products/drivein4.webp"
+      "/productcolor/Drive In - Car Parking Garage Toy.jpg",
+      "/productcolor/Drive In - Car Parking Garage Toy2.jpg",
+      "/productcolor/Drive In - Car Parking Garage Toy3.jpg",
+      "/productcolor/Drive In - Car Parking Garage Toy4.jpg",
+      "/productcolor/Drive In - Car Parking Garage Toy5.jpg",
+      "/productcolor/Drive In - Car Parking Garage Toy6.jpg",
+      "/productcolor/Drive In - Car Parking Garage Toy7.jpg",
+      "/productcolor/Drive In - Car Parking Garage Toy8.jpg",
+      "/productcolor/Drive In - Car Parking Garage Toy9.jpg",
+      "/productcolor/Drive In - Car Parking Garage Toy10.jpg"
     ],
     "badges": [
       "Role Play",
@@ -1752,7 +1819,9 @@
     "image": "/products/aeroplane.webp",
     "gallery": [
       "/products/aeroplane.webp",
-      "/products/aeroplane2.webp"
+      "/products/aeroplane2.webp",
+      "/products/Aeroplane3.jpg",
+      "/products/Aeroplane4.jpg"
     ],
     "badges": [
       "Wooden Toy",
@@ -1937,10 +2006,14 @@
     "inStock": true,
     "rating": 4.8,
     "reviews": 0,
-    "image": "/products/minimasterchef.png",
+    "image": "/products/Mini Masterchef Play Kitchen + Refrigerator.png",
     "gallery": [
-      "/products/minimasterchef.png",
-      "/products/minimasterchef2.png"
+      "/products/Mini Masterchef Play Kitchen + Refrigerator.png",
+      "/products/Mini Masterchef Play Kitchen + Refrigerator2.png",
+      "/products/Mini Masterchef Play Kitchen + Refrigerator3.png",
+      "/products/Mini Masterchef Play Kitchen + Refrigerator4.png",
+      "/products/Mini Masterchef Play Kitchen + Refrigerator5.png",
+      "/products/Mini Masterchef Play Kitchen + Refrigerator6.png"
     ],
     "badges": [
       "Play Kitchen",
@@ -3267,7 +3340,9 @@
       "/products/treegym.webp",
       "/products/treegym2.webp",
       "/products/treegym3.webp",
-      "/products/treegym4.webp"
+      "/products/treegym4.webp",
+      "/products/treegym5.webp",
+      "/products/treegym6.webp"
     ],
     "badges": [
       "Indoor Play",
@@ -3327,7 +3402,9 @@
       "/products/climbplay.webp",
       "/products/climbplay2.webp",
       "/products/climbplay3.webp",
-      "/products/climbplay4.webp"
+      "/products/climbplay4.webp",
+      "/products/climbplay5.webp",
+      "/products/climbplay6.webp"
     ],
     "badges": [
       "Multi-functional",
@@ -3446,7 +3523,10 @@
       "/products/climbarch.webp",
       "/products/climbarch2.webp",
       "/products/climbarch3.webp",
-      "/products/climbarch4.webp"
+      "/products/climbarch4.webp",
+      "/products/climbarch5.webp",
+      "/products/climbarch6.webp",
+      "/products/climbarch7.webp"
     ],
     "badges": [
       "Made-to-Order",
@@ -3513,7 +3593,11 @@
       "/products/junglegym.webp",
       "/products/junglegym2.webp",
       "/products/junglegym3.webp",
-      "/products/junglegym4.webp"
+      "/products/junglegym4.webp",
+      "/products/junglegym5.webp",
+      "/products/junglegym6.webp",
+      "/products/junglegym7.webp",
+      "/products/junglegym8.webp"
     ],
     "badges": [
       "Made-to-Order",
@@ -4398,11 +4482,13 @@
     "inStock": true,
     "rating": 4.8,
     "reviews": 25,
-    "image": "/products/busbook.webp",
+    "image": "/products/Bus Book Shelf.jpg",
     "gallery": [
-      "/products/busbook.webp",
-      "/products/busbook2.webp",
-      "/products/busbook3.webp"
+      "/products/Bus Book Shelf.jpg",
+      "/products/Bus Book Shelf2.jpg",
+      "/products/Bus Book Shelf3.jpg",
+      "/products/Bus Book Shelf4.jpg",
+      "/products/Bus Book Shelf5.jpg"
     ],
     "badges": [
       "Made-to-Order",
@@ -4505,6 +4591,84 @@
       135,
       134,
       133
+    ]
+  },
+  {
+    "id": 96,
+    "slug": "butterfly-vanity-with-chair",
+    "title": "Butterfly Vanity With Chair",
+    "brand": "Kiddies Kingdom",
+    "category": "Furniture",
+    "mrp": 27810,
+    "price": 25840,
+    "inStock": true,
+    "rating": 4.8,
+    "reviews": 16,
+    "image": "/products/Butterfly vanity.webp",
+    "gallery": [
+      "/products/Butterfly vanity.webp",
+      "/products/Butterfly vanity2.webp",
+      "/products/Butterfly vanity3.webp",
+      "/products/Butterfly vanity4.webp",
+      "/products/Butterfly vanity5.webp"
+    ],
+    "badges": [
+      "Butterfly Design",
+      "Includes Mirror",
+      "Child-Friendly",
+      "Handcrafted"
+    ],
+    "shortDescription": "Charming butterfly-shaped vanity set with matching chair, designed to inspire confidence and imagination in kids while enhancing their playroom decor.",
+    "highlights": [
+      "Unique butterfly wing design adds a magical touch",
+      "Encourages self-expression and creativity",
+      "Mirror included for an authentic dressing experience",
+      "Handcrafted from MDF and Pine wood with glossy Duco finish",
+      "Drawer with telescopic slide for storage convenience",
+      "Includes nozzles and electrical connection setup"
+    ],
+    "specifications": [
+      {
+        "label": "Material",
+        "value": "MDF Body, Pine Wood Legs"
+      },
+      {
+        "label": "Finish",
+        "value": "Glossy Duco Paint"
+      },
+      {
+        "label": "Mirror",
+        "value": "Included"
+      },
+      {
+        "label": "Chair Seat Dimension",
+        "value": "11.81”"
+      },
+      {
+        "label": "Chair Seat Height",
+        "value": "14.17”"
+      },
+      {
+        "label": "Chair Total Height",
+        "value": "22.83”"
+      },
+      {
+        "label": "Dressing Table Bench Height",
+        "value": "22.05”"
+      },
+      {
+        "label": "Dressing Table Total Height",
+        "value": "41.73”"
+      }
+    ],
+    "assemblyInstructions": "No assembly required. Comes ready to use. Use a dry cloth to wipe dust and keep surface polished.",
+    "deliveryInstructions": "Production Time: 18–20 days (+ shipping). For urgent delivery, please contact customer care on WhatsApp or call: 9877047723 / 9988209623",
+    "shipInfo": "Made-to-order · Production lead time 18–20 working days · Free shipping on orders over ₹999",
+    "cod": true,
+    "warranty": "All our products are handmade, one piece at a time, making each item unique. Slight variations in colour, tone, shape, or size may occur and are not considered defects.",
+    "url": "/products/butterfly-vanity-with-chair",
+    "related": [
+      64
     ]
   },
   {
@@ -5367,6 +5531,27 @@
     "gallery": [
       "/products/monstertruck.WEBP",
       "/products/monstertruck2.WEBP"
+    ],
+        "colorVariants":[
+                {
+        "name": "Red 30 Slots",
+        "images": [
+          "/productcolor/Monster Truck Garage - 30 slots red.webp"
+        ]
+      },
+      {
+        "name": "Pink 30 Slots",
+        "images": [
+          "/productcolor/Monster Truck Garage - 30 slots pink.webp"
+        ]
+      },
+      {
+        "name": "Yellow 30 Slots",
+        "images": [
+          "/productcolor/Monster Truck Garage - 30 slots yellow 1.webp",
+          "/productcolor/Monster Truck Garage - 30 slots yellow 2.webp"
+        ]
+      }
     ],
     "badges": [
       "Storage",
