@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import {
   FiStar,
@@ -31,10 +31,10 @@ import CartDrawer from "../components/cartDrawer";
 const formatINR = (n) =>
   typeof n === "number"
     ? n.toLocaleString("en-IN", {
-      style: "currency",
-      currency: "INR",
-      maximumFractionDigits: 0,
-    })
+        style: "currency",
+        currency: "INR",
+        maximumFractionDigits: 0,
+      })
     : n;
 
 const discountPct = (mrp, price) =>
@@ -55,7 +55,7 @@ const Stars = ({ value = 0 }) => {
   );
 };
 
-/* ---------------- Simple Accordion (pro-grade) ---------------- */
+/* ---------------- Simple Accordion ---------------- */
 function Accordion({ items = [], defaultOpen = 0, single = true }) {
   const [open, setOpen] = useState(
     typeof defaultOpen === "number" ? defaultOpen : -1
@@ -88,15 +88,15 @@ function Accordion({ items = [], defaultOpen = 0, single = true }) {
               <span className="text-lg font-semibold">{it.title}</span>
             </div>
             <FiChevronDown
-              className={`h-5 w-5 shrink-0 text-slate-500 transition-transform duration-200 ${isOpen(i) ? "rotate-180" : "rotate-0"
-                }`}
+              className={`h-5 w-5 shrink-0 text-slate-500 transition-transform duration-200 ${
+                isOpen(i) ? "rotate-180" : "rotate-0"
+              }`}
             />
           </button>
-
-          {/* fully collapses: no leftover padding */}
           <div
-            className={`overflow-hidden transition-all duration-200 ease-out ${isOpen(i) ? "max-h-[1000px] px-4 pb-4" : "max-h-0 px-4 pb-0"
-              }`}
+            className={`overflow-hidden transition-all duration-200 ease-out ${
+              isOpen(i) ? "max-h-[1000px] px-4 pb-4" : "max-h-0 px-4 pb-0"
+            }`}
           >
             <div className="text-sm text-slate-700">{it.content}</div>
           </div>
@@ -106,7 +106,7 @@ function Accordion({ items = [], defaultOpen = 0, single = true }) {
   );
 }
 
-/* ---------------- Spec list as mini-accordion ---------------- */
+/* ---------------- Spec list ---------------- */
 
 function SpecsAccordion({ specs = [] }) {
   const iconMap = {
@@ -142,14 +142,15 @@ function SpecsAccordion({ specs = [] }) {
                 </dt>
               </div>
               <FiChevronDown
-                className={`h-5 w-5 shrink-0 text-slate-500 transition-transform ${open ? "rotate-180" : "rotate-0"
-                  }`}
+                className={`h-5 w-5 shrink-0 text-slate-500 transition-transform ${
+                  open ? "rotate-180" : "rotate-0"
+                }`}
               />
             </button>
-
             <div
-              className={`overflow-hidden transition-all duration-200 ease-out ${open ? "max-h-[600px] px-3 pb-3" : "max-h-0 px-3 pb-0"
-                }`}
+              className={`overflow-hidden transition-all duration-200 ease-out ${
+                open ? "max-h-[600px] px-3 pb-3" : "max-h-0 px-3 pb-0"
+              }`}
             >
               <dd className="text-sm leading-snug text-slate-800">{s.value}</dd>
             </div>
@@ -215,7 +216,8 @@ const RelatedSlider = ({ items = [] }) => {
     </section>
   );
 };
-/* ---------------- Info Rows (below info stripe) ---------------- */
+
+/* ---------------- Info Rows ---------------- */
 function InfoRows({ items = [] }) {
   if (!items.length) return null;
   return (
@@ -249,6 +251,63 @@ function InfoRows({ items = [] }) {
   );
 }
 
+/* ---------------- Thumbs Row (shared mobile + desktop) ---------------- */
+function ThumbsRow({ imgs, safeSel, setSelImg }) {
+  const rowRef = useRef(null);
+
+  const scrollBy = (dx) => {
+    rowRef.current?.scrollBy({ left: dx, behavior: "smooth" });
+  };
+
+  return (
+    <div className="mt-3 flex items-center gap-2">
+      {/* left arrow (desktop only) */}
+      <button
+        onClick={() => scrollBy(-240)}
+        className="hidden lg:inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 text-slate-800"
+        aria-label="Scroll thumbnails left"
+      >
+        <FiChevronLeft />
+      </button>
+
+      {/* the horizontal rail */}
+      <div
+        ref={rowRef}
+        className="flex gap-2 overflow-x-auto pb-1 scroll-smooth [&::-webkit-scrollbar]:hidden w-full"
+      >
+        {imgs.map((src, i) => (
+          <button
+            key={(src || "img") + i}
+            onClick={() => setSelImg(i)}
+            className={`shrink-0 overflow-hidden rounded-xl border-2 transition-all ${
+              i === safeSel
+                ? "border-violet-500 shadow-sm"
+                : "border-slate-200 hover:border-violet-300"
+            }`}
+            title={`Image ${i + 1}`}
+          >
+            <img
+              src={src}
+              alt=""
+              className="h-16 w-20 lg:w-24 object-cover"
+              loading="lazy"
+            />
+          </button>
+        ))}
+      </div>
+
+      {/* right arrow (desktop only) */}
+      <button
+        onClick={() => scrollBy(240)}
+        className="hidden lg:inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 text-slate-800"
+        aria-label="Scroll thumbnails right"
+      >
+        <FiChevronRight />
+      </button>
+    </div>
+  );
+}
+
 /* ---------------- Main Page ---------------- */
 
 export default function ProductDetail() {
@@ -260,13 +319,10 @@ export default function ProductDetail() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [adding, setAdding] = useState(false);
   const [selectedColor, setSelectedColor] = useState(null);
-  
-
-  const handleEnquiry = () => setShowEnquiryModal(true);
 
   const norm = (s = "") => s.replace(/\/+$/, "");
 
-  // Fetch data first
+  // Fetch data
   useEffect(() => {
     let mounted = true;
     (async () => {
@@ -287,7 +343,7 @@ export default function ProductDetail() {
     };
   }, []);
 
-  // Find product from data
+  // Product by slug
   const product = useMemo(
     () =>
       data.find(
@@ -296,7 +352,7 @@ export default function ProductDetail() {
     [data, slug]
   );
 
-  // Reset selected color and image when product changes
+  // Reset color and selected image when product changes
   useEffect(() => {
     if (product?.colorVariants?.length) {
       setSelectedColor(product.colorVariants[0].name);
@@ -313,29 +369,100 @@ export default function ProductDetail() {
     );
   }, [data, product]);
 
-  // Gallery calculation - FIXED: Always return an array
+  // Gallery
   const currentGallery = useMemo(() => {
     if (!product) return [];
-
     if (product?.colorVariants?.length && selectedColor) {
-      const variantImages = product.colorVariants.find((c) => c.name === selectedColor)?.images;
+      const variantImages = product.colorVariants.find(
+        (c) => c.name === selectedColor
+      )?.images;
       return variantImages || product.gallery || [];
     }
-
-    return product?.gallery?.length ? product.gallery : [product?.image || "/placeholder.png"];
+    return product?.gallery?.length
+      ? product.gallery
+      : [product?.image || "/placeholder.png"];
   }, [product, selectedColor]);
-  // ----- Variant-aware price source -----
+
+  // Variant-aware pricing
   const selectedVariant = useMemo(() => {
     if (!product?.colorVariants?.length || !selectedColor) return null;
-    return product.colorVariants.find(v => v?.name === selectedColor) || null;
+    return (
+      product.colorVariants.find((v) => v?.name === selectedColor) || null
+    );
   }, [product, selectedColor]);
-
 
   const currentPrice = selectedVariant?.price ?? product?.price ?? 0;
   const currentMrp = selectedVariant?.mrp ?? product?.mrp ?? 0;
   const pct = discountPct(currentMrp, currentPrice);
 
+  // Prepare images and selection BEFORE any early return
+  const placeholder = "/placeholder.png";
+  const imgs = (currentGallery || []).filter(Boolean);
+  const safeSel = Math.min(selImg, Math.max(0, imgs.length - 1));
 
+  /* -------------- Accordion payload -------------- */
+  const accordionItems = [
+    {
+      title: "Description",
+      icon: null,
+      content: product?.shortDescription ? (
+        <p>{product.shortDescription}</p>
+      ) : (
+        <p className="text-slate-500">No description available.</p>
+      ),
+    },
+    {
+      title: "Highlights",
+      content: product?.highlights?.length ? (
+        <ul className="space-y-2">
+          {product.highlights.map((h, i) => (
+            <li key={i} className="flex items-start gap-2">
+              <FiCheckCircle className="mt-0.5 text-[#6FB08B]" />
+              <span>{h}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="text-slate-500">No highlights provided.</p>
+      ),
+    },
+    {
+      title: "Product Details",
+      content: product?.specifications?.length ? (
+        <SpecsAccordion specs={product.specifications} />
+      ) : (
+        <p className="text-slate-500">No additional details.</p>
+      ),
+    },
+  ];
+
+  // Add to cart
+  const keyForLine = (pid, color) => `${pid}|${color || ""}`;
+  const handleAddToCart = async () => {
+    if (!product) return;
+    try {
+      setAdding(true);
+      await addToCart(product.id, 1, selectedColor);
+      const detail = {
+        key: keyForLine(product.id, selectedColor),
+        productId: product.id,
+        color: selectedColor || null,
+        price: Number(currentPrice) || 0,
+        mrp: Number(currentMrp) || 0,
+        title: product.title,
+        image: currentGallery?.[0] || product.image || "/placeholder.png",
+      };
+      window.dispatchEvent(new CustomEvent("cart:snapshot", { detail }));
+      window.dispatchEvent(new Event("cart:updated"));
+      setDrawerOpen(true);
+    } catch (e) {
+      console.error("Add to cart failed:", e);
+    } finally {
+      setAdding(false);
+    }
+  };
+
+  /* ---------------- Early returns AFTER all hooks ---------------- */
   if (state === "loading") {
     return (
       <main className="mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6">
@@ -362,89 +489,7 @@ export default function ProductDetail() {
     );
   }
 
-  const placeholder = "/placeholder.png";
-  const imgs = currentGallery.filter(Boolean);
-  const safeSel = Math.min(selImg, Math.max(0, imgs.length - 1));
-  // const pct = discountPct(product.mrp, product.price);
-
-  const handleWhatsApp = () => {
-    if (!product) return;
-    const message = `Hi, I have an enquiry about the product: ${product.title}.`;
-    const whatsappURL = `https://wa.me/919877047723?text=${encodeURIComponent(
-      message
-    )}`;
-    window.open(whatsappURL, "_blank", "noopener,noreferrer");
-  };
-
-  /* -------------- Accordion payload -------------- */
-  const accordionItems = [
-    {
-      title: "Description",
-      icon: null,
-      content: product.shortDescription ? (
-        <p>{product.shortDescription}</p>
-      ) : (
-        <p className="text-slate-500">No description available.</p>
-      ),
-    },
-    {
-      title: "Highlights",
-      content: product.highlights?.length ? (
-        <ul className="space-y-2">
-          {product.highlights.map((h, i) => (
-            <li key={i} className="flex items-start gap-2">
-              <FiCheckCircle className="mt-0.5 text-[#6FB08B]" />
-              <span>{h}</span>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="text-slate-500">No highlights provided.</p>
-      ),
-    },
-    {
-      title: "Product Details",
-      content: product.specifications?.length ? (
-        <SpecsAccordion specs={product.specifications} />
-      ) : (
-        <p className="text-slate-500">No additional details.</p>
-      ),
-    },
-  ];
-
-const keyForLine = (pid, color) => `${pid}|${color || ""}`;
-
-const handleAddToCart = async () => {
-  if (!product) return;
-  try {
-    setAdding(true);
-
-    // 1) server ko simple payload
-    await addToCart(product.id, 1, selectedColor);
-
-    // 2) client snapshot broadcast (variant-aware)
-    const detail = {
-      key: keyForLine(product.id, selectedColor),
-      productId: product.id,
-      color: selectedColor || null,
-      price: Number(currentPrice) || 0,
-      mrp: Number(currentMrp) || 0,
-      title: product.title,
-      image: (currentGallery?.[0]) || product.image || "/placeholder.png",
-    };
-    window.dispatchEvent(new CustomEvent("cart:snapshot", { detail }));
-
-    // 3) usual refresh open drawer
-    window.dispatchEvent(new Event("cart:updated"));
-    setDrawerOpen(true);
-  } catch (e) {
-    console.error("Add to cart failed:", e);
-  } finally {
-    setAdding(false);
-  }
-};
-
-
+  /* ---------------- UI ---------------- */
   return (
     <main className="bg-[#FFFDFB]">
       <section className="mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6">
@@ -461,65 +506,22 @@ const handleAddToCart = async () => {
         </nav>
 
         <div className="mt-6 grid gap-10 lg:grid-cols-2">
-          {/* Left: sticky images */}
-          {/* Left: sticky images */}
+          {/* Left: main image + horizontal thumbs (desktop and mobile same) */}
           <div className="self-start lg:sticky lg:top-20">
-            {/* Desktop/Large: left-side vertical thumbs + main */}
-            <div className="hidden lg:grid grid-cols-[70px_1fr] gap-4">
-              {/* thumbnails (desktop) */}
-              <div className="flex flex-col gap-3">
-                {imgs.map((src, i) => (
-                  <button
-                    key={(src || "img") + i}
-                    onClick={() => setSelImg(i)}
-                    className={`overflow-hidden rounded-xl ring-1 ring-slate-200 transition
-            ${i === safeSel ? "outline-2 outline-violet-400" : "hover:ring-violet-200"}`}
-                  >
-                    <img src={src} alt="" className="h-16 w-16 object-cover" />
-                  </button>
-                ))}
-              </div>
-
-              {/* main image (desktop) */}
-              <div className="overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
-                <div className="aspect-[4/3]">
-                  <img
-                    src={imgs[safeSel] || placeholder}
-                    alt={product.title || "Product image"}
-                    className="h-auto w-full object-cover"
-                  />
-                </div>
+            {/* Main image */}
+            <div className="overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
+              <div className="aspect-[4/3]">
+                <img
+                  src={imgs[safeSel] || placeholder}
+                  alt={product.title || "Product image"}
+                  className="h-full w-full object-contain"
+                />
               </div>
             </div>
 
-            {/* Mobile/Tablet: main image first, thumbnails below in a horizontal row */}
-            <div className="lg:hidden">
-              <div className="overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
-                <div className="aspect-[4/3]">
-                  <img
-                    src={imgs[safeSel] || placeholder}
-                    alt={product.title || "Product image"}
-                    className="h-auto w-full object-cover"
-                  />
-                </div>
-              </div>
-
-              {/* thumbnails (mobile) */}
-              <div className="mt-3 flex gap-2 overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden">
-                {imgs.map((src, i) => (
-                  <button
-                    key={(src || "img") + i}
-                    onClick={() => setSelImg(i)}
-                    className={`shrink-0 overflow-hidden rounded-xl ring-1 ring-slate-200 transition
-            ${i === safeSel ? " outline-2 outline-violet-400" : "hover:ring-violet-200"}`}
-                  >
-                    <img src={src} alt="" className="h-16 w-20 object-cover" />
-                  </button>
-                ))}
-              </div>
-            </div>
+            {/* Thumbs carousel (same for all breakpoints) */}
+            <ThumbsRow imgs={imgs} safeSel={safeSel} setSelImg={setSelImg} />
           </div>
-
 
           {/* Right: details */}
           <div className="lg:minh-[70vh]">
@@ -547,8 +549,9 @@ const handleAddToCart = async () => {
               </span>
               <span className="inline-flex items-center gap-2 text-slate-600">
                 <span
-                  className={`inline-block h-2.5 w-2.5 rounded-full ${product.inStock ? "bg-[#4F9F5B]" : "bg-slate-300"
-                    }`}
+                  className={`inline-block h-2.5 w-2.5 rounded-full ${
+                    product.inStock ? "bg-[#4F9F5B]" : "bg-slate-300"
+                  }`}
                 />
                 {product.inStock ? "In stock" : "Out of stock"}
               </span>
@@ -557,7 +560,9 @@ const handleAddToCart = async () => {
             {/* price row */}
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <div className="text-2xl font-semibold text-slate-900">
-                {currentPrice ? formatINR(currentPrice) : (
+                {currentPrice ? (
+                  formatINR(currentPrice)
+                ) : (
                   <span className="inline-flex h-6 w-24 animate-pulse rounded bg-slate-200" />
                 )}
               </div>
@@ -567,25 +572,25 @@ const handleAddToCart = async () => {
                     {formatINR(currentMrp)}
                   </div>
                   <span className="rounded-full bg-[#EAF4F2] px-3 py-1 text-sm text-[#276D55] ring-1 ring-[#CDE7E1]">
-                    {pct}% OFF
+                    {discountPct(currentMrp, currentPrice)}% OFF
                   </span>
                 </>
               ) : null}
             </div>
 
-
-
-            {/* Color Variants */}
             {/* Color Variants */}
             {product.colorVariants?.length ? (
               <div className="mt-5">
-                <h4 className="mb-2 text-sm font-medium text-slate-800">Choose Color</h4>
+                <h4 className="mb-2 text-sm font-medium text-slate-800">
+                  Choose Color
+                </h4>
 
                 <div className="flex flex-wrap gap-3">
                   {product.colorVariants.map((variant) => {
-                    const thumb = Array.isArray(variant.images) && variant.images[0]
-                      ? variant.images[0]
-                      : product.image || "/placeholder.png";
+                    const thumb =
+                      Array.isArray(variant.images) && variant.images[0]
+                        ? variant.images[0]
+                        : product.image || "/placeholder.png";
                     const selected = selectedColor === variant.name;
 
                     return (
@@ -596,9 +601,13 @@ const handleAddToCart = async () => {
                           setSelImg(0);
                         }}
                         type="button"
-                        className={`group w-[92px] rounded-xl p-1 text-center ring-1 transition
-              ${selected ? "ring-pink-400 bg-pink-50" : "ring-slate-200 hover:ring-pink-200"}`}
+                        className={`group w-[92px] rounded-xl p-1 text-center ring-1 transition ${
+                          selected
+                            ? "ring-pink-400 bg-pink-50"
+                            : "ring-slate-200 hover:ring-pink-200"
+                        }`}
                         aria-pressed={selected}
+                        title={variant.name}
                       >
                         <div className="aspect-square overflow-hidden rounded-lg bg-white">
                           <img
@@ -609,8 +618,11 @@ const handleAddToCart = async () => {
                           />
                         </div>
                         <div
-                          className={`mt-1 line-clamp-1 text-[11px] ${selected ? "text-pink-700 font-semibold" : "text-slate-700"
-                            }`}
+                          className={`mt-1 line-clamp-1 text-[11px] ${
+                            selected
+                              ? "text-pink-700 font-semibold"
+                              : "text-slate-700"
+                          }`}
                           title={variant.name}
                         >
                           {variant.name}
@@ -622,7 +634,6 @@ const handleAddToCart = async () => {
               </div>
             ) : null}
 
-
             {/* info stripe */}
             <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-slate-50 p-3 text-sm text-slate-700 ring-1 ring-slate-200">
               <div className="inline-flex items-center gap-2">
@@ -633,7 +644,7 @@ const handleAddToCart = async () => {
               </div>
             </div>
 
-            {/* new: info rows under stripe */}
+            {/* info rows */}
             {(() => {
               const infoItems = [
                 {
@@ -674,18 +685,17 @@ const handleAddToCart = async () => {
               </div>
             ) : null}
 
-            {/* MAIN ACCORDION: Description (open), Highlights, Product Details */}
+            {/* MAIN ACCORDION */}
             <div className="mt-6">
               <Accordion items={accordionItems} defaultOpen={0} single />
             </div>
 
-            {/* Buttons: Enquiry and WhatsApp */}
-            {/* Actions: Enquiry, WhatsApp, Add to Cart */}
+            {/* Actions */}
             <div className="mt-8">
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {/* Enquiry */}
                 <button
-                  onClick={handleEnquiry}
+                  onClick={() => setShowEnquiryModal(true)}
                   className="group inline-flex items-center justify-center rounded-xl bg-[#ef927d] px-6 py-4 text-base font-semibold text-white ring-1 ring-[#e38a76] transition-colors hover:bg-[#d87964] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#ef927d]"
                   aria-label="Enquire about this product"
                 >
@@ -695,7 +705,13 @@ const handleAddToCart = async () => {
 
                 {/* WhatsApp */}
                 <button
-                  onClick={handleWhatsApp}
+                  onClick={() => {
+                    const message = `Hi, I have an enquiry about the product: ${product.title}.`;
+                    const whatsappURL = `https://wa.me/919877047723?text=${encodeURIComponent(
+                      message
+                    )}`;
+                    window.open(whatsappURL, "_blank", "noopener,noreferrer");
+                  }}
                   className="inline-flex items-center justify-center rounded-xl border border-[#ef927d] px-6 py-4 text-base font-semibold text-[#2f7d32] bg-white transition-colors hover:bg-[#fff4f1] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#ef927d]"
                   aria-label="WhatsApp us"
                   title="WhatsApp us"
@@ -708,23 +724,23 @@ const handleAddToCart = async () => {
                 <button
                   onClick={handleAddToCart}
                   disabled={adding || !product.inStock}
-                  className={`inline-flex items-center justify-center rounded-xl px-6 py-4 text-base font-semibold text-white transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
-                    ${product.inStock
+                  className={`inline-flex items-center justify-center rounded-xl px-6 py-4 text-base font-semibold text-white transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
+                    product.inStock
                       ? "bg-violet-600 hover:bg-violet-700 focus-visible:ring-violet-600"
                       : "bg-slate-300 cursor-not-allowed"
-                    }`}
+                  }`}
                   aria-label="Add to cart"
                 >
                   <FiShoppingCart className="mr-2 h-5 w-5" />
                   {adding
                     ? "Adding…"
                     : product.inStock
-                      ? "Add to Cart"
-                      : "Out of stock"}
+                    ? "Add to Cart"
+                    : "Out of stock"}
                 </button>
               </div>
 
-              {/* Tiny reassurance row under buttons */}
+              {/* reassurance */}
               <div className="mt-3 flex flex-wrap items-center gap-4 text-sm text-slate-600">
                 <span className="inline-flex items-center gap-2">
                   <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />

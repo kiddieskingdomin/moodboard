@@ -15,7 +15,8 @@
       "/products/grillchill.webp",
       "/products/grillchill2.webp",
       "/products/grillchill3.webp",
-      "/products/grillchill4.webp"
+      "/products/grillchill4.webp",
+      "/products/Chill & grill 5.webp"
     ],
     "badges": [
       "Culinary Creativity",
@@ -76,7 +77,9 @@
     "image": "/products/toolkit.jpg",
     "gallery": [
       "/products/toolkit.jpg",
-      "/products/toolkit2.jpg"
+      "/products/toolkit2.jpg",
+      "/products/Fix it up - Tool kit 3.jpg",
+      "/products/Fix it up - Tool kit 4.jpg"
     ],
     "badges": [
       "Educational",
@@ -137,7 +140,9 @@
       "/products/tea.webp",
       "/products/tea2.webp",
       "/products/tea3.webp",
-      "/products/tea4.webp"
+      "/products/tea4.webp",
+      "/products/Tea _n_ me 2.jpg",
+      "/products/Tea _n_ me 5.pg"
     ],
     "badges": [
       "Pretend Play",
@@ -198,7 +203,10 @@
     "image": "/products/dentalset.jpg",
     "gallery": [
       "/products/dentalset.jpg",
-      "/products/dentalset2.jpg"
+      "/products/dentalset2.jpg",
+      "/products/Happy Teeth - Dental Set 4.jpg",
+      "/products/Happy Teeth - Dental Set 5.jpg",
+      "/products/Happy Teeth - Dental Set.jpg"
     ],
     "badges": [
       "Wooden Toy",
@@ -545,7 +553,9 @@
       "/products/toaster.webp",
       "/products/toaster2.webp",
       "/products/toaster3.webp",
-      "/products/toaster4.webp"
+      "/products/toaster4.webp",
+      "/products/Roasty Toasty – Toaster3.jpg",
+      "/products/Roasty Toasty – Toaster4.jpg"
     ],
     "badges": [
       "Montessori Toy",
@@ -606,6 +616,25 @@
       "/products/sweettreat2.webp",
       "/products/sweettreat3.webp",
       "/products/sweettreat4.webp"
+    ],
+    "colorVariants":[
+      {
+        "name" : "Beige",
+        "images":[
+          "/products/Sweet Treat - Waffle Maker Beige Color.jpg",
+          "/products/Sweet Treat - Waffle Maker Beige Color2.jpg",
+          "/products/Sweet Treat - Waffle Maker Beige Color3.jpg",
+          "/products/Sweet Treat - Waffle Maker Beige Color4.jpg"
+        ]
+      },
+{"name":"Pink",
+"images":[
+            "/products/Sweet Treat - Waffle Maker Pink Color.jpg",
+          "/products/Sweet Treat - Waffle Maker Pink Color2.jpg",
+          "/products/Sweet Treat - Waffle Maker Pink Color3.jpg",
+          "/products/Sweet Treat - Waffle Maker Pink Color4.jpg"
+]
+}
     ],
     "badges": [
       "Imaginative Play",
@@ -726,12 +755,15 @@
     "inStock": true,
     "rating": 4.9,
     "reviews": 33,
-    "image": "/products/poppool.webp",
+    "image": "/products/Pop’s Pool Side Villa - Mini doll house.jpg",
     "gallery": [
-      "/products/poppool.webp",
-      "/products/poppool2.webp",
-      "/products/poppool3.webp",
-      "/products/poppool4.webp"
+      "/products/Pop’s Pool Side Villa - Mini doll house.jpg",
+      "/products/Pop’s Pool Side Villa - Mini doll house2.jpg",
+      "/products/Pop’s Pool Side Villa - Mini doll house3.jpg",
+      "/products/Pop’s Pool Side Villa - Mini doll house4.jpg",
+      "/products/Pop’s Pool Side Villa - Mini doll house5.jpg",
+      "/products/Pop’s Pool Side Villa - Mini doll house6.jpg",
+      "/products/Pop’s Pool Side Villa - Mini doll house7.png"
     ],
     "badges": [
       "Made-to-Order",
@@ -1003,7 +1035,13 @@
       "/products/pizzaoven.webp",
       "/products/pizzaoven2.webp",
       "/products/pizzaoven3.webp",
-      "/products/pizzaoven4.webp"
+      "/products/pizzaoven4.webp",
+      "/products/Pizza Oven.jpg",
+      "/products/Pizza oven2.JPG",
+      "/products/Pizza Oven3.jpg",
+      "/products/Pizza Oven4.jpg",
+      "/products/Pizza Oven5.jpg",
+      "/products/Pizza Oven7.jpg"
     ],
     "badges": [
       "Imaginative Play",
@@ -1708,7 +1746,12 @@
       "/products/littlecamper.webp",
       "/products/littlecamper2.webp",
       "/products/littlecamper3.webp",
-      "/products/littlecamper4.webp"
+      "/products/littlecamper4.webp",
+      "/products/Little Camper5.JPG",
+      "/products/Little Camper6.JPG",
+      "/products/Little Camper7.JPG",
+      "/products/Little Camper8.JPG"
+
     ],
     "badges": [
       "Outdoor Fun",
@@ -1765,7 +1808,8 @@
     "image": "/products/township.webp",
     "gallery": [
       "/products/township.webp",
-      "/products/township2.webp"
+      "/products/township2.webp",
+      "/productcolor/Township2.png"
     ],
     "badges": [
       "Educational",
@@ -2919,7 +2963,9 @@
     "image": "/products/charming.jpg",
     "gallery": [
       "/products/charming.jpg",
-      "/products/charming2.jpg"
+      "/products/charming2.jpg",
+      "/products/Charming Cottage Dollhouse.jpg",
+      "/products/Charming Cottage Dollhouse3.jpg"
     ],
     "badges": [
       "Dollhouse",
@@ -3097,7 +3143,8 @@
     "gallery": [
       "/products/carstation.webp",
       "/products/carstation2.webp",
-      "/products/carstation3.webp"
+      "/products/carstation3.webp",
+      "/products/Matchbox Car Storage3.WEBP"
     ],
     "badges": [
       "Educational",
@@ -3154,9 +3201,9 @@
     "reviews": 33,
     "image": "/products/shopcafe.webp",
     "gallery": [
-      "/products/the-shopcafe.webp",
-      "/products/the-shopcafe2.webp",
-      "/products/the-shopcafe3.webp"
+      "/products/shopcafe.webp",
+      "/products/shopcafe2.webp",
+      "/products/shopcafe3.webp"
     ],
     "badges": [
       "Made-to-Order",
@@ -3224,6 +3271,26 @@
       "/products/vendorstall2.webp",
       "/products/vendorstall3.webp"
     ],
+    "colorVariants": [
+      {
+        "name": "pink",
+        "images": [
+          "/products/vendorstall.webp"
+        ]
+      },
+      {
+        "name": "white",
+        "images": [
+      "/products/vendorstall2.webp"
+        ]
+      },
+      {
+        "name": "pista",
+        "images": [
+      "/products/vendorstall3.webp"
+        ]
+      }
+    ],
     "badges": [
       "Made-to-Order",
       "Wooden Toy",
@@ -3272,11 +3339,17 @@
     "inStock": true,
     "rating": 4.9,
     "reviews": 18,
-    "image": "/products/sensory.webp",
+    "image": "/products/Sensory + Art + Study table1.webp",
     "gallery": [
-      "/products/sensory.webp",
-      "/products/sensory2.webp",
-      "/products/sensory3.webp"
+      "/products/Sensory + Art + Study table1.webp",
+      "/products/Sensory + Art + Study table2.webp",
+      "/products/Sensory + Art + Study table3.webp",
+      "/products/Sensory + Art + Study table4.webp",
+      "/products/Sensory + Art + Study table5.webp",
+      "/products/Sensory + Art + Study table6.webp",
+      "/products/Sensory + Art + Study table7.webp",
+      "/products/Sensory + Art + Study table9.webp",
+      "/products/Sensory + Art + Study table10.webp"
     ],
     "badges": [
       "Handmade",
@@ -3403,8 +3476,8 @@
       "/products/climbplay2.webp",
       "/products/climbplay3.webp",
       "/products/climbplay4.webp",
-      "/products/climbplay5.webp",
-      "/products/climbplay6.webp"
+      "/products/Climbplay5.webp",
+      "/products/Climbplay6.webp"
     ],
     "badges": [
       "Multi-functional",
@@ -3804,11 +3877,29 @@
     "inStock": true,
     "rating": 4.6,
     "reviews": 10,
-    "image": "/products/castors.webp",
+    "image": "/products/Bookshelf with castor green 1.jpg",
     "gallery": [
-      "/products/castors.webp",
-      "/products/castors2.webp",
-      "/products/castors3.webp"
+      "/products/Bookshelf with castor green 1.jpg",
+      "/products/Bookshelf with castor green 2.jpg",
+      "/products/Bookshelf with castor green 3.jpg"
+    ],
+    "colorVariants": [
+      {
+        "name": "Green",
+        "images": [
+          "/products/Bookshelf with castor green 1.jpg",
+          "/products/Bookshelf with castor green 2.jpg",
+          "/products/Bookshelf with castor green 3.jpg"
+        ]
+      },
+      {
+        "name": "White",
+        "images": [
+          "/products/Bookshelf with castor white 1.jpg",
+          "/products/Bookshelf with castor white 2.jpg",
+          "/products/Bookshelf with castor white 3.jpg"
+        ]
+      }
     ],
     "badges": [
       "Organizational",
@@ -3881,11 +3972,14 @@
     "inStock": true,
     "rating": 4.7,
     "reviews": 33,
-    "image": "/products/bookdisplay.webp",
+    "image": "/products/Book display stand 1.jpg",
     "gallery": [
-      "/products/bookdisplay.webp",
-      "/products/bookdisplay2.webp",
-      "/products/bookdisplay3.webp"
+      "/products/Book display stand 1.jpg",
+      "/products/Book display stand 2.jpg",
+      "/products/Book display stand 3.jpg",
+      "/products/Book display stand 4.jpg",
+      "/products/Book display stand 5.jpg",
+      "/products/Book display stand 6.jpg"
     ],
     "badges": [
       "Compact Design",
@@ -4044,7 +4138,8 @@
     "image": "/products/daisyhouse.webp",
     "gallery": [
       "/products/daisyhouse.webp",
-      "/products/daisyhouse2.webp"
+      "/products/daisyhouse2.webp",
+      "/products/𝙆𝙞𝙙𝙨 𝘿𝙖𝙞𝙨𝙮 𝙃𝙤𝙪𝙨𝙚 𝘽𝙤𝙤𝙠𝙘𝙖𝙨𝙚 𝙖𝙣𝙙 𝙎𝙩𝙤𝙧𝙖𝙜𝙚2.JPG"
     ],
     "badges": [
       "Whimsical Design",
@@ -4295,7 +4390,10 @@
       "/products/storagebus.webp",
       "/products/storagebus2.webp",
       "/products/storagebus3.webp",
-      "/products/storagebus4.webp"
+      "/products/storagebus4.webp",
+      "/products/Storage Bus1.webp",
+      "/products/Storage Bus2.webp",
+      "/products/Storage Bus7.webp"
     ],
     "badges": [
       "Handmade",
@@ -4352,11 +4450,12 @@
     "inStock": true,
     "rating": 4.6,
     "reviews": 8,
-    "image": "/products/cloudshelf.webp",
+    "image": "/products/Montessori Infant Cloud Shelf.jpg",
     "gallery": [
-      "/products/cloudshelf.webp",
-      "/products/cloudshelf2.webp",
-      "/products/cloudshelf3.webp"
+      "/products/Montessori Infant Cloud Shelf.jpg",
+      "/products/Montessori Infant Cloud Shelf2.jpg",
+      "/products/Montessori Infant Cloud Shelf3.jpg",
+      "/products/Montessori Infant Cloud Shelf4.jpg"
     ],
     "badges": [
       "Made-to-Order",
@@ -4417,10 +4516,13 @@
     "inStock": true,
     "rating": 4.5,
     "reviews": 8,
-    "image": "/products/toddler.webp",
+    "image": "/products/Toddler Cloud Shelf.jpg",
     "gallery": [
-      "/products/toddler.webp",
-      "/products/toddler2.webp"
+      "/products/Toddler Cloud Shelf.jpg",
+      "/products/Toddler Cloud Shelf2.jpg",
+      "/products/Toddler Cloud Shelf3.jpg",
+      "/products/Toddler Cloud Shelf4.jpg",
+      "/products/Toddler Cloud Shelf5.jpg"
     ],
     "badges": [
       "Handmade",
@@ -4542,10 +4644,16 @@
     "inStock": true,
     "rating": 4.6,
     "reviews": 7,
-    "image": "/products/pegboard.webp",
+    "image": "/products/Pegboard 1.webp",
     "gallery": [
-      "/products/pegboard.webp",
-      "/products/pegboard2.webp"
+      "/products/Pegboard 1.webp",
+      "/products/Pegboard 2.webp",
+      "/products/Pegboard 3.webp",
+      "/products/Pegboard 4.webp",
+      "/products/Pegboard 5.webp",
+      "/products/Pegboard 6.webp",
+      "/products/Pegboard 7.webp",
+      "/products/Pegboard 8.webp"
     ],
     "badges": [
       "Educational",
@@ -5262,12 +5370,16 @@
     "inStock": true,
     "rating": 4.9,
     "reviews": 18,
-    "image": "/products/popdoll.webp",
+    "image": "/products/Pop_s dollhouse2.webp",
     "gallery": [
-      "/products/popdoll.webp",
-      "/products/popdoll2.webp",
-      "/products/popdoll3.webp",
-      "/products/popdoll4.webp"
+      "/products/Pop_s dollhouse1.webp",
+      "/products/Pop_s dollhouse2.webp",
+      "/products/Pop_s dollhouse3.webp",
+      "/products/Pop_s dollhouse4.webp",
+      "/products/Pop_s dollhouse5.webp",
+      "/products/Pop_s dollhouse6.webp",
+      "/products/Pop_s dollhouse7.webp",
+      "/products/Pop_s dollhouse8.webp"
     ],
     "badges": [
       "Handmade",
@@ -5532,8 +5644,8 @@
       "/products/monstertruck.WEBP",
       "/products/monstertruck2.WEBP"
     ],
-        "colorVariants":[
-                {
+    "colorVariants": [
+      {
         "name": "Red 30 Slots",
         "images": [
           "/productcolor/Monster Truck Garage - 30 slots red.webp"
