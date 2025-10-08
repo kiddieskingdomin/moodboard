@@ -617,24 +617,25 @@
       "/products/sweettreat3.webp",
       "/products/sweettreat4.webp"
     ],
-    "colorVariants":[
+    "colorVariants": [
       {
-        "name" : "Beige",
-        "images":[
+        "name": "Beige",
+        "images": [
           "/products/Sweet Treat - Waffle Maker Beige Color.jpg",
           "/products/Sweet Treat - Waffle Maker Beige Color2.jpg",
           "/products/Sweet Treat - Waffle Maker Beige Color3.jpg",
           "/products/Sweet Treat - Waffle Maker Beige Color4.jpg"
         ]
       },
-{"name":"Pink",
-"images":[
-            "/products/Sweet Treat - Waffle Maker Pink Color.jpg",
+      {
+        "name": "Pink",
+        "images": [
+          "/products/Sweet Treat - Waffle Maker Pink Color.jpg",
           "/products/Sweet Treat - Waffle Maker Pink Color2.jpg",
           "/products/Sweet Treat - Waffle Maker Pink Color3.jpg",
           "/products/Sweet Treat - Waffle Maker Pink Color4.jpg"
-]
-}
+        ]
+      }
     ],
     "badges": [
       "Imaginative Play",
@@ -1751,7 +1752,6 @@
       "/products/Little Camper6.JPG",
       "/products/Little Camper7.JPG",
       "/products/Little Camper8.JPG"
-
     ],
     "badges": [
       "Outdoor Fun",
@@ -2156,6 +2156,13 @@
         "images": [
           "/products/Wooden Kids Play Kitchen - cotton bloom .WEBP"
         ]
+      }
+    ],
+    "reviewsData":[
+      {
+        "user":"Namita Sharma",
+        "rating": 5,
+        "comment":"This play kitchen is adorable and well made. My daughter spends hours pretending to bake and serve food. It's been wonderful for her creativity and role-playing skills!"
       }
     ],
     "badges": [
@@ -3281,13 +3288,13 @@
       {
         "name": "white",
         "images": [
-      "/products/vendorstall2.webp"
+          "/products/vendorstall2.webp"
         ]
       },
       {
         "name": "pista",
         "images": [
-      "/products/vendorstall3.webp"
+          "/products/vendorstall3.webp"
         ]
       }
     ],
@@ -3601,6 +3608,13 @@
       "/products/climbarch6.webp",
       "/products/climbarch7.webp"
     ],
+    "reviewsData": [
+      {
+        "user": "Kavita Malya",
+        "rating": 5,
+        "comment": "We just received it. Its lovely. Finishing and quality is excellent. Love the colour combination"
+      }
+    ],
     "badges": [
       "Made-to-Order",
       "Multi-Functional",
@@ -3676,6 +3690,13 @@
       "Made-to-Order",
       "Eco-Friendly",
       "Indoor Play"
+    ],
+    "reviewsData": [
+      {
+        "user": "Komal",
+        "rating": 5,
+        "comment": "Best purchase ever! My little one plays on the jungle gym for hours. It keeps him active, entertained, and away from screens exactly what we wanted"
+      }
     ],
     "shortDescription": "A 7-in-1 indoor wooden jungle gym with climbing wall, slide, swing, ladders, and more — designed for safe, active play.",
     "highlights": [
@@ -4720,6 +4741,18 @@
       "/products/Butterfly vanity4.webp",
       "/products/Butterfly vanity5.webp"
     ],
+    "reviewsData": [
+      {
+        "user": "Simrita Uppal",
+        "rating": 5,
+        "comment": "My daughter absolutely loves her new vanity! She spends hours pretending to get ready, brushing her hair, and playing dress-up. It's helped her imagination bloom she even puts on 'shows' for us now. So cute!"
+      },
+      {
+        "user": "Ashna Kedia",
+        "rating": 5,
+        "comment": "My 4-year-old is obsessed with this vanity set! The mirror and tiny accessories make her feel like a princess. It encourages creativity and keeps her happily entertained for hours. Highly recommend!"
+      }
+    ],
     "badges": [
       "Butterfly Design",
       "Includes Mirror",
@@ -5380,6 +5413,18 @@
       "/products/Pop_s dollhouse6.webp",
       "/products/Pop_s dollhouse7.webp",
       "/products/Pop_s dollhouse8.webp"
+    ],
+    "reviewsData":[
+      {
+        "user":"Pratibha Gupta",
+        "rating": 5,
+        "comment":"My niece loved it. Will surely buy more in future. Wooden doll house is so good. My niece loved it. Will surely buy more in future"
+      },
+      {
+        "user":"Satibha Sharma",
+        "rating": 5,
+        "comment":"Very good quality and detailing. Thank you My grandson is enjoying his dolls house. Very good quality and detailing. Thank you"
+      }
     ],
     "badges": [
       "Handmade",
